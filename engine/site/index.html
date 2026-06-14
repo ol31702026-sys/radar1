@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Корень данных относительно этого index.html.
+       Локально сайт открывают по .../engine/site/index.html, данные лежат на 2 уровня выше → "../../".
+       При деплое (Этап 4) сайт обычно кладут в корень → поставить "" (см. README сайта). -->
+  <meta name="data-root" content="../../" />
+  <title>Radar — находки</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">📡</span>
+      <div>
+        <h1 id="radar-title">Radar</h1>
+        <p id="radar-desc" class="muted"></p>
+      </div>
+    </div>
+    <nav class="tabs">
+      <button class="tab active" data-view="feed">📰 Лента</button>
+      <button class="tab" data-view="think">🤔 На обдумывание <span id="think-count" class="pill">0</span></button>
+    </nav>
+  </header>
+
+  <!-- ЛЕНТА -->
+  <main id="view-feed" class="view">
+    <div class="controls">
+      <select id="day-select" aria-label="День"></select>
+      <input id="search" type="search" placeholder="🔍 Поиск по находкам…" />
+      <select id="platform-select" aria-label="Платформа">
+        <option value="">Все платформы</option>
+      </select>
+      <button id="reset-filters" class="ghost" title="Сбросить фильтры">сброс</button>
+    </div>
+    <div id="tagbar" class="tagbar"></div>
+    <p id="feed-summary" class="muted summary"></p>
+    <div id="cards" class="cards"></div>
+  </main>
+
+  <!-- НА ОБДУМЫВАНИЕ -->
+  <main id="view-think" class="view hidden">
+    <div class="controls">
+      <p class="muted summary" id="think-summary"></p>
+      <button id="export-btn" class="primary">⬇ Экспорт (ratings + saved)</button>
+    </div>
+    <div id="think-board"></div>
+  </main>
+
+  <!-- DRILL-DOWN модалка -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button id="modal-close" class="modal-close" aria-label="Закрыть">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer class="foot muted">
+    Radar · данные читаются из <code>data/*.json</code> · рейтинги и закладки хранятся в браузере (localStorage), экспортируются в JSON
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

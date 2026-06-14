@@ -4,6 +4,9 @@ dist/
 .cache/
 *.log
 
+# Генерируется build_manifest.py — не версионируем
+/manifest.json
+
 # OS
 .DS_Store
 Thumbs.db

@@ -1,0 +1,307 @@
+/* Radar static site — читает manifest.json + data/*.json, без сборки.
+   Рейтинги и закладки хранятся в localStorage (по slug радара) и экспортируются в JSON,
+   совместимый с data/feedback/ratings.json и saved.json. Серверный вариант — позже (Этап 2/4). */
+
+const STATUS_LABEL = { new: "🆕 Новое", thinking: "🤔 В работе", done: "✅ Решено", archived: "🗄 Архив" };
+const STATUS_ORDER = ["new", "thinking", "done", "archived"];
+
+const state = {
+  slug: null,
+  radar: null,        // запись из manifest
+  finds: [],          // находки выбранного дня
+  day: null,
+  activeTags: new Set(),
+  platform: "",
+  query: "",
+  ratings: {},        // find_id -> 1..5 | -1
+  saved: {},          // find_id -> {status, note, saved_at, note_updated_at}
+};
+
+/* ---------- persistence (localStorage) ---------- */
+const lsKey = (kind) => `radar:${state.slug}:${kind}`;
+function loadLocal() {
+  try { state.ratings = JSON.parse(localStorage.getItem(lsKey("ratings"))) || {}; } catch { state.ratings = {}; }
+  try { state.saved = JSON.parse(localStorage.getItem(lsKey("saved"))) || {}; } catch { state.saved = {}; }
+}
+function saveRatings() { localStorage.setItem(lsKey("ratings"), JSON.stringify(state.ratings)); }
+function saveSaved() { localStorage.setItem(lsKey("saved"), JSON.stringify(state.saved)); }
+
+/* ---------- data loading ---------- */
+// Корень данных (manifest.json, radars/...) относительно index.html.
+// Берётся из <meta name="data-root">; локально "../../", на деплое — "".
+const DATA_ROOT = (document.querySelector('meta[name="data-root"]')?.content ?? "").trim();
+const dataPath = (p) => DATA_ROOT + p;
+
+async function getJSON(path) {
+  const res = await fetch(dataPath(path), { cache: "no-store" });
+  if (!res.ok) throw new Error(`${path}: ${res.status}`);
+  return res.json();
+}
+
+async function init() {
+  let manifest;
+  try {
+    manifest = await getJSON("manifest.json");
+  } catch (e) {
+    document.getElementById("cards").innerHTML =
+      `<div class="empty">Не нашёл <code>manifest.json</code>. Запусти <code>python3 engine/build_manifest.py</code> и открой сайт через локальный сервер из корня проекта.</div>`;
+    return;
+  }
+  state.radar = manifest.radars[0]; // первый радар (мульти-радар — на будущее)
+  state.slug = state.radar.slug;
+  loadLocal();
+
+  document.getElementById("radar-title").textContent = state.radar.title;
+  document.getElementById("radar-desc").textContent = state.radar.description || "";
+
+  // дни
+  const daySel = document.getElementById("day-select");
+  daySel.innerHTML = state.radar.days
+    .map((d) => `<option value="${d.date}">${d.date} · ${d.count} находок</option>`)
+    .join("");
+  // платформы
+  const pSel = document.getElementById("platform-select");
+  pSel.innerHTML = `<option value="">Все платформы</option>` +
+    state.radar.platforms.map((p) => `<option value="${p}">${p}</option>`).join("");
+  // теги
+  document.getElementById("tagbar").innerHTML = state.radar.taxonomy
+    .map((t) => `<button class="tagchip" data-tag="${t}">${t}</button>`)
+    .join("");
+
+  bindEvents();
+  await loadDay(state.radar.days[0]?.date);
+  renderThinkBoard();
+  updateThinkCount();
+}
+
+async function loadDay(date) {
+  if (!date) return;
+  state.day = date;
+  state.finds = await getJSON(`radars/${state.slug}/data/finds/${date}.json`);
+  renderFeed();
+}
+
+/* ---------- feed ---------- */
+function filteredFinds() {
+  const q = state.query.trim().toLowerCase();
+  return state.finds.filter((f) => {
+    if (state.platform && f.source_platform !== state.platform) return false;
+    if (state.activeTags.size && !f.tags.some((t) => state.activeTags.has(t))) return false;
+    if (q && !(`${f.title} ${f.summary} ${f.details || ""}`.toLowerCase().includes(q))) return false;
+    return true;
+  });
+}
+
+function esc(s) { return String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+function starHtml(id) {
+  const cur = state.ratings[id] || 0;
+  let s = `<span class="stars" data-id="${id}">`;
+  for (let i = 1; i <= 5; i++) s += `<span class="star ${cur >= i ? "on" : ""}" data-v="${i}">★</span>`;
+  s += `</span>`;
+  return s;
+}
+
+function cardHtml(f) {
+  const isSaved = !!state.saved[f.id];
+  return `<article class="card" data-id="${f.id}">
+    <h3 data-open="${f.id}">${esc(f.title)}</h3>
+    <p class="anons">${esc(f.summary)}</p>
+    <div class="meta">
+      ${f.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}
+      <span class="platform">${esc(f.source_platform)}${f.author ? " · " + esc(f.author) : ""}</span>
+      <span class="src"><a href="${esc(f.source_url)}" target="_blank" rel="noopener">↗ оригинал</a></span>
+    </div>
+    <div class="card-actions">
+      ${starHtml(f.id)}
+      <button class="btn-save ${isSaved ? "on" : ""}" data-save="${f.id}">${isSaved ? "⚑ Отложено" : "⚑ Отложить"}</button>
+      <span class="more"><button class="btn-more" data-open="${f.id}">подробнее →</button></span>
+    </div>
+  </article>`;
+}
+
+function renderFeed() {
+  const list = filteredFinds();
+  document.getElementById("feed-summary").textContent =
+    `День ${state.day}: показано ${list.length} из ${state.finds.length}`;
+  document.getElementById("cards").innerHTML =
+    list.length ? list.map(cardHtml).join("") : `<div class="empty">Ничего не найдено по фильтрам.</div>`;
+}
+
+/* ---------- drill-down modal ---------- */
+function openModal(id) {
+  const f = state.finds.find((x) => x.id === id);
+  if (!f) return;
+  document.getElementById("modal-body").innerHTML = `
+    <h2>${esc(f.title)}</h2>
+    <p class="muted">${f.tags.map((t) => `#${esc(t)}`).join(" ")} · ${esc(f.source_platform)}${f.author ? " · " + esc(f.author) : ""}</p>
+    <p><strong>Анонс.</strong> ${esc(f.summary)}</p>
+    <p><strong>Расшифровка.</strong></p>
+    <div class="rasshifrovka">${esc(f.details || "(расшифровка не заполнена)")}</div>
+    <p style="margin-top:18px"><a href="${esc(f.source_url)}" target="_blank" rel="noopener">↗ Открыть оригинал</a></p>
+    <div class="card-actions">${starHtml(f.id)}
+      <button class="btn-save ${state.saved[f.id] ? "on" : ""}" data-save="${f.id}">${state.saved[f.id] ? "⚑ Отложено" : "⚑ Отложить"}</button>
+    </div>`;
+  document.getElementById("modal").classList.remove("hidden");
+}
+function closeModal() { document.getElementById("modal").classList.add("hidden"); }
+
+/* ---------- ratings & saved actions ---------- */
+function setRating(id, v) {
+  state.ratings[id] = state.ratings[id] === v ? 0 : v; // повторный клик по той же звезде = снять
+  if (state.ratings[id] === 0) delete state.ratings[id];
+  saveRatings();
+}
+function toggleSave(id) {
+  if (state.saved[id]) { delete state.saved[id]; }
+  else { state.saved[id] = { status: "new", note: "", saved_at: today(), note_updated_at: null }; }
+  saveSaved();
+  renderThinkBoard();
+  updateThinkCount();
+}
+function today() { return new Date().toISOString().slice(0, 10); }
+
+/* ---------- think board ---------- */
+function findById(id) {
+  return state.finds.find((x) => x.id === id) || state._allFindsCache?.[id] || null;
+}
+function updateThinkCount() {
+  const n = Object.keys(state.saved).filter((id) => state.saved[id].status !== "archived").length;
+  document.getElementById("think-count").textContent = n;
+}
+function renderThinkBoard() {
+  const ids = Object.keys(state.saved);
+  const board = document.getElementById("think-board");
+  document.getElementById("think-summary").textContent =
+    `Отложено: ${ids.length}` + (ids.length ? ` (активных: ${ids.filter((i) => state.saved[i].status !== "archived").length})` : "");
+  if (!ids.length) { board.innerHTML = `<div class="empty">Пока ничего не отложено. На карточке находки нажми «⚑ Отложить».</div>`; return; }
+
+  // группировка по теме = первый тег находки (находку ищем среди текущего дня; иначе показываем по id)
+  const byTheme = {};
+  for (const id of ids) {
+    const f = findById(id);
+    const theme = f ? (f.tags[0] || "(без темы)") : "(другой день)";
+    (byTheme[theme] ||= []).push({ id, f });
+  }
+  board.innerHTML = Object.keys(byTheme).sort().map((theme) => {
+    const items = byTheme[theme].sort((a, b) =>
+      STATUS_ORDER.indexOf(state.saved[a.id].status) - STATUS_ORDER.indexOf(state.saved[b.id].status));
+    return `<section class="think-theme"><h2>Тема: ${esc(theme)}</h2>${items.map(thinkItemHtml).join("")}</section>`;
+  }).join("");
+}
+function thinkItemHtml({ id, f }) {
+  const s = state.saved[id];
+  const title = f ? f.title : `(находка ${id} — открой её день в Ленте)`;
+  const src = f ? `<a href="${esc(f.source_url)}" target="_blank" rel="noopener">↗ оригинал</a>` : "";
+  return `<div class="think-item" data-id="${id}">
+    <h4>${STATUS_LABEL[s.status]} — ${esc(title)}</h4>
+    <div class="status-row">
+      <label>Статус:
+        <select data-status="${id}">
+          ${STATUS_ORDER.map((st) => `<option value="${st}" ${st === s.status ? "selected" : ""}>${STATUS_LABEL[st]}</option>`).join("")}
+        </select>
+      </label>
+      ${src} · <span class="muted">отложено ${s.saved_at}</span>
+      <button class="btn-save on" data-save="${id}" title="Убрать из обдумывания">убрать</button>
+    </div>
+    <textarea data-note="${id}" placeholder="Личная заметка/мысль…">${esc(s.note || "")}</textarea>
+    <span class="note-saved hidden" data-note-saved="${id}">сохранено ✓</span>
+  </div>`;
+}
+
+/* ---------- export ---------- */
+function exportData() {
+  const ratings = { _format: "Map find.id -> rating (1..5 | -1).", ratings: state.ratings, updated_at: today() };
+  const items = Object.entries(state.saved).map(([find_id, v]) => ({ find_id, ...v }));
+  const saved = { _format: "Закладки 'На обдумывание'.", items, updated_at: today() };
+  download(`${state.slug}.ratings.json`, ratings);
+  download(`${state.slug}.saved.json`, saved);
+}
+function download(name, obj) {
+  const blob = new Blob([JSON.stringify(obj, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+/* ---------- events ---------- */
+function bindEvents() {
+  document.querySelectorAll(".tab").forEach((t) =>
+    t.addEventListener("click", () => switchView(t.dataset.view)));
+
+  document.getElementById("day-select").addEventListener("change", (e) => loadDay(e.target.value));
+  document.getElementById("platform-select").addEventListener("change", (e) => { state.platform = e.target.value; renderFeed(); });
+  document.getElementById("search").addEventListener("input", (e) => { state.query = e.target.value; renderFeed(); });
+  document.getElementById("reset-filters").addEventListener("click", () => {
+    state.activeTags.clear(); state.platform = ""; state.query = "";
+    document.getElementById("platform-select").value = "";
+    document.getElementById("search").value = "";
+    document.querySelectorAll(".tagchip.on").forEach((c) => c.classList.remove("on"));
+    renderFeed();
+  });
+  document.getElementById("tagbar").addEventListener("click", (e) => {
+    const chip = e.target.closest(".tagchip"); if (!chip) return;
+    const tag = chip.dataset.tag;
+    if (state.activeTags.has(tag)) { state.activeTags.delete(tag); chip.classList.remove("on"); }
+    else { state.activeTags.add(tag); chip.classList.add("on"); }
+    renderFeed();
+  });
+
+  // делегирование: клики по карточкам/модалке (звёзды, отложить, открыть)
+  document.body.addEventListener("click", (e) => {
+    const star = e.target.closest(".star");
+    if (star) { const wrap = star.closest(".stars"); setRating(wrap.dataset.id, +star.dataset.v); refreshStars(wrap.dataset.id); return; }
+    const save = e.target.closest("[data-save]");
+    if (save) { toggleSave(save.dataset.save); refreshSaveButtons(save.dataset.save); return; }
+    const open = e.target.closest("[data-open]");
+    if (open) { openModal(open.dataset.open); return; }
+  });
+  document.getElementById("modal-close").addEventListener("click", closeModal);
+  document.getElementById("modal").addEventListener("click", (e) => { if (e.target.id === "modal") closeModal(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+  // think board: статус + заметка
+  document.getElementById("think-board").addEventListener("change", (e) => {
+    const st = e.target.closest("[data-status]");
+    if (st) { state.saved[st.dataset.status].status = st.value; saveSaved(); renderThinkBoard(); updateThinkCount(); }
+  });
+  document.getElementById("think-board").addEventListener("input", (e) => {
+    const ta = e.target.closest("[data-note]");
+    if (ta) {
+      const id = ta.dataset.note;
+      state.saved[id].note = ta.value;
+      state.saved[id].note_updated_at = today();
+      saveSaved();
+      const tag = document.querySelector(`[data-note-saved="${id}"]`);
+      if (tag) { tag.classList.remove("hidden"); clearTimeout(tag._t); tag._t = setTimeout(() => tag.classList.add("hidden"), 1200); }
+    }
+  });
+
+  document.getElementById("export-btn").addEventListener("click", exportData);
+}
+
+function refreshStars(id) {
+  document.querySelectorAll(`.stars[data-id="${id}"]`).forEach((wrap) => {
+    const cur = state.ratings[id] || 0;
+    wrap.querySelectorAll(".star").forEach((s) => s.classList.toggle("on", +s.dataset.v <= cur));
+  });
+}
+function refreshSaveButtons(id) {
+  const on = !!state.saved[id];
+  document.querySelectorAll(`[data-save="${id}"]`).forEach((b) => {
+    if (b.closest(".think-item")) return; // в доске кнопка «убрать» — её перерисует renderThinkBoard
+    b.classList.toggle("on", on);
+    b.textContent = on ? "⚑ Отложено" : "⚑ Отложить";
+  });
+}
+
+function switchView(view) {
+  document.querySelectorAll(".tab").forEach((t) => t.classList.toggle("active", t.dataset.view === view));
+  document.getElementById("view-feed").classList.toggle("hidden", view !== "feed");
+  document.getElementById("view-think").classList.toggle("hidden", view !== "think");
+  if (view === "think") renderThinkBoard();
+}
+
+init();

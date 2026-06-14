@@ -4,7 +4,7 @@
   "description": "Ежедневный сбор интересных кейсов применения Claude Code: где / кто / как применил и каких результатов достиг.",
   "language": "ru",
   "daily_target": 15,
-  "freshness_days": 7,
+  "freshness_days": 16,
   "schedule_cron": "0 6 * * *",
   "platforms": ["x", "reddit", "hn", "blog", "youtube", "github", "docs"],
   "taxonomy": [

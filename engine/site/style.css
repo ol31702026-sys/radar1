@@ -261,6 +261,12 @@ button.primary:active { transform: translatey(2px); box-shadow: 0 1px 0 var(--co
   border-radius: 7px; padding: 2px 9px; font-weight: 650;
 }
 .tag::before { content: "#"; opacity: .5; }
+.date {
+  background: var(--amber); color: #5a3a06;
+  border-radius: 7px; padding: 2px 9px; font-weight: 700; font-size: .78rem;
+  white-space: nowrap;
+}
+.date .muted { color: #8a6a2a; font-weight: 600; }
 .platform { color: var(--muted); font-weight: 600; }
 .src { margin-left: auto; }
 .src a { color: var(--coral-deep); text-decoration: none; font-weight: 700; }

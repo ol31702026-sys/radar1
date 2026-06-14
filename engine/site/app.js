@@ -94,6 +94,12 @@ function filteredFinds() {
 
 function esc(s) { return String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 
+// дата новости: показываем published_at; если нет — помечаем как дату находки
+function dateLabel(f) {
+  if (f.published_at) return `🗓 ${esc(f.published_at)}`;
+  return `🗓 ${esc(f.date_found)} <span class="muted">(найдено)</span>`;
+}
+
 function starHtml(id) {
   const cur = state.ratings[id] || 0;
   let s = `<span class="stars" data-id="${id}">`;
@@ -108,6 +114,7 @@ function cardHtml(f) {
     <h3 data-open="${f.id}">${esc(f.title)}</h3>
     <p class="anons">${esc(f.summary)}</p>
     <div class="meta">
+      <span class="date" title="дата публикации">${dateLabel(f)}</span>
       ${f.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}
       <span class="platform">${esc(f.source_platform)}${f.author ? " · " + esc(f.author) : ""}</span>
       <span class="src"><a href="${esc(f.source_url)}" target="_blank" rel="noopener">↗ оригинал</a></span>
@@ -134,7 +141,7 @@ function openModal(id) {
   if (!f) return;
   document.getElementById("modal-body").innerHTML = `
     <h2>${esc(f.title)}</h2>
-    <p class="muted">${f.tags.map((t) => `#${esc(t)}`).join(" ")} · ${esc(f.source_platform)}${f.author ? " · " + esc(f.author) : ""}</p>
+    <p class="muted">${dateLabel(f)} · ${f.tags.map((t) => `#${esc(t)}`).join(" ")} · ${esc(f.source_platform)}${f.author ? " · " + esc(f.author) : ""}</p>
     <p><strong>Анонс.</strong> ${esc(f.summary)}</p>
     <p><strong>Расшифровка.</strong></p>
     <div class="rasshifrovka">${esc(f.details || "(расшифровка не заполнена)")}</div>

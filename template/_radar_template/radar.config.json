@@ -4,6 +4,7 @@
   "description": "Одной строкой: что собирает этот радар.",
   "language": "ru",
   "daily_target": 15,
+  "freshness_days": 3,
   "schedule_cron": "0 6 * * *",
   "platforms": ["x", "reddit", "hn", "blog", "youtube", "github", "docs"],
   "taxonomy": [

@@ -7,21 +7,6 @@
     "note": "личная заметка/мысль (markdown, можно пусто)",
     "note_updated_at": "YYYY-MM-DD когда правил заметку"
   },
-  "items": [
-    {
-      "find_id": "e5f6a1b2c3d4",
-      "saved_at": "2026-06-14",
-      "status": "thinking",
-      "note": "Связка MCP (git+postgres+figma) — хочу попробовать такой же оркестрацией собрать сам Radar-сайт. Прикинуть, какие MCP нужны.",
-      "note_updated_at": "2026-06-14"
-    },
-    {
-      "find_id": "d5e6f7a8b9c0",
-      "saved_at": "2026-06-14",
-      "status": "new",
-      "note": "Plan Mode перед каждой нетривиальной задачей — взять в привычку. Проверить на следующем этапе проекта.",
-      "note_updated_at": "2026-06-14"
-    }
-  ],
-  "updated_at": "2026-06-14"
+  "items": [],
+  "updated_at": null
 }

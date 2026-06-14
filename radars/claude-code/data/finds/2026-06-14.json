@@ -130,16 +130,16 @@
     "confidence": "high"
   },
   {
-    "id": "4148a01a09c5",
+    "id": "e7468be8369c",
     "date_found": "2026-06-14",
-    "title": "Anthropic выводит Opus 4.8 за пределы автодополнения — динамические воркфлоу",
-    "summary": "Новость: Anthropic выпустил Opus 4.8 с динамическими воркфлоу для Claude Code — модель планирует работу, запускает сотни параллельных субагентов в одной сессии, верифицирует вывод и отчитывается. Упор на честность в признании собственной неуверенности.",
-    "details": "Сдвиг позиционирования: dynamic workflows нацелены на крупные инженерные задачи — миграции и рефакторинг масштаба всей кодбазы. Модель не только генерирует, но и сама проверяет результаты сотен субагентов. Отдельно отмечена улучшенная «честность» — Opus 4.8 чаще явно помечает свои сомнения и возможные изъяны.",
-    "tags": ["workflows", "subagents", "refactoring"],
-    "source_url": "https://www.edtechinnovationhub.com/news/anthropic-pushes-claude-opus-48-beyond-code-completion-with-dynamic-workflows",
-    "source_platform": "blog",
-    "author": "EdTech Innovation Hub",
-    "published_at": "2026-06-01",
+    "title": "Видео: Opus 4.8 vs Fable 5 строят одно приложение — разница видна в данных",
+    "summary": "Видео Hyperautomation Labs (11 июня): эксперимент — Opus 4.8 и Fable 5 собирают одно и то же приложение. Оба «работают», но при взгляде на данные видна разница. Наглядное сравнение моделей в Claude Code.",
+    "details": "Канал Hyperautomation Labs (Claude Code tips, memory, hooks, workflows). В этом видео автор даёт двум моделям одинаковую задачу — построить приложение — и сравнивает не только «работает/не работает», но и качество на уровне данных. Полезно для выбора модели под задачу в Claude Code и понимания, где Opus 4.8 и Fable 5 расходятся на практике.",
+    "tags": ["case-study", "tips", "ide-integration"],
+    "source_url": "https://www.youtube.com/watch?v=yKF68OZUGRU",
+    "source_platform": "youtube",
+    "author": "Hyperautomation Labs",
+    "published_at": "2026-06-11",
     "confidence": "med"
   },
   {
@@ -169,17 +169,17 @@
     "confidence": "med"
   },
   {
-    "id": "9fb10a18da8a",
+    "id": "149e4b8b37ca",
     "date_found": "2026-06-14",
-    "title": "Сетапы Claude Code под производительность: профилируй и ставь хуки против регрессий",
-    "summary": "Подборка сетапов под перфоманс (июнь 2026): измерять, а не гадать — «профилируй, бенчмарь и оптимизируй через Claude Code», и ставить хуки, которые ловят регрессии размера бандла и времени запросов на каждом коммите.",
-    "details": "Два практических принципа: 1) не оптимизировать наугад — использовать Claude Code для профилирования и бенчмарков, опираясь на цифры; 2) автоматические предохранители — хуки на каждый коммит, отслеживающие регрессии bundle-size и query-time. Хорошо сочетается с находкой про хуки-как-платформу.",
-    "tags": ["hooks", "ci-cd", "testing"],
-    "source_url": "https://www.claudedirectory.org/for/performance",
-    "source_platform": "blog",
-    "author": "Claude Directory",
-    "published_at": "2026-06-03",
-    "confidence": "low"
+    "title": "Видео: Agent Loops — полный гайд (Claude Code + Codex)",
+    "summary": "Видео Owain Lewis (13 июня): полный разбор «agent loops» — как выстраивать циклы автономной работы агентов на связке Claude Code + Codex. Практический воркфлоу из реальной разработки.",
+    "details": "Канал Owain Lewis про реальную AI-разработку. В этом видео — разбор паттерна agent loop: как организовать цикл, где агент сам планирует, выполняет, проверяет результат и идёт на следующую итерацию, комбинируя Claude Code и Codex. Полезно тем, кто строит автономные пайплайны. Формат — видео, удобно смотреть воркфлоу в действии.",
+    "tags": ["workflows", "automation", "subagents"],
+    "source_url": "https://www.youtube.com/watch?v=RVEaDvh6f5A",
+    "source_platform": "youtube",
+    "author": "Owain Lewis",
+    "published_at": "2026-06-13",
+    "confidence": "med"
   },
   {
     "id": "52a12243b6c6",

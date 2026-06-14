@@ -45,10 +45,38 @@
     },
     {
       "type": "youtube_rss",
-      "label": "YouTube — добавь свои каналы (нужен channel_id)",
-      "url": "https://www.youtube.com/feeds/videos.xml?channel_id=CHANGE-ME",
+      "label": "YouTube — Hyperautomation Labs (Claude Code tips/hooks/workflows)",
+      "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCiax-xbEI0P6Y8C8VwZGMgQ",
       "default_platform": "youtube",
-      "enabled": false
+      "enabled": true
+    },
+    {
+      "type": "youtube_rss",
+      "label": "YouTube — Owain Lewis (AI agents, Claude Code + Codex)",
+      "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC08YjBHjjPFu8T1KbHGomnQ",
+      "default_platform": "youtube",
+      "enabled": true
+    },
+    {
+      "type": "youtube_rss",
+      "label": "YouTube — AI with Avthar (AI coding tools)",
+      "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC-tOyjDnG-4l-7kgKXZl8yQ",
+      "default_platform": "youtube",
+      "enabled": true
+    },
+    {
+      "type": "youtube_rss",
+      "label": "YouTube — DIY Smart Code (AI IDE / coding tools)",
+      "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC_a85mUHqsy5j0CYCgLnkEQ",
+      "default_platform": "youtube",
+      "enabled": true
+    },
+    {
+      "type": "youtube_rss",
+      "label": "YouTube — Sabrina Ramonov (AI agents/automation)",
+      "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCiGWNa6QK6CiKPvv5-YPv8g",
+      "default_platform": "youtube",
+      "enabled": true
     },
     {
       "type": "rss",

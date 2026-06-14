@@ -50,9 +50,16 @@ description: Собрать дневную порцию находок для р
   ссылку (`watch?v=...`), `published` → `published_at`. Это РАБОЧИЙ канал (проверено).
   Отбирай видео, релевантные теме и попадающие в окно `freshness_days`. `source_platform: "youtube"`.
 - **`rss`** — аналогично: `WebFetch`, парси entry (title/link/date). Если домен блокирует WebFetch — пропусти и отметь в резюме.
-- **`reddit_json` / `reddit_rss`** — ПОПРОБУЙ `WebFetch`, но учти: на данный момент Reddit
-  **блокирует** WebFetch (www/old/.json/.rss). Если пришла ошибка/блок — пропусти источник и
-  отметь в финальном резюме, что Reddit недоступен без MCP-сервера. Не выдумывай посты.
+- **`reddit_json` / `reddit_rss`** — НЕ через WebFetch (Reddit его блокирует, и по IP тоже —
+  см. `SOURCES.md`). Вместо этого запусти внешний сборщик:
+  ```bash
+  python3 engine/fetch_reddit.py <slug> --today <YYYY-MM-DD>
+  ```
+  Он сам читает `sources.json` (reddit_json, enabled), фильтрует по свежести и печатает
+  кандидатов JSON в stdout — добавь их в общий пул. Если печатает `[]` и в stderr 403 —
+  значит текущий IP в блоклисте Reddit; отметь это в резюме. С Reddit OAuth-ключами
+  (env `REDDIT_CLIENT_ID`/`REDDIT_CLIENT_SECRET`) скрипт ходит через oauth.reddit.com и обходит блок.
+  Посты не выдумывай — только то, что вернул скрипт.
 
 Кандидатов из источников складывай в общий пул вместе с результатами WebSearch — дальше
 единый дедуп и фильтрация. У источников обычно уже есть точная дата — это плюс к свежести.

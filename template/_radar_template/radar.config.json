@@ -1,0 +1,15 @@
+{
+  "slug": "CHANGE-ME",
+  "title": "CHANGE ME — Radar",
+  "description": "Одной строкой: что собирает этот радар.",
+  "language": "ru",
+  "daily_target": 15,
+  "schedule_cron": "0 6 * * *",
+  "platforms": ["x", "reddit", "hn", "blog", "youtube", "github", "docs"],
+  "taxonomy": [
+    "CHANGE-ME-tag-1",
+    "CHANGE-ME-tag-2",
+    "tips",
+    "case-study"
+  ]
+}

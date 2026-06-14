@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://radar.local/schema/find.schema.json",
+  "title": "Find",
+  "description": "Одна находка радара: единица контента, общая для всех тем. Источник правды для формата data/finds/*.json.",
+  "type": "object",
+  "required": ["id", "date_found", "title", "summary", "tags", "source_url", "source_platform"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Стабильный идентификатор для дедупа между днями. Рекомендуется sha1 от нормализованного source_url.",
+      "pattern": "^[a-f0-9]{8,40}$"
+    },
+    "date_found": {
+      "type": "string",
+      "description": "Дата сбора (не дата публикации источника).",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "title": {
+      "type": "string",
+      "description": "Суть находки одной строкой. Без кликбейта.",
+      "minLength": 8,
+      "maxLength": 140
+    },
+    "summary": {
+      "type": "string",
+      "description": "Краткая аннотация для карточки: 2-3 предложения — где / кто / как применил и какой результат.",
+      "minLength": 40,
+      "maxLength": 600
+    },
+    "details": {
+      "type": "string",
+      "description": "Развёрнутый разбор для drill-down (клик по карточке). Markdown. Что именно сделали, как воспроизвести, чем полезно. Может быть пустым на этапе лёгкой фильтрации.",
+      "maxLength": 4000
+    },
+    "tags": {
+      "type": "array",
+      "description": "Темы находки. Контролируемый словарь задаётся в radar.config.json -> taxonomy.",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "maxItems": 8
+    },
+    "source_url": {
+      "type": "string",
+      "description": "ОБЯЗАТЕЛЬНО. Прямая ссылка на оригинал (пост/статья/видео).",
+      "format": "uri",
+      "pattern": "^https?://"
+    },
+    "source_platform": {
+      "type": "string",
+      "description": "Площадка-источник.",
+      "enum": ["x", "reddit", "hn", "blog", "youtube", "github", "docs", "other"]
+    },
+    "author": {
+      "type": "string",
+      "description": "Автор/handle, если известен.",
+      "maxLength": 120
+    },
+    "published_at": {
+      "type": "string",
+      "description": "Дата публикации оригинала, если известна (ISO date).",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "confidence": {
+      "type": "string",
+      "description": "Грубая оценка достоверности/полезности при лёгкой фильтрации.",
+      "enum": ["low", "med", "high"],
+      "default": "med"
+    }
+  }
+}

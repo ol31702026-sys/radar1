@@ -1,0 +1,5 @@
+{
+  "_format": "Map find.id -> rating. rating: 1..5 (звёзды) или -1 (mute / 'мимо'). Пишется кнопками на сайте, читается скиллом learn-profile.",
+  "ratings": {},
+  "updated_at": null
+}

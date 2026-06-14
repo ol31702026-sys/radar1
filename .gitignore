@@ -1,0 +1,19 @@
+# Node / site build
+node_modules/
+dist/
+.cache/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Secrets — НИКОГДА не коммитим токены/ключи
+.env
+.env.*
+*.secret
+secrets.json

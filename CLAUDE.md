@@ -8,27 +8,38 @@
 шаблон**: новая тема заводится копированием `template/_radar_template` — без правок движка.
 
 Поток данных:
-```
+
+```text
 collect-finds (WebSearch+WebFetch) → data/finds/*.json (~15/день) + data/digests/*.md
         ▲                                          │
         │ читает profile.md                        ▼
-   learn-profile  ◄── data/feedback/ratings.json ◄── кнопки рейтинга на сайте
+   learn-profile  ◄── data/feedback/ratings.json ◄── ⭐ рейтинг на сайте (учит тематику)
+   think-board    ◄── data/feedback/saved.json  ◄── ⚑ «Отложить» на сайте (личная очередь)
+        │
+        └─► engine/build_thinking.py → THINKING.md (страница «На обдумывание»)
 ```
+
+Две независимые петли обратной связи (НЕ путать):
+- **Рейтинг** (`ratings.json`) → `learn-profile` → эволюция `profile.md` → влияет на будущий сбор. Это про «нравится/не нравится тема».
+- **Закладка «На обдумывание»** (`saved.json`) → `think-board` + `build_thinking.py` → `THINKING.md`. Это про «хочу подумать об этом позже»: личная заметка + статус (new/thinking/done/archived), персистентная память.
 
 ## Архитектура папок (НЕ создавать кашу — строго по местам)
 
 - `engine/` — общий код, один на все темы:
   - `engine/schema/find.schema.json` — **источник правды** формата находки.
+  - `engine/build_thinking.py` — генератор страницы «На обдумывание» из `saved.json`.
   - `engine/site/` — шаблон сайта; читает `data/` конкретного радара.
 - `radars/<slug>/` — всё, что специфично для темы:
   - `radar.config.json` — имя, описание, `daily_target`, `schedule_cron`, `platforms`, `taxonomy` (контролируемый словарь тегов).
   - `prompts/queries.md` — поисковые запросы темы.
   - `prompts/profile.md` — **обучаемый** профиль интересов (веса тегов, boost/mute).
   - `data/finds/YYYY-MM-DD.json` — массив находок за день.
-  - `data/digests/YYYY-MM-DD.md` — человекочитаемый дайджест.
-  - `data/feedback/ratings.json` — рейтинги с сайта.
+  - `data/digests/YYYY-MM-DD.md` — человекочитаемый дайджест (анонс + расшифровка).
+  - `data/feedback/ratings.json` — рейтинги с сайта (учат тематику).
+  - `data/feedback/saved.json` — закладки «На обдумывание» (личная очередь + заметки + статус).
+  - `THINKING.md` — генерируемая страница «На обдумывание» (не править руками — пересобирается из `saved.json`).
 - `template/_radar_template/` — образец нового радара. Копируется в `radars/<новый-slug>/`.
-- `.claude/skills/` — общие скиллы (`collect-finds`, `learn-profile`), принимают slug радара параметром.
+- `.claude/skills/` — общие скиллы (`collect-finds`, `learn-profile`, `think-board`), принимают slug радара параметром.
 
 ## Формат находки (find)
 
@@ -59,6 +70,7 @@ collect-finds (WebSearch+WebFetch) → data/finds/*.json (~15/день) + data/d
 
 - `/collect-finds claude-code` — собрать находки за сегодня.
 - `/learn-profile claude-code` — обновить профиль по рейтингам.
+- `/think-board claude-code` — управлять закладками «На обдумывание» (отложить, заметка, статус) и пересобрать `THINKING.md`.
 
 ## Чего НЕ делать
 

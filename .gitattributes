@@ -1,0 +1,8 @@
+# Единые переводы строк во всём репо (кросс-платформенно, без CRLF-шума)
+* text=auto eol=lf
+
+# Бинарные — не трогать
+*.png binary
+*.jpg binary
+*.webp binary
+*.ico binary

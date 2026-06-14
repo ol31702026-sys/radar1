@@ -1,0 +1,61 @@
+{
+  "_format": "Источники сбора для радара. collect-finds читает их в дополнение к prompts/queries.md (WebSearch). Каждый источник: type + url + поля для парсинга. Свежесть и дедуп применяются как обычно.",
+  "_notes": {
+    "reddit_json": "СТАТУС: недоступно через встроенный WebFetch (Reddit блокирует www/old/.json/.rss). Нужен MCP-сервер Reddit или внешний скрипт с User-Agent. Оставлено enabled:false до подключения MCP.",
+    "reddit_rss": "СТАТУС: тоже блокируется WebFetch. См. выше.",
+    "youtube_rss": "СТАТУС: РАБОТАЕТ через WebFetch. RSS канала: https://www.youtube.com/feeds/videos.xml?channel_id=UCxxxx . Нужен channel_id (не @handle). Отдаёт title/link/published_at. Добавляй каналы сюда.",
+    "rss": "Любая прочая RSS/Atom-лента (блоги, релизы). Проверяй доступность через WebFetch — некоторые домены блокируются.",
+    "how_to_find_channel_id": "Открой канал → исходник страницы → найди \"channelId\":\"UC...\" ; или из URL вида youtube.com/channel/UC..."
+  },
+  "sources": [
+    {
+      "type": "reddit_json",
+      "label": "r/ClaudeCode (новое)",
+      "url": "https://www.reddit.com/r/ClaudeCode/new.json?limit=40",
+      "default_platform": "reddit",
+      "enabled": true
+    },
+    {
+      "type": "reddit_json",
+      "label": "r/ClaudeCode (топ недели)",
+      "url": "https://www.reddit.com/r/ClaudeCode/top.json?t=week&limit=40",
+      "default_platform": "reddit",
+      "enabled": true
+    },
+    {
+      "type": "reddit_json",
+      "label": "r/ClaudeAI поиск 'claude code' (новое)",
+      "url": "https://www.reddit.com/r/ClaudeAI/search.json?q=claude+code&restrict_sr=1&sort=new&limit=40",
+      "default_platform": "reddit",
+      "enabled": true
+    },
+    {
+      "type": "reddit_rss",
+      "label": "r/ClaudeCode RSS (запасной)",
+      "url": "https://www.reddit.com/r/ClaudeCode/new.rss?limit=40",
+      "default_platform": "reddit",
+      "enabled": false
+    },
+    {
+      "type": "youtube_rss",
+      "label": "YouTube — Nick Saraev (Claude Code курсы/новости)",
+      "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCbo-KbSjJDG6JWQ_MTZ_rNA",
+      "default_platform": "youtube",
+      "enabled": true
+    },
+    {
+      "type": "youtube_rss",
+      "label": "YouTube — добавь свои каналы (нужен channel_id)",
+      "url": "https://www.youtube.com/feeds/videos.xml?channel_id=CHANGE-ME",
+      "default_platform": "youtube",
+      "enabled": false
+    },
+    {
+      "type": "rss",
+      "label": "Claude Code changelog (Atom, если есть)",
+      "url": "https://code.claude.com/docs/en/changelog",
+      "default_platform": "docs",
+      "enabled": false
+    }
+  ]
+}

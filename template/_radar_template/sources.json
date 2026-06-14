@@ -1,0 +1,25 @@
+{
+  "_format": "Источники сбора для радара. collect-finds читает их в дополнение к prompts/queries.md (WebSearch). Каждый источник: type + url + поля парсинга.",
+  "_notes": {
+    "youtube_rss": "РАБОТАЕТ через WebFetch. https://www.youtube.com/feeds/videos.xml?channel_id=UCxxxx . Нужен channel_id (не @handle).",
+    "rss": "Любая RSS/Atom-лента. Проверяй доступность — часть доменов блокирует WebFetch.",
+    "reddit_json": "Reddit блокирует WebFetch — нужен MCP-сервер. enabled:false до подключения.",
+    "how_to_find_channel_id": "Исходник страницы канала → \"channelId\":\"UC...\" ; либо URL youtube.com/channel/UC..."
+  },
+  "sources": [
+    {
+      "type": "youtube_rss",
+      "label": "YouTube — добавь channel_id своего канала",
+      "url": "https://www.youtube.com/feeds/videos.xml?channel_id=CHANGE-ME",
+      "default_platform": "youtube",
+      "enabled": false
+    },
+    {
+      "type": "reddit_json",
+      "label": "Reddit саб (требует MCP — пока выкл.)",
+      "url": "https://www.reddit.com/r/CHANGE-ME/new.json?limit=40",
+      "default_platform": "reddit",
+      "enabled": false
+    }
+  ]
+}

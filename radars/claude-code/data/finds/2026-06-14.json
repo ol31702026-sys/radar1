@@ -5,7 +5,10 @@
     "title": "Claude Code 2.1.173: фикс нормализации имени модели Fable 5 и Windows-песочницы",
     "summary": "Свежий релиз Claude Code 2.1.173: исправлена нормализация имени модели Fable 5 и убрано ложное предупреждение Windows-песочницы.",
     "details": "Точечный релиз стабилизации: корректная обработка имени модели Fable 5 (чтобы алиасы/ID резолвились правильно) и устранение лишнего варнинга про sandbox на Windows. Полезно тем, кто на Windows и/или пробует Fable 5 — стоит обновиться. Зафиксировано Releasebot 2026-06-11.",
-    "tags": ["tips", "ide-integration"],
+    "tags": [
+      "tips",
+      "ide-integration"
+    ],
     "source_url": "https://releasebot.io/updates/anthropic/claude-code",
     "source_platform": "docs",
     "author": "Anthropic / Releasebot",
@@ -18,7 +21,11 @@
     "title": "Claude Code 2.1.172: вложенные субагенты до 5 уровней глубины",
     "summary": "Релиз 2.1.172 добавил вложенные субагенты (nested sub-agents) глубиной до 5 уровней и расширил обработку моделей/регионов с улучшениями поиска плагинов и воркфлоу.",
     "details": "Вложенные субагенты до 5 уровней — заметное расширение для оркестрации: субагент может сам порождать субагентов, что позволяет строить более глубокие деревья делегирования для крупных задач. Плюс улучшения в поиске плагинов и динамических воркфлоу. Зафиксировано 2026-06-10/11.",
-    "tags": ["subagents", "workflows", "automation"],
+    "tags": [
+      "subagents",
+      "workflows",
+      "automation"
+    ],
     "source_url": "https://www.developersdigest.tech/blog/claude-code-agent-teams-subagents-2026",
     "source_platform": "blog",
     "author": "Developers Digest",
@@ -31,7 +38,11 @@
     "title": "С 15 июня 2026 — отдельный кредитный пул для программного использования Claude Code",
     "summary": "С 15 июня 2026 программное использование Claude Code переходит на отдельный кредитный пул по полным API-ставкам, заканчивая модель, где usage был включён в подписку. Новый токенизатор Opus 4.7 повышает расход токенов ~на 35%.",
     "details": "Важно всем, кто гоняет Claude Code в скриптах/CI: раньше usage бандлился в тариф (Pro $20 / Max 5x $100 / Max 20x $200), теперь — выделенные ежемесячные кредиты, списываемые по факту по полным API-ставкам. Плюс новый токенизатор увеличивает потребление токенов примерно на треть. Стоит пересчитать бюджеты автоматизаций до 15 июня. Опубликовано 2026-06-08.",
-    "tags": ["cost-tokens", "automation", "ci-cd"],
+    "tags": [
+      "cost-tokens",
+      "automation",
+      "ci-cd"
+    ],
     "source_url": "https://blog.getbind.co/claude-code-pricing-changes-june-15-what-youll-actually-pay-2026/",
     "source_platform": "blog",
     "author": "Bind AI",
@@ -44,7 +55,10 @@
     "title": "Лимиты Claude Code: двойной 5-часовой лимит и +50% к недельному до июля",
     "summary": "Гайд по лимитам и тарифам (июнь 2026): этой весной обе квоты ослабили — 5-часовой лимит удвоили в мае, недельный подняли на 50% до июля. Лучшие стратегии растягивания — чистить сессии между задачами и держать Sonnet по умолчанию.",
     "details": "Практический разбор: usage сбрасывается по 5-часовому циклу и недельному (привязан к аккаунту). Чтобы не упираться в лимиты — /clear между задачами и работа на Sonnet с переключением на Opus только под сложное (/model). Актуально на фоне грядущей смены биллинга 15 июня. Обновлено 2026-06-10.",
-    "tags": ["cost-tokens", "tips"],
+    "tags": [
+      "cost-tokens",
+      "tips"
+    ],
     "source_url": "https://ccforeveryone.com/guides/claude-code-limits-and-pricing",
     "source_platform": "blog",
     "author": "CC for Everyone",
@@ -57,7 +71,11 @@
     "title": "Разбор июньского обновления: Safe Mode, Opus 4.8 по умолчанию, удвоенные лимиты",
     "summary": "Подробный developer-гайд по июньскому обновлению Claude Code: новый Safe Mode, Opus 4.8 как модель по умолчанию, команда /cd и per-category разбивка в /usage.",
     "details": "Свежий разбор того, что прилетело в начале июня: Safe Mode (безопасный режим выполнения), Opus 4.8 как дефолт с высоким effort, /cd для смены директории и детализация /usage по плагинам/MCP/субагентам — видно, что именно ест лимит. Хорошая отправная точка, чтобы обновить свой воркфлоу под новые дефолты.",
-    "tags": ["tips", "ide-integration", "workflows"],
+    "tags": [
+      "tips",
+      "ide-integration",
+      "workflows"
+    ],
     "source_url": "https://jangwook.net/en/blog/en/claude-code-june-2026-new-features-changelog-developer-guide/",
     "source_platform": "blog",
     "author": "jangwook.net",
@@ -70,7 +88,11 @@
     "title": "Минимальный рабочий сетап 2026: один CLAUDE.md, scoped .mcp.json, один хук, один скилл",
     "summary": "Разбор личного сетапа: MCP-серверы, хуки, скиллы и агенты. Рекомендация — минимализм: короткий CLAUDE.md, .mcp.json только с реально нужными серверами, один safety-хук, один переиспользуемый скилл, субагенты только когда исследование засорит контекст.",
     "details": "Полезный антипаттерн-гайд: не тащить всё подряд. Минимальный работающий сетап — это один короткий CLAUDE.md, scoped .mcp.json (только нужные MCP), один хук безопасности, один скилл под повторяющуюся работу и субагенты лишь под research/review. Ровно та философия, что и в нашем проекте Radar.",
-    "tags": ["mcp", "hooks", "skills"],
+    "tags": [
+      "mcp",
+      "hooks",
+      "skills"
+    ],
     "source_url": "https://okhlopkov.com/claude-code-setup-mcp-hooks-skills-2026/",
     "source_platform": "blog",
     "author": "okhlopkov",
@@ -83,7 +105,11 @@
     "title": "5 паттернов воркфлоу Claude Code: от последовательного до полностью автономного",
     "summary": "Разбор пяти паттернов воркфлоу — от sequential до fully autonomous. Совет: подбирай структуру под форму задачи, начинай проще, чем кажется нужным, и наращивай сложность только когда простое реально не справляется.",
     "details": "Систематизация подходов к работе с Claude Code: пять уровней — от строго последовательного выполнения до автономного. Главный принцип — не переусложнять: стартовать с минимальной структуры и добавлять слои (план-ревью-исполнение, субагенты, авто-режим) только при реальной необходимости.",
-    "tags": ["workflows", "automation", "prompting"],
+    "tags": [
+      "workflows",
+      "automation",
+      "prompting"
+    ],
     "source_url": "https://www.mindstudio.ai/blog/claude-code-5-workflow-patterns-explained",
     "source_platform": "blog",
     "author": "MindStudio",
@@ -96,7 +122,11 @@
     "title": "Продвинутые стратегии Claude Code: динамические воркфлоу, авто-режим, модульные скиллы",
     "summary": "Свежий разбор продвинутых возможностей: динамические воркфлоу (декомпозиция через субагентов), авто-режим (авто-аппрув безопасного, флаг только рискованного) и модульные скиллы, собираемые в пайплайны.",
     "details": "Три рычага продвинутого использования: 1) Dynamic Workflows — разбивать сложную задачу на компоненты через субагентов (пример: анализ фидбэка → категоризация → инсайты в одном воркфлоу); 2) Auto Mode — снижает ручной контроль, авто-одобряя задачи и помечая только высокорисковые; 3) Модульные скиллы — переиспользуемые наборы инструкций, складываемые в конвейеры (тикеты → ответ → эскалация).",
-    "tags": ["workflows", "automation", "skills"],
+    "tags": [
+      "workflows",
+      "automation",
+      "skills"
+    ],
     "source_url": "https://www.geeky-gadgets.com/advanced-claude-code-strategies/",
     "source_platform": "blog",
     "author": "Geeky Gadgets",
@@ -109,7 +139,11 @@
     "title": "Claude Code как «надзираемый цифровой работник»: терминал, IDE, web, расписание",
     "summary": "Июньский обзор (startup-фокус): Claude Code теперь работает в терминале, IDE, web, desktop и в режиме scheduled-агентов — сдвиг от реактивной помощи к оркестрации воркфлоу. Плюс security-функции для ревью кодбазы на уязвимости.",
     "details": "Разбор для основателей: Claude Code превращается из помощника-по-коду в «надзираемого цифрового работника», который планирует, инспектирует, правит, тестирует и документирует. Ключевые сдвиги: plan mode, auto mode, scheduled routines (планирование-first, меньше прерываний) и security-обзор кодбаз — выход за рамки написания кода в оценку рисков.",
-    "tags": ["workflows", "automation", "case-study"],
+    "tags": [
+      "workflows",
+      "automation",
+      "case-study"
+    ],
     "source_url": "https://blog.mean.ceo/claude-code-news-june-2026/",
     "source_platform": "blog",
     "author": "mean.ceo",
@@ -122,36 +156,14 @@
     "title": "Opus 4.8 + dynamic workflows + дедлайн 15 июня: ретайр устаревших model ID",
     "summary": "Builders-log: Opus 4.8 (28 мая) — те же цены, 5-уровневый контроль усилий и adaptive thinking. Dynamic Workflows (research preview) — параллельные субагенты в одной сессии. Важно: 15 июня ретайрятся устаревшие model ID claude-sonnet-4-20250514 и claude-opus-4-20250514.",
     "details": "Критично для продакшена: захардкоженные старые ID моделей (claude-sonnet-4-20250514, claude-opus-4-20250514) перестанут работать 15 июня — нужно обновить ссылки заранее. Dynamic Workflows доступны на Enterprise/Team/Max и позволяют координировать параллельных субагентов внутри одной сессии для крупных миграций/рефакторов.",
-    "tags": ["workflows", "cost-tokens", "automation"],
+    "tags": [
+      "workflows",
+      "cost-tokens",
+      "automation"
+    ],
     "source_url": "https://chatforest.com/builders-log/claude-opus-4-8-dynamic-workflows-effort-control-june-15-migration/",
     "source_platform": "blog",
     "author": "ChatForest",
-    "published_at": "2026-06-01",
-    "confidence": "high"
-  },
-  {
-    "id": "e7468be8369c",
-    "date_found": "2026-06-14",
-    "title": "Видео: Opus 4.8 vs Fable 5 строят одно приложение — разница видна в данных",
-    "summary": "Видео Hyperautomation Labs (11 июня): эксперимент — Opus 4.8 и Fable 5 собирают одно и то же приложение. Оба «работают», но при взгляде на данные видна разница. Наглядное сравнение моделей в Claude Code.",
-    "details": "Канал Hyperautomation Labs (Claude Code tips, memory, hooks, workflows). В этом видео автор даёт двум моделям одинаковую задачу — построить приложение — и сравнивает не только «работает/не работает», но и качество на уровне данных. Полезно для выбора модели под задачу в Claude Code и понимания, где Opus 4.8 и Fable 5 расходятся на практике.",
-    "tags": ["case-study", "tips", "ide-integration"],
-    "source_url": "https://www.youtube.com/watch?v=yKF68OZUGRU",
-    "source_platform": "youtube",
-    "author": "Hyperautomation Labs",
-    "published_at": "2026-06-11",
-    "confidence": "med"
-  },
-  {
-    "id": "7be7dca6ee3c",
-    "date_found": "2026-06-14",
-    "title": "This week in Claude: миграция Salesforce за 13 дней, переписывание Bun за 6 дней",
-    "summary": "Недельный дайджест: Opus 4.8 по той же цене, mid-conversation системные сообщения. Dynamic workflows — параллельные субагенты: Salesforce закрыл 231-дневную миграцию за 13 дней, Bun завершил переписывание 700k строк на Rust за 6 дней.",
-    "details": "Сильные кейсы масштаба dynamic workflows: 231-дневная миграция Salesforce ужата до 13 дней, а Bun переписал 700 тысяч строк на Rust за 6 дней — за счёт координации сотен параллельных субагентов. Полезно как аргумент для крупных миграций/рефакторингов. В том же дайджесте — раунд Series H на $65 млрд.",
-    "tags": ["case-study", "workflows", "refactoring"],
-    "source_url": "https://claudemarketplaces.com/digest/opus-4-8-dynamic-workflows-and-a-65b-series-h",
-    "source_platform": "blog",
-    "author": "claudemarketplaces.com",
     "published_at": "2026-06-01",
     "confidence": "high"
   },
@@ -161,7 +173,11 @@
     "title": "Claude Code сделал Opus 4.8 моделью по умолчанию (с high effort)",
     "summary": "Новость: Claude Code сделал Opus 4.8 дефолтной моделью для Max, Team Premium, Enterprise и API — с высоким effort под сложные задачи. В пакете: динамические воркфлоу, real-time security-скан уязвимостей и более дешёвый/быстрый Opus.",
     "details": "Дефолт по моделям сместился: Opus 4.8 теперь из коробки на платных тарифах с high effort. Сопутствующее: оркестрация субагентов (dynamic workflows), сканирование уязвимостей в реальном времени и конкурентная цена быстрого режима. Стоит сверить свои настройки /model и effort с новыми дефолтами.",
-    "tags": ["tips", "automation", "ide-integration"],
+    "tags": [
+      "tips",
+      "automation",
+      "ide-integration"
+    ],
     "source_url": "https://www.startuphub.ai/ai-news/technology/2026/claude-code-embraces-opus-4-8",
     "source_platform": "blog",
     "author": "StartupHub.ai",
@@ -174,7 +190,11 @@
     "title": "Видео: Agent Loops — полный гайд (Claude Code + Codex)",
     "summary": "Видео Owain Lewis (13 июня): полный разбор «agent loops» — как выстраивать циклы автономной работы агентов на связке Claude Code + Codex. Практический воркфлоу из реальной разработки.",
     "details": "Канал Owain Lewis про реальную AI-разработку. В этом видео — разбор паттерна agent loop: как организовать цикл, где агент сам планирует, выполняет, проверяет результат и идёт на следующую итерацию, комбинируя Claude Code и Codex. Полезно тем, кто строит автономные пайплайны. Формат — видео, удобно смотреть воркфлоу в действии.",
-    "tags": ["workflows", "automation", "subagents"],
+    "tags": [
+      "workflows",
+      "automation",
+      "subagents"
+    ],
     "source_url": "https://www.youtube.com/watch?v=RVEaDvh6f5A",
     "source_platform": "youtube",
     "author": "Owain Lewis",
@@ -187,11 +207,49 @@
     "title": "Дайджест Week 22: Opus 4.8 по умолчанию, dynamic workflows, security-плагин, fast mode",
     "summary": "Официальный недельный дайджест Claude Code (Week 22): Opus 4.8 как дефолт с high effort и /effort xhigh; dynamic workflows оркеструют десятки-сотни субагентов из скрипта; security-guidance плагин ревьюит изменения на уязвимости; fast mode на Opus 4.8 по $10/$50 за MTok.",
     "details": "Первоисточник от Anthropic. Главное за неделю: новый дефолт Opus 4.8 (+ /effort xhigh под самые сложные задачи), dynamic workflows (Claude сам пишет скрипт-оркестратор для десятков-сотен субагентов), security-guidance плагин (проверяет правки на уязвимости по ходу) и fast mode на Opus 4.8. Стоит сверять свои практики с официальными дайджестами.",
-    "tags": ["workflows", "subagents", "tips"],
+    "tags": [
+      "workflows",
+      "subagents",
+      "tips"
+    ],
     "source_url": "https://code.claude.com/docs/en/whats-new/2026-w22",
     "source_platform": "docs",
     "author": "Anthropic",
     "published_at": "2026-05-29",
     "confidence": "high"
+  },
+  {
+    "id": "7be7dca6ee3c",
+    "date_found": "2026-06-14",
+    "title": "This week in Claude: миграция Salesforce за 13 дней, переписывание Bun за 6 дней",
+    "summary": "Недельный дайджест: Opus 4.8 по той же цене, mid-conversation системные сообщения. Dynamic workflows — параллельные субагенты: Salesforce закрыл 231-дневную миграцию за 13 дней, Bun завершил переписывание 700k строк на Rust за 6 дней.",
+    "details": "Сильные кейсы масштаба dynamic workflows: 231-дневная миграция Salesforce ужата до 13 дней, а Bun переписал 700 тысяч строк на Rust за 6 дней — за счёт координации сотен параллельных субагентов. Полезно как аргумент для крупных миграций/рефакторингов. В том же дайджесте — раунд Series H на $65 млрд.",
+    "tags": [
+      "case-study",
+      "workflows",
+      "refactoring"
+    ],
+    "source_url": "https://claudemarketplaces.com/digest/opus-4-8-dynamic-workflows-and-a-65b-series-h",
+    "source_platform": "blog",
+    "author": "claudemarketplaces.com",
+    "published_at": "2026-06-01",
+    "confidence": "high"
+  },
+  {
+    "id": "e7468be8369c",
+    "date_found": "2026-06-14",
+    "title": "Видео: Opus 4.8 vs Fable 5 строят одно приложение — разница видна в данных",
+    "summary": "Видео Hyperautomation Labs (11 июня): эксперимент — Opus 4.8 и Fable 5 собирают одно и то же приложение. Оба «работают», но при взгляде на данные видна разница. Наглядное сравнение моделей в Claude Code.",
+    "details": "Канал Hyperautomation Labs (Claude Code tips, memory, hooks, workflows). В этом видео автор даёт двум моделям одинаковую задачу — построить приложение — и сравнивает не только «работает/не работает», но и качество на уровне данных. Полезно для выбора модели под задачу в Claude Code и понимания, где Opus 4.8 и Fable 5 расходятся на практике.",
+    "tags": [
+      "case-study",
+      "tips",
+      "ide-integration"
+    ],
+    "source_url": "https://www.youtube.com/watch?v=yKF68OZUGRU",
+    "source_platform": "youtube",
+    "author": "Hyperautomation Labs",
+    "published_at": "2026-06-11",
+    "confidence": "med"
   }
 ]

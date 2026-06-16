@@ -59,10 +59,7 @@ async function init() {
   daySel.innerHTML = state.radar.days
     .map((d) => `<option value="${d.date}">${d.date} · ${d.count} находок</option>`)
     .join("");
-  // платформы
-  const pSel = document.getElementById("platform-select");
-  pSel.innerHTML = `<option value="">Все платформы</option>` +
-    state.radar.platforms.map((p) => `<option value="${p}">${p}</option>`).join("");
+  // платформы заполняются динамически из реальных находок дня (см. updatePlatformOptions)
   // теги
   document.getElementById("tagbar").innerHTML = state.radar.taxonomy
     .map((t) => `<button class="tagchip" data-tag="${t}">${t}</button>`)
@@ -78,7 +75,25 @@ async function loadDay(date) {
   if (!date) return;
   state.day = date;
   state.finds = await getJSON(`radars/${state.slug}/data/finds/${date}.json`);
+  updatePlatformOptions();
   renderFeed();
+}
+
+// красивые подписи платформ
+const PLATFORM_LABEL = {
+  youtube: "▶ YouTube", reddit: "Reddit", x: "X", hn: "Hacker News",
+  blog: "Блоги", github: "GitHub", docs: "Документация", other: "Прочее",
+};
+// список платформ строится из РЕАЛЬНЫХ находок дня (а не из статичного конфига)
+function updatePlatformOptions() {
+  const present = [...new Set(state.finds.map((f) => f.source_platform))].sort();
+  const sel = document.getElementById("platform-select");
+  const cur = state.platform;
+  sel.innerHTML = `<option value="">Все платформы</option>` +
+    present.map((p) => `<option value="${p}">${PLATFORM_LABEL[p] || p}</option>`).join("");
+  // сохранить выбор, если он ещё доступен; иначе сбросить на «все»
+  if (cur && present.includes(cur)) sel.value = cur;
+  else { state.platform = ""; sel.value = ""; }
 }
 
 /* ---------- feed ---------- */

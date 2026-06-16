@@ -403,6 +403,33 @@ button.primary:active { transform: translatey(2px); box-shadow: 0 1px 0 var(--co
   padding: 12px 16px; color: var(--ink); margin: 6px 0;
 }
 
+/* «Весь текст» */
+.fulltext-bar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 16px 0 4px; }
+.btn-fulltext {
+  font-family: var(--ff-body);
+  background: var(--brand); color: #fffdf8; border: none;
+  border-radius: var(--radius-pill); padding: 9px 16px; cursor: pointer;
+  font-size: .9rem; font-weight: 700;
+  box-shadow: 0 3px 0 var(--brand-deep);
+  transition: transform .12s ease;
+}
+.btn-fulltext:hover { transform: translateY(-1px); }
+.btn-fulltext:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--brand-deep); }
+.orig-link { color: var(--coral-deep); font-weight: 700; text-decoration: none; }
+.orig-link:hover { text-decoration: underline; }
+.fulltext-body {
+  margin-top: 12px; background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--radius-s); padding: 14px 18px; max-height: 48vh; overflow: auto;
+}
+.fulltext-body.collapsed { display: none; }
+.ft-content h1, .ft-content h2, .ft-content h3 { font-family: var(--ff-display); margin: 12px 0 6px; }
+.ft-content p { margin: 8px 0; color: var(--ink); }
+.ft-content ul { margin: 8px 0; padding-left: 20px; }
+.ft-cmd {
+  background: var(--ink); color: #d9efe9; padding: 8px 12px; border-radius: 8px;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: .85rem; overflow-x: auto;
+}
+
 /* ============================ FOOTER ================================= */
 .foot {
   text-align: center; padding: 28px 20px;

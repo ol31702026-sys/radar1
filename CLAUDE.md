@@ -37,6 +37,7 @@ collect-finds (WebSearch+WebFetch) → data/finds/*.json (~15/день) + data/d
   - `data/digests/YYYY-MM-DD.md` — человекочитаемый дайджест (анонс + расшифровка).
   - `data/feedback/ratings.json` — рейтинги с сайта (учат тематику).
   - `data/feedback/saved.json` — закладки «На обдумывание» (личная очередь + заметки + статус).
+  - `data/fulltext/<id>.ru.md` — полный русский перевод/транскрипция первоисточника (для кнопки «Весь текст»). Готовится лениво скиллом `translate`.
   - `THINKING.md` — генерируемая страница «На обдумывание» (не править руками — пересобирается из `saved.json`).
 - `template/_radar_template/` — образец нового радара. Копируется в `radars/<новый-slug>/`.
 - `.claude/skills/` — общие скиллы (`collect-finds`, `learn-profile`, `think-board`), принимают slug радара параметром.
@@ -83,6 +84,7 @@ collect-finds (WebSearch+WebFetch) → data/finds/*.json (~15/день) + data/d
 - `/collect-finds claude-code` — собрать находки за сегодня.
 - `/learn-profile claude-code` — обновить профиль по рейтингам.
 - `/think-board claude-code` — управлять закладками «На обдумывание» (отложить, заметка, статус) и пересобрать `THINKING.md`.
+- `/translate claude-code <find_id>` — подготовить полный русский перевод/транскрипцию первоисточника для кнопки «Весь текст».
 
 ## Чего НЕ делать
 

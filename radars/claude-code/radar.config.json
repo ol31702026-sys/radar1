@@ -12,7 +12,7 @@
     "min_views": 500,
     "max_per_query": 15,
     "relevance_language": "en",
-    "latin_titles_only": true
+    "latin_titles_only": false
   },
   "taxonomy": [
     "subagents",

@@ -139,18 +139,69 @@ function renderFeed() {
 function openModal(id) {
   const f = state.finds.find((x) => x.id === id);
   if (!f) return;
+  const isVideo = f.source_platform === "youtube";
   document.getElementById("modal-body").innerHTML = `
     <h2>${esc(f.title)}</h2>
     <p class="muted">${dateLabel(f)} · ${f.tags.map((t) => `#${esc(t)}`).join(" ")} · ${esc(f.source_platform)}${f.author ? " · " + esc(f.author) : ""}</p>
-    <p><strong>Анонс.</strong> ${esc(f.summary)}</p>
-    <p><strong>Расшифровка.</strong></p>
+    <p><strong>Аннотация (рус).</strong> ${esc(f.summary)}</p>
     <div class="rasshifrovka">${esc(f.details || "(расшифровка не заполнена)")}</div>
-    <p style="margin-top:18px"><a href="${esc(f.source_url)}" target="_blank" rel="noopener">↗ Открыть оригинал</a></p>
+    <div class="fulltext-bar">
+      <button id="fulltext-btn" class="btn-fulltext" data-ft="${f.id}">📄 ${isVideo ? "Весь текст (транскрипция, рус)" : "Весь текст (перевод, рус)"}</button>
+      <a class="orig-link" href="${esc(f.source_url)}" target="_blank" rel="noopener">↗ Первоисточник</a>
+    </div>
+    <div id="fulltext-body" class="fulltext-body hidden"></div>
     <div class="card-actions">${starHtml(f.id)}
       <button class="btn-save ${state.saved[f.id] ? "on" : ""}" data-save="${f.id}">${state.saved[f.id] ? "⚑ Отложено" : "⚑ Отложить"}</button>
     </div>`;
   document.getElementById("modal").classList.remove("hidden");
 }
+
+// «Весь текст»: подгрузить заранее подготовленный перевод data/fulltext/<id>.ru.md
+async function loadFulltext(id) {
+  const box = document.getElementById("fulltext-body");
+  if (!box) return;
+  box.classList.remove("hidden");
+  // повторный клик — свернуть
+  if (box.dataset.loaded === id) { box.classList.toggle("collapsed"); return; }
+  box.innerHTML = `<p class="muted">Загружаю полный текст…</p>`;
+  try {
+    const res = await fetch(dataPath(`radars/${state.slug}/data/fulltext/${id}.ru.md`), { cache: "no-store" });
+    if (!res.ok) throw new Error(String(res.status));
+    const md = await res.text();
+    box.innerHTML = `<div class="ft-content">${mdToHtml(md)}</div>`;
+    box.dataset.loaded = id;
+  } catch {
+    box.innerHTML = `<p class="muted">Полный текст ещё не подготовлен. Запусти перевод:</p>
+      <pre class="ft-cmd">/translate ${state.slug} ${id}</pre>
+      <p class="muted">(скилл скачает статью или субтитры видео, переведёт на русский и сохранит — после этого «Весь текст» покажет перевод).</p>`;
+  }
+}
+
+// очень лёгкий markdown→html (заголовки, абзацы, **жирный**, списки) — без зависимостей
+function mdToHtml(md) {
+  const lines = md.split("\n");
+  let html = "", inList = false;
+  for (let raw of lines) {
+    const l = raw.trimEnd();
+    if (/^#{1,6}\s/.test(l)) {
+      if (inList) { html += "</ul>"; inList = false; }
+      const lvl = l.match(/^#+/)[0].length;
+      html += `<h${lvl}>${esc(l.replace(/^#+\s/, ""))}</h${lvl}>`;
+    } else if (/^[-*]\s/.test(l)) {
+      if (!inList) { html += "<ul>"; inList = true; }
+      html += `<li>${inline(esc(l.replace(/^[-*]\s/, "")))}</li>`;
+    } else if (l === "") {
+      if (inList) { html += "</ul>"; inList = false; }
+    } else {
+      if (inList) { html += "</ul>"; inList = false; }
+      html += `<p>${inline(esc(l))}</p>`;
+    }
+  }
+  if (inList) html += "</ul>";
+  return html;
+  function inline(s) { return s.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>"); }
+}
+
 function closeModal() { document.getElementById("modal").classList.add("hidden"); }
 
 /* ---------- ratings & saved actions ---------- */
@@ -262,6 +313,8 @@ function bindEvents() {
     if (star) { const wrap = star.closest(".stars"); setRating(wrap.dataset.id, +star.dataset.v); refreshStars(wrap.dataset.id); return; }
     const save = e.target.closest("[data-save]");
     if (save) { toggleSave(save.dataset.save); refreshSaveButtons(save.dataset.save); return; }
+    const ft = e.target.closest("[data-ft]");
+    if (ft) { loadFulltext(ft.dataset.ft); return; }
     const open = e.target.closest("[data-open]");
     if (open) { openModal(open.dataset.open); return; }
   });

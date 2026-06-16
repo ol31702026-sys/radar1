@@ -7,6 +7,12 @@
   "freshness_days": 16,
   "schedule_cron": "0 6 * * *",
   "platforms": ["x", "reddit", "hn", "blog", "youtube", "github", "docs"],
+  "youtube_search": {
+    "queries": ["Claude Code", "Claude Code tutorial", "Claude Code subagents", "Claude Code hooks", "Claude Code MCP", "Claude Code workflow"],
+    "min_views": 500,
+    "max_per_query": 15,
+    "relevance_language": "en"
+  },
   "taxonomy": [
     "subagents",
     "hooks",

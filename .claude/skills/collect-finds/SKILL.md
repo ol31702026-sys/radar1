@@ -49,6 +49,13 @@ description: Собрать дневную порцию находок для р
 - **`youtube_rss`** — `WebFetch` URL ленты. Из Atom извлеки по каждому видео: `title`,
   ссылку (`watch?v=...`), `published` → `published_at`. Это РАБОЧИЙ канал (проверено).
   Отбирай видео, релевантные теме и попадающие в окно `freshness_days`. `source_platform: "youtube"`.
+- **YouTube Data API (поиск по всему YouTube)** — если задан env `YOUTUBE_API_KEY`, запусти:
+  ```bash
+  python3 engine/fetch_youtube.py <slug> --today <YYYY-MM-DD>
+  ```
+  Он ищет по `radar.config.json → youtube_search.queries` за окно свежести, фильтрует по
+  `min_views`, дедуплицирует и печатает видео-кандидатов JSON в stdout — добавь в общий пул.
+  Если ключа нет — скрипт подскажет инструкцию (см. SOURCES.md); просто пропусти этот источник.
 - **`rss`** — аналогично: `WebFetch`, парси entry (title/link/date). Если домен блокирует WebFetch — пропусти и отметь в резюме.
 - **`reddit_json` / `reddit_rss`** — НЕ через WebFetch (Reddit его блокирует, и по IP тоже —
   см. `SOURCES.md`). Вместо этого запусти внешний сборщик:

@@ -94,6 +94,8 @@ def main() -> int:
     min_views = int(ys.get("min_views", 0))
     max_per_query = int(ys.get("max_per_query", 15))
     rel_lang = ys.get("relevance_language")
+    # отсев не-латинских заголовков (для англо-ориентированных радаров): доля кириллицы/CJK/др.
+    latin_only = bool(ys.get("latin_titles_only", False))
 
     today = date.fromisoformat(args.today) if args.today else datetime.now(timezone.utc).date()
     published_after = datetime(today.year, today.month, today.day, tzinfo=timezone.utc)
@@ -147,11 +149,21 @@ def main() -> int:
             views[it["id"]] = int(it.get("statistics", {}).get("viewCount", 0))
 
     # 3) собрать находки с фильтром просмотров и дедупом
+    def is_mostly_non_latin(s: str) -> bool:
+        # доля букв вне базовой латиницы (CJK/кириллица/др.) > 30% → считаем не-англоязычным
+        letters = [c for c in s if c.isalpha()]
+        if not letters:
+            return False
+        non_latin = sum(1 for c in letters if ord(c) > 0x024F)
+        return non_latin / len(letters) > 0.30
+
     candidates = []
     for vid in video_ids:
         m = meta[vid]
         v = views.get(vid, 0)
         if v < min_views:
+            continue
+        if latin_only and is_mostly_non_latin(m["title"]):
             continue
         url = f"https://www.youtube.com/watch?v={vid}"
         fid = find_id(url)

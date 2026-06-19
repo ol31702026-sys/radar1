@@ -67,8 +67,22 @@ async function init() {
 
   bindEvents();
   await loadDay(state.radar.days[0]?.date);
+  await loadAllFindsCache();   // нужно ДО доски: отложить можно находку любого дня
   renderThinkBoard();
   updateThinkCount();
+}
+
+/* Загружает находки ВСЕХ дней в кэш по id — чтобы доска «На обдумывание»
+   находила отложенную находку из любого дня (заголовок + ссылка на оригинал). */
+async function loadAllFindsCache() {
+  const cache = {};
+  await Promise.all((state.radar.days || []).map(async (d) => {
+    try {
+      const finds = await getJSON(`radars/${state.slug}/data/finds/${d.date}.json`);
+      for (const f of finds) cache[f.id] = f;
+    } catch { /* день мог не загрузиться — пропускаем */ }
+  }));
+  state._allFindsCache = cache;
 }
 
 async function loadDay(date) {

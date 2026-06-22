@@ -4,7 +4,7 @@
   "description": "Ежедневный сбор удачных низкозатратных бизнес-идей со всего мира, выстреливших в этом году: что за бизнес / страна / стартовый капитал / как растёт. Фокус — онлайн/цифровой и e-commerce, старт до $100k без крупных венчурных раундов.",
   "language": "ru",
   "daily_target": 15,
-  "freshness_days": 30,
+  "freshness_days": 90,
   "schedule_cron": "0 6 * * *",
   "platforms": ["hn", "producthunt", "devto", "blog", "youtube", "reddit"],
   "youtube_search": {

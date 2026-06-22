@@ -311,7 +311,8 @@ def collect_producthunt(src, today, fresh, taxonomy):
         summary = f"Product Hunt: «{title}» — {desc[:300]}" if desc else f"Product Hunt: запуск «{title}»."
         out.append(mk_find(today, link, title, summary,
                            tag_from_text(title + " " + desc, taxonomy),
-                           src.get("default_platform", "producthunt"),
+                           # схема find.schema.json не знает "producthunt" в enum -> пишем "other"
+                           src.get("default_platform", "other"),
                            author, pub, "_score", 0))
     return out
 

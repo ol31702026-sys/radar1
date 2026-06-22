@@ -1,6 +1,45 @@
 {
   "radars": [
     {
+      "slug": "business-hits",
+      "title": "Радар: бизнесы, которые выстрелили",
+      "description": "Ежедневный сбор удачных низкозатратных бизнес-идей со всего мира, выстреливших в этом году: что за бизнес / страна / стартовый капитал / как растёт. Фокус — онлайн/цифровой и e-commerce, старт до $100k без крупных венчурных раундов.",
+      "language": "ru",
+      "taxonomy": [
+        "saas",
+        "ecommerce",
+        "marketplace",
+        "content-creator",
+        "info-product",
+        "ai-tool",
+        "mobile-app",
+        "d2c-brand",
+        "subscription",
+        "marketing-channel",
+        "monetization",
+        "bootstrapped",
+        "solo-founder",
+        "growth-story",
+        "case-study",
+        "tips"
+      ],
+      "platforms": [
+        "hn",
+        "producthunt",
+        "devto",
+        "blog",
+        "youtube",
+        "reddit"
+      ],
+      "days": [
+        {
+          "date": "2026-06-22",
+          "count": 12
+        }
+      ],
+      "total_finds": 12
+    },
+    {
       "slug": "claude-code",
       "title": "Claude Code Radar",
       "description": "Ежедневный сбор интересных кейсов применения Claude Code: где / кто / как применил и каких результатов достиг.",

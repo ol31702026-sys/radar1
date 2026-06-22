@@ -37,7 +37,7 @@
       "label": "Product Hunt — ежедневные запуски продуктов (публичный Atom-фид)",
       "url": "https://www.producthunt.com/feed",
       "match": [],
-      "default_platform": "producthunt",
+      "default_platform": "other",
       "enabled": true
     },
     {

@@ -98,10 +98,13 @@ def main() -> int:
     latin_only = bool(ys.get("latin_titles_only", False))
 
     today = date.fromisoformat(args.today) if args.today else datetime.now(timezone.utc).date()
-    published_after = datetime(today.year, today.month, today.day, tzinfo=timezone.utc)
-    # окно свежести назад
     from datetime import timedelta
-    published_after = (published_after - timedelta(days=fresh)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    day_start = datetime(today.year, today.month, today.day, tzinfo=timezone.utc)
+    # окно свежести [today - fresh; today]. Обе границы: publishedAfter (нижняя) и
+    # publishedBefore (верхняя = конец сегодняшнего дня), чтобы не пролезали видео из
+    # будущего относительно --today (важно при тестовых/исторических прогонах).
+    published_after = (day_start - timedelta(days=fresh)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    published_before = (day_start + timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     known = load_known_ids(radar_dir)
     seen = set(known)
@@ -114,6 +117,7 @@ def main() -> int:
             "key": key, "part": "snippet", "type": "video", "q": q,
             "order": "date", "maxResults": min(max_per_query, 50),
             "publishedAfter": published_after,
+            "publishedBefore": published_before,
         }
         if rel_lang:
             params["relevanceLanguage"] = rel_lang

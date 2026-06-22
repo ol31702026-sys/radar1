@@ -19,6 +19,13 @@ param(
 $ErrorActionPreference = "Continue"
 $env:PYTHONIOENCODING = "utf-8"
 
+# --- local secrets (API keys) ---
+# Loads radars/<slug>/.secrets.ps1 if present (gitignored): sets $env:YOUTUBE_API_KEY,
+# and optionally $env:REDDIT_CLIENT_ID / $env:REDDIT_CLIENT_SECRET. Without it the
+# fetch_* scripts below just skip their source - never fatal.
+$secretsFile = Join-Path $ProjectDir "radars\$Slug\.secrets.ps1"
+if (Test-Path $secretsFile) { . $secretsFile }
+
 # --- log ---
 $logDir = Join-Path $ProjectDir "radars\$Slug\data\logs"
 if (-not (Test-Path $logDir)) { New-Item -ItemType Directory -Force -Path $logDir | Out-Null }
@@ -39,11 +46,36 @@ if (-not (Test-Path $ProjectDir)) { Log "ERROR: project dir not reachable $Proje
 # Headless prompt. Self-contained: collect + git commit + push. Russian text is fine
 # inside the prompt string because it is piped to claude via stdin (UTF-8), not parsed by PowerShell.
 $prompt = "Vypolni ezhednevnyy sbor nakhodok dlya radara $Slug strogo po shagam, bez lishnikh voprosov: " +
+  "0) PRIMECHANIE: otkrytye istochniki (Hacker News, Lobsters, Dev.to, GitHub cherez fetch_sources.py) i YouTube Data API (fetch_youtube.py) UZHE sobrany skriptami i zapisany v data/finds/<today>.json DO etogo zapuska. NE zapuskay eti skripty povtorno - tolko uchti ikh kandidatov v dedupe (po source_url/id) i v itogovom otbore (mnogie iz nikh syrye, confidence=low - prover relevantnost teme, otsey ne-Claude shum). youtube_rss i WebSearch sobiray kak obychno. " +
   "1) Zapusti skill collect-finds s argumentom $Slug. VAZHNO pro OKHVAT: sdelay SHIROKIY fan-out - 20+ raznykh WebSearch-zaprosov pod raznye temy taxonomy (subagents, hooks, mcp, skills, slash-commands, workflows, automation, ci-cd, testing, refactoring, prompting, cost-tokens, ide-integration, case-study) I pod svezhest (release notes, changelog, whats new, June 2026, this week). Soberi pul 40-60 kandidatov, prover daty cherez WebFetch, dedupliciruy protiv vsekh proshlykh data/finds/*.json po source_url, otberi do daily_target (15) svezhikh nedubliruyushchikh. Zaydi na agregatory: releasebot.io, code.claude.com/docs changelog i whats-new, claudelog. Esli kachestvennykh menshe 15 - voz'mi skolko est i otmet pochemu (NE dobivay musorom). Posledniye 2 pozicii - keysy (case-study). Zapishi data/finds/<today>.json i data/digests/<today>.md (Anons + Rasshifrovka). " +
   "2) Peresoberi indeks: zapusti python engine/build_manifest.py (esli upadet - ne blokiruysya). " +
   "3) Zakommit izmenennye fayly v radars/$Slug/data/ cherez git i zapush v origin master. Soobshchenie kommita: 'Nakhodki za <today> (avto, lokalnoe raspisanie)'. Esli za segodnya nakhodok net vovse - NE delay pustoy kommit. " +
   "4) V kontse vyvedi odnu itogovuyu stroku: skolko nakhodok, razbivka po platformam, i byl li push. " +
   "Ne vydumyvay nakhodki i ne podstavlyay nesushchestvuyushchie ssylki. Ne kommit sekrety."
+
+# --- pre-collect: direct feed scripts (YouTube Data API, Reddit OAuth) ---
+# Run BEFORE claude so the day's finds file already holds these candidates; the
+# collect-finds skill then dedups its WebSearch results against them. Each script
+# is best-effort: missing key / IP block / error is logged, never blocks the run.
+$today = Get-Date -Format "yyyy-MM-dd"
+function RunFeed([string]$name, [string]$script) {
+  $py = Join-Path $ProjectDir $script
+  if (-not (Test-Path $py)) { Log "feed ${name}: script not found ($script), skip"; return }
+  Log "feed ${name}: python $script $Slug --write --today $today"
+  & python $py $Slug --write --today $today 2>&1 | ForEach-Object { Log ("  ${name}> " + $_) }
+}
+Push-Location $ProjectDir
+try {
+  # Open sources without keys: Hacker News, Lobsters, Dev.to, GitHub (replaces Reddit).
+  RunFeed "sources" "engine/fetch_sources.py"
+  if ($env:YOUTUBE_API_KEY) { RunFeed "youtube" "engine/fetch_youtube.py" }
+  else { Log "feed youtube: YOUTUBE_API_KEY not set, skip" }
+  if ($env:REDDIT_CLIENT_ID -and $env:REDDIT_CLIENT_SECRET) { RunFeed "reddit" "engine/fetch_reddit.py" }
+  else { Log "feed reddit: REDDIT_CLIENT_ID/SECRET not set, skip" }
+}
+finally {
+  Pop-Location
+}
 
 Log "Running claude -p (headless, acceptEdits + allow-list from .claude/settings.json)..."
 

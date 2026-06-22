@@ -46,6 +46,14 @@ description: Собрать дневную порцию находок для р
 Помимо WebSearch, пройди по `sources.json` — это прямые ленты (точные даты и ссылки).
 Бери только `enabled: true`. Для каждого источника по `type`:
 
+- **Открытые источники без ключей (`hn_algolia` / `lobsters` / `devto` / `github_repos`)** —
+  собираются одним скриптом (Hacker News, Lobsters, Dev.to, GitHub; все без логина, проверено):
+  ```bash
+  python3 engine/fetch_sources.py <slug> --today <YYYY-MM-DD>
+  ```
+  Он читает эти источники из `sources.json`, фильтрует по свежести, дедуплицирует и печатает
+  кандидатов JSON в stdout — добавь в общий пул. Это основная замена выпавшему Reddit. Кандидаты
+  «сырые» (`confidence: low`) — на Шаге 3 **отсей околотематический шум** (не-Claude LLM/agent-посты).
 - **`youtube_rss`** — `WebFetch` URL ленты. Из Atom извлеки по каждому видео: `title`,
   ссылку (`watch?v=...`), `published` → `published_at`. Это РАБОЧИЙ канал (проверено).
   Отбирай видео, релевантные теме и попадающие в окно `freshness_days`. `source_platform: "youtube"`.

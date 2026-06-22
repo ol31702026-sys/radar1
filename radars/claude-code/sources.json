@@ -1,7 +1,8 @@
 {
   "_format": "Источники сбора для радара. collect-finds читает их в дополнение к prompts/queries.md (WebSearch). Каждый источник: type + url + поля для парсинга. Свежесть и дедуп применяются как обычно.",
   "_notes": {
-    "reddit_json": "СТАТУС: недоступно через встроенный WebFetch (Reddit блокирует www/old/.json/.rss). Нужен MCP-сервер Reddit или внешний скрипт с User-Agent. Оставлено enabled:false до подключения MCP.",
+    "engine_fetch_sources": "Источники типов hn_algolia/lobsters/devto/github_repos собирает engine/fetch_sources.py (только stdlib, без ключей). Запуск: python engine/fetch_sources.py claude-code --write --today <date>. Все проверены живьём (июнь 2026): отдаются без логина. Это замена выпавшему Reddit.",
+    "reddit_json": "СТАТУС: недоступно. Reddit в 2026 закрыл самообслуживаемое создание API-ключей (Responsible Builder Policy + ручное одобрение) И блокирует публичный JSON по IP. Без-API обходы (redlib-инстансы, site:reddit.com) проверены и не работают. Скрипт fetch_reddit.py готов на случай одобренного OAuth-ключа. См. SOURCES.md.",
     "reddit_rss": "СТАТУС: тоже блокируется WebFetch. См. выше.",
     "youtube_rss": "СТАТУС: РАБОТАЕТ через WebFetch. RSS канала: https://www.youtube.com/feeds/videos.xml?channel_id=UCxxxx . Нужен channel_id (не @handle). Отдаёт title/link/published_at. Добавляй каналы сюда.",
     "rss": "Любая прочая RSS/Atom-лента (блоги, релизы). Проверяй доступность через WebFetch — некоторые домены блокируются.",
@@ -35,6 +36,43 @@
       "url": "https://www.reddit.com/r/ClaudeCode/new.rss?limit=40",
       "default_platform": "reddit",
       "enabled": false
+    },
+    {
+      "type": "hn_algolia",
+      "label": "Hacker News — истории по 'claude code' (Algolia API)",
+      "url": "https://hn.algolia.com/api/v1/search_by_date",
+      "queries": ["claude code", "claude code mcp", "claude code agent"],
+      "min_points": 2,
+      "default_platform": "hn",
+      "enabled": true
+    },
+    {
+      "type": "lobsters",
+      "label": "Lobsters — теги ai/programming (JSON по тегам)",
+      "tags": ["ai", "programming"],
+      "match": ["claude", "anthropic", "claude code", "mcp", "subagent"],
+      "default_platform": "blog",
+      "enabled": true
+    },
+    {
+      "type": "devto",
+      "label": "Dev.to — статьи по тегам claude/mcp/aiagents (Forem API)",
+      "url": "https://dev.to/api/articles",
+      "tags": ["claude", "mcp", "aiagents"],
+      "match": ["claude", "anthropic", "mcp", "claude code"],
+      "min_reactions": 2,
+      "per_page": 30,
+      "default_platform": "blog",
+      "enabled": true
+    },
+    {
+      "type": "github_repos",
+      "label": "GitHub — свежие/обновлённые репо по claude code (Search API)",
+      "url": "https://api.github.com/search/repositories",
+      "queries": ["claude code", "claude-code mcp", "claude code subagents"],
+      "min_stars": 5,
+      "default_platform": "github",
+      "enabled": true
     },
     {
       "type": "youtube_rss",
@@ -84,6 +122,14 @@
       "url": "https://code.claude.com/docs/en/changelog",
       "default_platform": "docs",
       "enabled": false
+    },
+    {
+      "type": "youtube_api",
+      "label": "YouTube Data API — поиск по всему YouTube (engine/fetch_youtube.py)",
+      "url": "https://www.googleapis.com/youtube/v3",
+      "default_platform": "youtube",
+      "enabled": true,
+      "_note": "Ключ берётся из env YOUTUBE_API_KEY (загружается из radars/claude-code/.secrets.ps1 обёрткой). Запуск: python engine/fetch_youtube.py claude-code --today <date>. Конфиг поиска — radar.config.json -> youtube_search."
     }
   ]
 }

@@ -1,0 +1,71 @@
+{
+  "radars": [
+    {
+      "slug": "claude-code",
+      "title": "Claude Code Radar",
+      "description": "Ежедневный сбор интересных кейсов применения Claude Code: где / кто / как применил и каких результатов достиг.",
+      "language": "ru",
+      "taxonomy": [
+        "subagents",
+        "hooks",
+        "mcp",
+        "skills",
+        "slash-commands",
+        "workflows",
+        "automation",
+        "ci-cd",
+        "testing",
+        "refactoring",
+        "prompting",
+        "cost-tokens",
+        "ide-integration",
+        "case-study",
+        "tips"
+      ],
+      "platforms": [
+        "x",
+        "reddit",
+        "hn",
+        "blog",
+        "youtube",
+        "github",
+        "docs"
+      ],
+      "days": [
+        {
+          "date": "2026-06-22",
+          "count": 15
+        },
+        {
+          "date": "2026-06-21",
+          "count": 15
+        },
+        {
+          "date": "2026-06-20",
+          "count": 26
+        },
+        {
+          "date": "2026-06-19",
+          "count": 8
+        },
+        {
+          "date": "2026-06-18",
+          "count": 15
+        },
+        {
+          "date": "2026-06-17",
+          "count": 15
+        },
+        {
+          "date": "2026-06-16",
+          "count": 15
+        },
+        {
+          "date": "2026-06-14",
+          "count": 15
+        }
+      ],
+      "total_finds": 124
+    }
+  ]
+}

@@ -124,6 +124,22 @@ a { color: var(--brand); }
 .topbar h1::after { content: " ·"; color: var(--coral); }
 .topbar p { margin: 2px 0 0; font-size: .85rem; max-width: 50ch; color: var(--ink-soft); }
 
+/* ===================== RADAR (тема) SELECT ============================= */
+.radar-select {
+  font-family: var(--ff-body);
+  font-size: .95rem; font-weight: 700;
+  color: var(--brand-deep);
+  background: var(--brand-soft);
+  border: 2px solid var(--brand);
+  border-radius: var(--radius-pill);
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, transform .15s;
+  max-width: 42vw;
+}
+.radar-select:hover { transform: translateY(-1px); background: #cdeae3; }
+.radar-select:focus { outline: none; box-shadow: 0 0 0 3px rgba(15,118,110,.22); }
+
 /* ============================ TABS ===================================== */
 .tabs { display: flex; gap: 10px; }
 .tab {

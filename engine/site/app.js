@@ -38,6 +38,9 @@ async function getJSON(path) {
   return res.json();
 }
 
+// какой радар показать при загрузке: из localStorage, иначе первый в манифесте
+const LAST_RADAR_KEY = "radar:_last_slug";
+
 async function init() {
   let manifest;
   try {
@@ -47,26 +50,57 @@ async function init() {
       `<div class="empty">Не нашёл <code>manifest.json</code>. Запусти <code>python3 engine/build_manifest.py</code> и открой сайт через локальный сервер из корня проекта.</div>`;
     return;
   }
-  state.radar = manifest.radars[0]; // первый радар (мульти-радар — на будущее)
-  state.slug = state.radar.slug;
-  loadLocal();
+  state.manifest = manifest;
 
-  document.getElementById("radar-title").textContent = state.radar.title;
-  document.getElementById("radar-desc").textContent = state.radar.description || "";
+  // селектор тем (показываем всегда; при одном радаре он просто не мешает)
+  const radarSel = document.getElementById("radar-select");
+  radarSel.innerHTML = manifest.radars
+    .map((r) => `<option value="${r.slug}">${r.title}</option>`)
+    .join("");
+  radarSel.style.display = manifest.radars.length > 1 ? "" : "none";
+  radarSel.addEventListener("change", () => selectRadar(radarSel.value));
+
+  bindEvents();
+
+  // восстановить последний выбранный радар, если он ещё есть в манифесте
+  const remembered = localStorage.getItem(LAST_RADAR_KEY);
+  const start = manifest.radars.find((r) => r.slug === remembered) || manifest.radars[0];
+  radarSel.value = start.slug;
+  await selectRadar(start.slug);
+}
+
+// Полностью переинициализирует UI под выбранный радар (вызывается при старте и смене темы).
+async function selectRadar(slug) {
+  const radar = state.manifest.radars.find((r) => r.slug === slug);
+  if (!radar) return;
+  state.radar = radar;
+  state.slug = slug;
+  localStorage.setItem(LAST_RADAR_KEY, slug);
+
+  // рейтинги/закладки хранятся per-slug — перечитываем под новый радар
+  loadLocal();
+  // сбрасываем фильтры выбора, чтобы теги/платформы прошлой темы не зависали
+  state.activeTags = new Set();
+  state.platform = "";
+  state.query = "";
+
+  document.getElementById("radar-title").textContent = radar.title;
+  document.getElementById("radar-desc").textContent = radar.description || "";
+  const searchEl = document.getElementById("search");
+  if (searchEl) searchEl.value = "";
 
   // дни
   const daySel = document.getElementById("day-select");
-  daySel.innerHTML = state.radar.days
+  daySel.innerHTML = (radar.days || [])
     .map((d) => `<option value="${d.date}">${d.date} · ${d.count} находок</option>`)
     .join("");
   // платформы заполняются динамически из реальных находок дня (см. updatePlatformOptions)
   // теги
-  document.getElementById("tagbar").innerHTML = state.radar.taxonomy
+  document.getElementById("tagbar").innerHTML = (radar.taxonomy || [])
     .map((t) => `<button class="tagchip" data-tag="${t}">${t}</button>`)
     .join("");
 
-  bindEvents();
-  await loadDay(state.radar.days[0]?.date);
+  await loadDay(radar.days[0]?.date);
   await loadAllFindsCache();   // нужно ДО доски: отложить можно находку любого дня
   renderThinkBoard();
   updateThinkCount();

@@ -1,0 +1,66 @@
+{
+  "_format": "Источники сбора для радара. collect-finds читает их в дополнение к prompts/queries.md (WebSearch). Типы hn_algolia/lobsters/devto/github_repos/producthunt_rss собирает engine/fetch_sources.py (только stdlib, без ключей). youtube_rss/youtube_api/reddit_json — см. ниже.",
+  "_notes": {
+    "engine_fetch_sources": "hn_algolia/lobsters/devto/github_repos/producthunt_rss собирает engine/fetch_sources.py. Запуск: python engine/fetch_sources.py business-hits --write --today <date>. Без ключей и логина.",
+    "producthunt_rss": "Product Hunt отдаёт публичный Atom-фид https://www.producthunt.com/feed (проверено живьём, июнь 2026). Ежедневные запуски продуктов — прямо в тему. match[] фильтрует по ключевым словам.",
+    "devto": "Dev.to (Forem) /api/articles?tag=. Теги startup/entrepreneurship/indiehackers — реальные кейсы соло-фаундеров (build in public).",
+    "hn_algolia": "Hacker News Search (Algolia). Show HN / Launch HN с цифрами выручки. Главный рабочий источник по запускам.",
+    "indiehackers": "СТАТУС: чистого RSS нет (фид рендерится на клиенте, отдаётся HTML). Собирать через WebSearch site:indiehackers.com (см. queries.md), не через fetch_sources.py.",
+    "youtube_rss": "РАБОТАЕТ через WebFetch. https://www.youtube.com/feeds/videos.xml?channel_id=UCxxxx . Нужен channel_id (не @handle). Добавляй бизнес-каналы сюда.",
+    "youtube_api": "Поиск по всему YouTube (engine/fetch_youtube.py, env YOUTUBE_API_KEY). Конфиг — radar.config.json -> youtube_search.",
+    "reddit_json": "СТАТУС: недоступно. Reddit 05.06.2026 обновил Responsible Builder Policy — self-serve создание API-ключей ЗАКРЫТО (только ручное одобрение, обычным аккаунтам не выдаётся), публичный JSON блокируется по IP. r/Entrepreneur, r/SideProject и пр. идеальны по теме, но недостижимы. fetch_reddit.py готов на случай одобренного OAuth-ключа. См. ../claude-code/SOURCES.md.",
+    "how_to_find_channel_id": "Исходник страницы канала → \"channelId\":\"UC...\" ; либо URL youtube.com/channel/UC..."
+  },
+  "sources": [
+    {
+      "type": "hn_algolia",
+      "label": "Hacker News — запуски/истории низкозатратных бизнесов (Algolia API)",
+      "url": "https://hn.algolia.com/api/v1/search_by_date",
+      "queries": ["bootstrapped startup", "show hn revenue", "solo founder business", "side project profitable", "indie hacker mrr"],
+      "min_points": 5,
+      "default_platform": "hn",
+      "enabled": true
+    },
+    {
+      "type": "devto",
+      "label": "Dev.to — кейсы соло-фаундеров (теги startup/entrepreneurship/indiehackers)",
+      "url": "https://dev.to/api/articles",
+      "tags": ["startup", "entrepreneurship", "indiehackers", "saas"],
+      "match": ["revenue", "mrr", "bootstrapped", "launched", "built", "side hustle", "first customer", "profitable", "solo"],
+      "min_reactions": 5,
+      "per_page": 30,
+      "default_platform": "blog",
+      "enabled": true
+    },
+    {
+      "type": "producthunt_rss",
+      "label": "Product Hunt — ежедневные запуски продуктов (публичный Atom-фид)",
+      "url": "https://www.producthunt.com/feed",
+      "match": [],
+      "default_platform": "producthunt",
+      "enabled": true
+    },
+    {
+      "type": "youtube_api",
+      "label": "YouTube Data API — поиск по всему YouTube (engine/fetch_youtube.py)",
+      "url": "https://www.googleapis.com/youtube/v3",
+      "default_platform": "youtube",
+      "enabled": true,
+      "_note": "Ключ из env YOUTUBE_API_KEY (.secrets.ps1, gitignored). Конфиг поиска — radar.config.json -> youtube_search."
+    },
+    {
+      "type": "youtube_rss",
+      "label": "YouTube — добавь channel_id бизнес-канала (по желанию)",
+      "url": "https://www.youtube.com/feeds/videos.xml?channel_id=CHANGE-ME",
+      "default_platform": "youtube",
+      "enabled": false
+    },
+    {
+      "type": "reddit_json",
+      "label": "Reddit r/Entrepreneur, r/SideProject (закрыт Responsible Builder Policy — выкл.)",
+      "url": "https://www.reddit.com/r/Entrepreneur/new.json?limit=40",
+      "default_platform": "reddit",
+      "enabled": false
+    }
+  ]
+}

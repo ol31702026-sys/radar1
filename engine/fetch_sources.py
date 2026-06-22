@@ -26,6 +26,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -63,6 +64,34 @@ def http_get(url: str, accept: str = "application/json", retries: int = 3):
             sys.stderr.write(f"[fetch_sources] {url} -> {type(e).__name__} (попытка {attempt+1}/{retries})\n")
             time.sleep(2 * (attempt + 1))
     return None
+
+
+def http_get_text(url: str, accept: str = "application/atom+xml", retries: int = 3):
+    """Как http_get, но возвращает сырой текст (для RSS/Atom-лент, не JSON)."""
+    headers = {"User-Agent": UA, "Accept": accept}
+    for attempt in range(retries):
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=25) as r:
+                return r.read().decode("utf-8", "replace")
+        except urllib.error.HTTPError as e:
+            sys.stderr.write(f"[fetch_sources] HTTP {e.code} {url} (попытка {attempt+1}/{retries})\n")
+            if e.code in (403, 429, 500, 502, 503):
+                time.sleep(2 * (attempt + 1))
+                continue
+            return None
+        except (urllib.error.URLError, TimeoutError) as e:
+            sys.stderr.write(f"[fetch_sources] {url} -> {type(e).__name__} (попытка {attempt+1}/{retries})\n")
+            time.sleep(2 * (attempt + 1))
+    return None
+
+
+def strip_html(s: str) -> str:
+    """Грубо: выкинуть теги и схлопнуть пробелы — для описаний из Atom <content type=html>."""
+    s = re.sub(r"<[^>]+>", " ", s or "")
+    s = (s.replace("&amp;", "&").replace("&lt;", "<").replace("&gt;", ">")
+          .replace("&quot;", '"').replace("&#39;", "'").replace("&nbsp;", " "))
+    return re.sub(r"\s+", " ", s).strip()
 
 
 def load_known_ids(radar_dir: Path) -> set:
@@ -246,11 +275,53 @@ def collect_github(src, today, fresh, taxonomy):
     return out
 
 
+def collect_producthunt(src, today, fresh, taxonomy):
+    """Product Hunt публичный Atom-фид: ежедневные запуски продуктов. Без ключей.
+    Фид отдаёт ~посты за последние дни; фильтруем по published + match[]."""
+    url = src.get("url", "https://www.producthunt.com/feed")
+    match = src.get("match", [])
+    raw = http_get_text(url)
+    if not raw:
+        return []
+    # namespace Atom; ET требует {ns}tag — снимаем дефолтный неймспейс грубой заменой
+    raw = re.sub(r'\sxmlns="[^"]+"', "", raw, count=1)
+    try:
+        root = ET.fromstring(raw)
+    except ET.ParseError as e:
+        sys.stderr.write(f"[fetch_sources] producthunt parse error: {e}\n")
+        return []
+    out = []
+    for entry in root.findall("entry"):
+        title = (entry.findtext("title") or "").strip()
+        link_el = entry.find("link")
+        link = link_el.get("href") if link_el is not None else None
+        if not title or not link:
+            continue
+        pub_raw = (entry.findtext("published") or "").strip()
+        try:
+            pub = datetime.fromisoformat(pub_raw).date()
+        except ValueError:
+            continue
+        if not in_window(pub, today, fresh):
+            continue
+        desc = strip_html(entry.findtext("content") or "")
+        author = entry.findtext("author/name")
+        if not matches(title + " " + desc, match):
+            continue
+        summary = f"Product Hunt: «{title}» — {desc[:300]}" if desc else f"Product Hunt: запуск «{title}»."
+        out.append(mk_find(today, link, title, summary,
+                           tag_from_text(title + " " + desc, taxonomy),
+                           src.get("default_platform", "producthunt"),
+                           author, pub, "_score", 0))
+    return out
+
+
 COLLECTORS = {
     "hn_algolia": collect_hn,
     "lobsters": collect_lobsters,
     "devto": collect_devto,
     "github_repos": collect_github,
+    "producthunt_rss": collect_producthunt,
 }
 
 

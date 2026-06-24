@@ -1,0 +1,234 @@
+[
+  {
+    "id": "488850a1e034",
+    "date_found": "2026-06-25",
+    "title": "Claude Code 2.1.186–2.1.190: sandbox.credentials, mcp login/logout, ограничение моделей",
+    "summary": "Свежие релизы Claude Code (22–24 июня): настройка sandbox.credentials блокирует чтение секретов и .env из песочницы, добавлены команды claude mcp login/logout, ограничение доступных моделей на уровне организации прямо в пикере, фильтрация статусов в workflows и клики мышью в меню в полноэкранном режиме.",
+    "details": "За 22–24 июня вышли версии 2.1.186, 2.1.187 и 2.1.190. Ключевое для безопасности — sandbox.credentials: песочница теперь не может читать файлы-учётки и секретные переменные окружения, что важно при agent/auto-режимах. Для MCP добавили claude mcp login/logout (OAuth-логин к серверам), а в /plugin появился раздел Skills. Организации могут ограничить список доступных моделей (model restrictions) — выбор фиксируется политикой. Плюс мелочи UX: фильтрация статусов задач в workflows, клики мышью по меню в fullscreen, исправления --resume, structured output и таймаутов MCP-инструментов.",
+    "tags": [
+      "automation",
+      "cost-tokens"
+    ],
+    "source_url": "https://code.claude.com/docs/en/changelog#2-1-187",
+    "source_platform": "docs",
+    "author": "Anthropic",
+    "published_at": "2026-06-23",
+    "confidence": "high"
+  },
+  {
+    "id": "ad2cc511b446",
+    "date_found": "2026-06-25",
+    "title": "Claude как agent provider в JetBrains IDE (GitHub Copilot, public preview)",
+    "summary": "GitHub Changelog (22 июня): Claude доступен в public preview как провайдер агента внутри GitHub Copilot для JetBrains IDE. Ставите Claude Code CLI, прописываете путь в настройках и выбираете Claude в пикере агентов в панели Copilot Chat. Пока работает в режиме bypass-permissions, настраиваемые разрешения обещают позже.",
+    "details": "Анонс расширяет присутствие Claude в IntelliJ/PyCharm/WebStorm и других JetBrains IDE: вместо отдельного плагина Claude встраивается как agent provider в Copilot Chat. Сценарий: установить Claude Code CLI, указать путь к нему в настройках Copilot, затем выбрать Claude в выпадающем списке агентов и вести сессию прямо из IDE. Важное ограничение превью — агент работает в bypass permissions mode (без гранулярного контроля над действиями), настраиваемые разрешения заявлены в будущем апдейте. Полезно тем, кто живёт в JetBrains и не хочет переключаться в терминал.",
+    "tags": [
+      "ide-integration"
+    ],
+    "source_url": "https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/",
+    "source_platform": "blog",
+    "author": "GitHub",
+    "published_at": "2026-06-22",
+    "confidence": "high"
+  },
+  {
+    "id": "ebdb65bc783e",
+    "date_found": "2026-06-25",
+    "title": "world-model-mcp: слой памяти для Claude Code (+10.2 на SWE-bench Verified)",
+    "summary": "Show HN: открытый MCP-сервер world-model-mcp добавляет Claude Code персистентный слой памяти («модель мира»); автор заявляет прирост +10.2 пункта на бенчмарке SWE-bench Verified. Подключается как MCP и хранит состояние между сессиями.",
+    "details": "Идея — дать агенту структурированную память о проекте, которая переживает компакты и перезапуски, и из которой Claude Code подтягивает контекст вместо повторного перечитывания репозитория. Сервер ставится как обычный MCP, заявленный эффект — +10.2 пункта на SWE-bench Verified относительно базового прогона. Цифру стоит перепроверять (Show HN, заявление автора), но направление актуально: память/контекст-инжиниринг — один из главных рычагов качества агента. Полезно как пример того, как через MCP наращивать долговременную память Claude Code.",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/SaravananJaichandar/world-model-mcp",
+    "source_platform": "hn",
+    "author": "saravanan2294",
+    "published_at": "2026-06-24",
+    "confidence": "low"
+  },
+  {
+    "id": "5755a5ef7e29",
+    "date_found": "2026-06-25",
+    "title": "session-orchestrator: loop-engineering для кодинг-агентов (research → plan → wave-execute)",
+    "summary": "GitHub (★36): community-плагин превращает ad-hoc сессии в повторяемый цикл research → plan → wave-execute → close с гейтами верификации. Работает поверх Claude Code, Codex CLI, Cursor и Pi. Лицензия MIT.",
+    "details": "Это попытка формализовать «loop engineering» — вместо одного длинного промпта агент гоняется по фиксированным фазам: исследование кодовой базы, планирование, волновое выполнение задач и закрытие с проверкой результата на каждом гейте. Плагин host-agnostic: один и тот же цикл запускается в Claude Code, Codex CLI, Cursor и Pi. Полезен тем, кто хочет повторяемости и контроля качества в длинных автономных прогонах, а не «как получится». Хорошо ложится на dynamic workflows и субагентов.",
+    "tags": [
+      "workflows",
+      "subagents"
+    ],
+    "source_url": "https://github.com/Kanevry/session-orchestrator",
+    "source_platform": "github",
+    "author": "Kanevry",
+    "published_at": "2026-06-24",
+    "confidence": "low"
+  },
+  {
+    "id": "7057845c14bb",
+    "date_found": "2026-06-25",
+    "title": "claude-handoff-revive: восстановление сессии Claude Code из handoff-файла",
+    "summary": "Show HN: инструмент сохраняет состояние сессии Claude Code в handoff-файл — авто-сохранение, снапшоты и шеринг через PR, чтобы продолжить работу после вылета/компакта или передать контекст коллеге.",
+    "details": "Проблема: при компакте, исчерпании лимита или вылете теряется наработанный контекст сессии. Решение — handoff-файл, в который складывается состояние; его можно авто-сохранять, делать снапшоты и шарить через pull request. По сути это «git для состояния агента»: вернуться к прошлой точке или передать сессию другому человеку/машине. Удобно для длинных задач и командной работы, где одну ветку ведут по очереди.",
+    "tags": [
+      "automation",
+      "tips"
+    ],
+    "source_url": "https://github.com/sofumel/claude-handoff-revive",
+    "source_platform": "hn",
+    "author": "sofumel",
+    "published_at": "2026-06-24",
+    "confidence": "low"
+  },
+  {
+    "id": "a58fde932d86",
+    "date_found": "2026-06-25",
+    "title": "Book-to-skill: превратить PDF технической книги в скилл Claude Code",
+    "summary": "Show HN: утилита из PDF технической книги собирает Claude Code skill — извлекает структуру и знания книги в формат SKILL.md, чтобы агент опирался на материал книги при работе.",
+    "details": "Сценарий: есть толстая техническая книга (паттерны, фреймворк, доменная область) — прогоняете её через book-to-skill и получаете готовый скилл, который Claude Code подгружает по триггеру. Так знания книги становятся операционными: агент ссылается на конкретные главы/правила вместо «вспоминания» из обучения. Это удобный приём наполнения личной библиотеки скиллов из проверенных источников. Хорошо сочетается с подходом «скиллы как сжатая экспертиза».",
+    "tags": [
+      "skills"
+    ],
+    "source_url": "https://github.com/virgiliojr94/book-to-skill",
+    "source_platform": "hn",
+    "author": "ethanpil",
+    "published_at": "2026-06-23",
+    "confidence": "low"
+  },
+  {
+    "id": "799c9a0a3f53",
+    "date_found": "2026-06-25",
+    "title": "universal-mcp-sync (usync): локальный менеджер MCP-конфигов для нескольких AI-клиентов",
+    "summary": "GitHub: usync — local-first менеджер конфигурации MCP для тех, кто использует несколько AI-клиентов (Claude Code, Cursor и др.). Держит единый список MCP-серверов и синхронизирует его между клиентами из одного источника правды.",
+    "details": "Боль: один и тот же набор MCP-серверов приходится прописывать руками в каждом клиенте, и конфиги разъезжаются. usync хранит конфигурацию локально в одном месте и раскатывает её в Claude Code, Cursor и другие клиенты, чтобы везде был одинаковый набор инструментов. Local-first — данные не уходят в облако. Полезно тем, кто работает в нескольких агентах и устал синхронизировать MCP вручную.",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/nawodyaishan/universal-mcp-sync",
+    "source_platform": "github",
+    "author": "nawodyaishan",
+    "published_at": "2026-06-24",
+    "confidence": "low"
+  },
+  {
+    "id": "2c9bce4b6edf",
+    "date_found": "2026-06-25",
+    "title": "Namecom-CLI: CLI и agent-skill, чтобы Claude Code управлял вашим DNS",
+    "summary": "Show HN: CLI и skill для Claude Code/Codex, позволяющие агенту управлять DNS-записями через API name.com — добавлять и менять записи командой агенту, без ручного захода в панель регистратора.",
+    "details": "Инструмент оборачивает API name.com в CLI и в готовый agent-skill, так что Claude Code может выполнять рутинные DNS-операции (создать/изменить A/CNAME/TXT-записи) в рамках обычной задачи — например, при деплое или настройке домена. Это пример «agent skill как обёртка над внешним API»: вместо MCP-сервера — тонкий CLI + описание скилла. Удобно встраивать в автоматизацию инфраструктуры. Осторожно с правами: DNS — чувствительная зона.",
+    "tags": [
+      "skills",
+      "automation"
+    ],
+    "source_url": "https://github.com/hypersocialinc/namecom-cli",
+    "source_platform": "hn",
+    "author": "selcuk",
+    "published_at": "2026-06-20",
+    "confidence": "low"
+  },
+  {
+    "id": "213271e2149d",
+    "date_found": "2026-06-25",
+    "title": "agent-sessions: мониторинг сессий Claude Code на macOS в реальном времени",
+    "summary": "GitHub: macOS-утилита показывает статусы всех запущенных сессий Claude Code в реальном времени с быстрым доступом — видно, какая сессия ждёт ответа, какая работает, какая закончила.",
+    "details": "Когда параллельно крутится несколько сессий/субагентов, легко потерять, какая из них ждёт твоего ввода. agent-sessions выносит статусы в нативное macOS-приложение (статус-бар/быстрый доступ) и подсвечивает, где требуется внимание. Это про эргономику многосессионной работы — частый паттерн при agent teams и git-worktrees. Лёгкий вспомогательный инструмент, не меняющий сам агент.",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/zenithpd/agent-sessions",
+    "source_platform": "github",
+    "author": "zenithpd",
+    "published_at": "2026-06-24",
+    "confidence": "low"
+  },
+  {
+    "id": "f7c73bfbd395",
+    "date_found": "2026-06-25",
+    "title": "«Я потратил 70M токенов в Claude Code — вот как» (Milan Jovanović)",
+    "summary": "Видео: .NET-инженер Milan Jovanović разбирает свой реальный расход в 70 млн токенов в Claude Code — на что они уходят, как структурировать работу и где экономить, не теряя качества.",
+    "details": "Автор показывает не теоретические, а собственные цифры: куда утекают токены при реальной разработке, как влияют CLAUDE.md, контекст и выбор модели, и какие приёмы (компакт, разбиение задач, отключение лишнего thinking, переключение Sonnet/Opus) реально снижают счёт. Это практичный взгляд на cost/token-инжиниринг от практикующего разработчика с понятным каналом. Полезно как чек-лист перед тем, как масштабировать использование Claude Code.",
+    "tags": [
+      "cost-tokens"
+    ],
+    "source_url": "https://www.youtube.com/watch?v=P3-llNM2ig0",
+    "source_platform": "youtube",
+    "author": "Milan Jovanović",
+    "published_at": "2026-06-24",
+    "confidence": "medium"
+  },
+  {
+    "id": "3b075707ef22",
+    "date_found": "2026-06-25",
+    "title": "forktty: Linux-рабочее место для кодинг-агентов (Ghostty + git worktrees + MCP)",
+    "summary": "GitHub: forktty — Linux-native рабочее пространство для кодинг-агентов: терминалы Ghostty, git worktrees, локальная MCP/socket-автоматизация, оркестрация команды агентов и уведомления, реагирующие на промпт.",
+    "details": "Это «среда обитания» для параллельной работы агентов на Linux: каждый агент в своём git-worktree и терминале Ghostty, локальная автоматизация через MCP/сокеты, координация нескольких агентов и нотификации, которые понимают, что агент ждёт ответа на промпт. По духу близко к подходу «команда Claude'ов на одной задаче», но заточено под Linux-стек и terminal-first. Полезно тем, кто гоняет несколько сессий Claude Code и хочет управлять ими как одним рабочим местом.",
+    "tags": [
+      "automation",
+      "mcp"
+    ],
+    "source_url": "https://github.com/Lucenx9/forktty",
+    "source_platform": "github",
+    "author": "Lucenx9",
+    "published_at": "2026-06-24",
+    "confidence": "low"
+  },
+  {
+    "id": "179d3f4d5b5f",
+    "date_found": "2026-06-25",
+    "title": "«You Are Handicapping Claude Code» (Jimmy Wilhite)",
+    "summary": "Видео: автор показывает типичные ошибки, которыми пользователи «связывают руки» Claude Code (раздутый или пустой CLAUDE.md, лишние ограничения, неверный режим), и как настроить агент, чтобы он работал в полную силу.",
+    "details": "Тезис ролика: чаще всего «тупит» не модель, а настройка — плохой CLAUDE.md, избыточные запреты, работа в неподходящем режиме, отсутствие плана. Автор по шагам разбирает, что убрать и что добавить (структура контекста, plan mode, разумные permission-правила), чтобы агент перестал спотыкаться. Практический разбор для тех, у кого Claude Code «работает хуже, чем у других». Хорошо дополняет тему контекст-инжиниринга.",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.youtube.com/watch?v=0MW7UUzzQm4",
+    "source_platform": "youtube",
+    "author": "Jimmy Wilhite",
+    "published_at": "2026-06-24",
+    "confidence": "low"
+  },
+  {
+    "id": "e09f0895b114",
+    "date_found": "2026-06-25",
+    "title": "Open-source плагин поиска работы для Claude Code",
+    "summary": "Show HN: открытый плагин для Claude Code автоматизирует поиск вакансий — агент собирает и фильтрует вакансии под профиль прямо из терминала.",
+    "details": "Плагин превращает Claude Code в помощника по job-search: агент ходит за вакансиями, фильтрует их под заданный профиль и помогает с откликами, не выходя из терминала. Это пример «бытового» применения плагинов Claude Code за пределами кодинга — агент как персональный ассистент по конкретной задаче. Открытый код, можно адаптировать источники и критерии. Лёгкий старт для тех, кто хочет посмотреть, как устроены плагины.",
+    "tags": [
+      "skills",
+      "tips"
+    ],
+    "source_url": "https://github.com/agent-data/job-search",
+    "source_platform": "hn",
+    "author": "jb_hn",
+    "published_at": "2026-06-22",
+    "confidence": "low"
+  },
+  {
+    "id": "e50582dfed93",
+    "date_found": "2026-06-25",
+    "title": "Vibe Under Constraint: Claude Code пишет доказательства на Lean 4",
+    "summary": "Личный разбор: автор использует Claude Code для написания кода и доказательств на Lean 4, где компилятор и типизация Lean выступают жёстким верификатором — агент не может «сблефовать», и это резко повышает надёжность результата.",
+    "details": "Кейс про связку «агент + формальная проверка»: Lean 4 не пропустит неверное доказательство, поэтому Claude Code вынужден реально довести его до зелёного состояния, а не выдать правдоподобный текст. Автор показывает, как ограничение (строгий type checker) превращает «вайб-кодинг» в управляемый процесс с гарантией корректности на выходе. Вывод обобщается: чем сильнее внешний верификатор (типы, тесты, компилятор), тем полезнее автономный агент. Хороший пример того, как дисциплина инструментов важнее объёма промпта.",
+    "tags": [
+      "case-study",
+      "testing"
+    ],
+    "source_url": "https://ngrislain.github.io/projects/2026-6-22-vibe-under-constraint/",
+    "source_platform": "blog",
+    "author": "ngrislain",
+    "published_at": "2026-06-23",
+    "confidence": "medium"
+  },
+  {
+    "id": "0664b195f594",
+    "date_found": "2026-06-25",
+    "title": "Munin: open-source аналог HubSpot, собранный за месяц на Claude Code",
+    "summary": "Show HN: автор за месяц построил Munin — open-source CRM-альтернативу HubSpot — с помощью Claude Code. Реальный кейс «что я построил»: рабочий продукт с открытым репозиторием.",
+    "details": "Практический пример полноценного продукта, а не демки: за ~месяц с Claude Code собрана open-source CRM, повторяющая ключевые сценарии HubSpot. Ценность кейса — масштаб (полноценное приложение силами одного человека) и открытый код, по которому видно, как агент тащил реальную фичеристую систему. Хороший ориентир для тех, кто прикидывает, что реально вытянуть на Claude Code в одиночку за месяц. Стоит смотреть на структуру репозитория и принятые архитектурные решения.",
+    "tags": [
+      "case-study"
+    ],
+    "source_url": "https://github.com/getmunin/munin",
+    "source_platform": "hn",
+    "author": "kman_85",
+    "published_at": "2026-06-24",
+    "confidence": "medium"
+  }
+]

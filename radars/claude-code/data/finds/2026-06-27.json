@@ -3,7 +3,7 @@
     "id": "70d1c117ef5e",
     "date_found": "2026-06-27",
     "title": "DeusData/codebase-memory-mcp — High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — average ",
-    "summary": "GitHub: репозиторий DeusData/codebase-memory-mcp (★15482). High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — average repo in milliseconds. 158 languages, sub-ms queries, 99% fewer tokens. Single static binary, zero dependencies.",
+    "summary": "GitHub-репозиторий DeusData/codebase-memory-mcp (★15482): высокопроизводительный MCP-сервер кодового интеллекта. Индексирует кодовую базу в персистентный граф знаний — средний репозиторий за миллисекунды.",
     "details": "",
     "tags": [
       "mcp"
@@ -18,7 +18,7 @@
     "id": "14667f465e75",
     "date_found": "2026-06-27",
     "title": "Show HN: Smart model routing directly in Claude, Codex and Cursor",
-    "summary": "Hacker News: «Show HN: Smart model routing directly in Claude, Codex and Cursor» — 104 баллов, 68 комментариев.",
+    "summary": "Show HN (104 балла, 68 комментариев): инструмент для умной маршрутизации моделей напрямую внутри Claude, Codex и Cursor.",
     "details": "",
     "tags": [
       "tips"
@@ -33,7 +33,7 @@
     "id": "6d8f924ee9df",
     "date_found": "2026-06-27",
     "title": "Can an AI agent post Bitcoin as collateral without giving up the keys?",
-    "summary": "Dev.to: «Can an AI agent post Bitcoin as collateral without giving up the keys?» — 2 реакций. Теги: mcp, ai, cryptocurrency, blockchain.",
+    "summary": "Статья на Dev.to (2 реакции): разбор вопроса, может ли ИИ-агент использовать биткоин как залог, не передавая приватные ключи. Теги: mcp, ai, cryptocurrency, blockchain.",
     "details": "",
     "tags": [
       "mcp"
@@ -48,7 +48,7 @@
     "id": "6db55a0853ae",
     "date_found": "2026-06-27",
     "title": "Claude Code ile Profesyonel Web Sitesi",
-    "summary": "Видео «Claude Code ile Profesyonel Web Sitesi» — канал burhan kocabıyık (7 882 просмотров).",
+    "summary": "Видео «Claude Code ile Profesyonel Web Sitesi» на канале burhan kocabıyık (7 882 просмотра): сборка профессионального веб-сайта с помощью Claude Code.",
     "details": "",
     "tags": [
       "tips"
@@ -63,7 +63,7 @@
     "id": "da7c582ec842",
     "date_found": "2026-06-27",
     "title": "can1357/oh-my-pi — ⌥  AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and m",
-    "summary": "GitHub: репозиторий can1357/oh-my-pi (★14785). ⌥  AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more",
+    "summary": "GitHub-репозиторий can1357/oh-my-pi (★14785): ИИ-агент для кодинга в терминале — правки с привязкой по хешу (hash-anchored edits), оптимизированный tool harness, LSP, Python, браузер, субагенты и не только.",
     "details": "",
     "tags": [
       "subagents"
@@ -78,7 +78,7 @@
     "id": "72df1b9a35de",
     "date_found": "2026-06-27",
     "title": "Show HN: Git-lazy-mount mount a repo without cloning it. Works with ordinary Git",
-    "summary": "Hacker News: «Show HN: Git-lazy-mount mount a repo without cloning it. Works with ordinary Git» — 8 баллов, 3 комментариев.",
+    "summary": "Show HN (8 баллов, 3 комментария): Git-lazy-mount монтирует репозиторий без клонирования и работает с обычным Git.",
     "details": "",
     "tags": [
       "tips"
@@ -93,7 +93,7 @@
     "id": "b4a78368f8cb",
     "date_found": "2026-06-27",
     "title": "D1 Schema Migrations with AI Agents: The DDL-in-Transaction Trap That Kills Zero-Downtime Deploys",
-    "summary": "Dev.to: «D1 Schema Migrations with AI Agents: The DDL-in-Transaction Trap That Kills Zero-Downtime Deploys» — 2 реакций. Теги: ai, aiagents, mcp, cloudflare.",
+    "summary": "Статья на Dev.to (2 реакции): разбор ловушки «DDL внутри транзакции» при миграциях схемы D1 с ИИ-агентами, которая ломает деплой без простоя. Теги: ai, aiagents, mcp, cloudflare.",
     "details": "",
     "tags": [
       "mcp"
@@ -108,7 +108,7 @@
     "id": "0ed9c655a89a",
     "date_found": "2026-06-27",
     "title": "How I Monetize Completely New Channel With Claude Code In 7 Days (Full Course)",
-    "summary": "Видео «How I Monetize Completely New Channel With Claude Code In 7 Days (Full Course)» — канал E'Calm (4 442 просмотров).",
+    "summary": "Видео «How I Monetize Completely New Channel With Claude Code In 7 Days (Full Course)» на канале E'Calm (4 442 просмотра): автор показывает, как монетизировать совершенно новый канал с помощью Claude Code за 7 дней.",
     "details": "",
     "tags": [
       "tips"
@@ -123,7 +123,7 @@
     "id": "a509c38a9d7d",
     "date_found": "2026-06-27",
     "title": "gmickel/flow-next — Spec-driven AI workflow plugin for Claude Code, OpenAI Codex, and Factory Droid. Zero-dep task tracking, worker subagent",
-    "summary": "GitHub: репозиторий gmickel/flow-next (★644). Spec-driven AI workflow plugin for Claude Code, OpenAI Codex, and Factory Droid. Zero-dep task tracking, worker subagents, Ralph autonomous mode, cross-model reviews.",
+    "summary": "GitHub-репозиторий gmickel/flow-next (★644): spec-driven воркфлоу-плагин для Claude Code, OpenAI Codex и Factory Droid. Трекинг задач без зависимостей, воркер-субагенты, автономный режим Ralph и кросс-модельные ревью.",
     "details": "",
     "tags": [
       "subagents"
@@ -138,7 +138,7 @@
     "id": "43ad4259a334",
     "date_found": "2026-06-27",
     "title": "Show HN: TBD, a Mac-native CLI-forward coding agent multiplexer",
-    "summary": "Hacker News: «Show HN: TBD, a Mac-native CLI-forward coding agent multiplexer» — 4 баллов, 0 комментариев.",
+    "summary": "Show HN (4 балла, 0 комментариев): TBD — Mac-нативный, ориентированный на CLI мультиплексор кодинг-агентов.",
     "details": "",
     "tags": [
       "tips"
@@ -153,7 +153,7 @@
     "id": "899705133794",
     "date_found": "2026-06-27",
     "title": "MCP Is More Useful as Context Distribution Than as RPC",
-    "summary": "Dev.to: «MCP Is More Useful as Context Distribution Than as RPC» — 2 реакций. Теги: ai, mcp, rag, llm.",
+    "summary": "Статья на Dev.to (2 реакции): тезис о том, что MCP больше пригоден как механизм распределения контекста, чем как RPC. Теги: ai, mcp, rag, llm.",
     "details": "",
     "tags": [
       "mcp"
@@ -168,7 +168,7 @@
     "id": "e37edaf2f9db",
     "date_found": "2026-06-27",
     "title": "🚀程序员必备设计神器！Claude Code原生支持Claude Design！一个/design命令，从UI原型到代码同步，全流程演示，AI设计到开发终于闭环了！小白也能做精美UI！挑战Figma！",
-    "summary": "Видео «🚀程序员必备设计神器！Claude Code原生支持Claude Design！一个/design命令，从UI原型到代码同步，全流程演示，AI设计到开发终于闭环了！小白也能做精美UI！挑战Figma！» — канал AI超元域 (2 615 просмотров).",
+    "summary": "Видео на канале AI超元域 (2 615 просмотров): Claude Code нативно поддерживает Claude Design — одна команда /design проводит весь путь от UI-прототипа до синхронизации с кодом, замыкая цикл «дизайн → разработка».",
     "details": "",
     "tags": [
       "tips"
@@ -183,7 +183,7 @@
     "id": "815e651251b7",
     "date_found": "2026-06-27",
     "title": "hashgraph-online/hol-guard — AI antivirus for developer agents: protect Codex, Claude Code, Cursor, Gemini, OpenCode, plugins, skills, MCP s",
-    "summary": "GitHub: репозиторий hashgraph-online/hol-guard (★372). AI antivirus for developer agents: protect Codex, Claude Code, Cursor, Gemini, OpenCode, plugins, skills, MCP servers, and AI harnesses before tools run.",
+    "summary": "GitHub-репозиторий hashgraph-online/hol-guard (★372): ИИ-антивирус для агентов-разработчиков — защищает Codex, Claude Code, Cursor, Gemini, OpenCode, плагины, скиллы, MCP-серверы и AI-харнессы до того, как инструменты запустятся.",
     "details": "",
     "tags": [
       "mcp",
@@ -199,7 +199,7 @@
     "id": "b0c7e69fc38e",
     "date_found": "2026-06-27",
     "title": "Show HN: Verity – self-healing review gate for Claude Code",
-    "summary": "Hacker News: «Show HN: Verity – self-healing review gate for Claude Code» — 4 баллов, 0 комментариев.",
+    "summary": "Show HN (4 балла, 0 комментариев): Verity — самовосстанавливающийся (self-healing) ревью-гейт для Claude Code.",
     "details": "",
     "tags": [
       "tips"
@@ -214,7 +214,7 @@
     "id": "7d6fe6648eda",
     "date_found": "2026-06-27",
     "title": "# MCP Knowledge: Simple Beats Complex When AI Thinks",
-    "summary": "Dev.to: «# MCP Knowledge: Simple Beats Complex When AI Thinks» — 2 реакций. Теги: ai, opensource, mcp.",
+    "summary": "Статья на Dev.to (2 реакции): тезис «Simple Beats Complex When AI Thinks» — простые решения выигрывают у сложных, когда рассуждает ИИ. Теги: ai, opensource, mcp.",
     "details": "",
     "tags": [
       "mcp"

@@ -1,0 +1,228 @@
+[
+  {
+    "id": "57aed17df59e",
+    "date_found": "2026-06-28",
+    "title": "Claude-Zeroclaw-Nexus: AI-мультитул и CLI-роутер для субагентов Claude SDK",
+    "summary": "GitHub-репозиторий omaralisql/Claude-Zeroclaw-Nexus (★50): набор «ZeroClaw Pro 2026» — AI-мультитул и CLI-роутер для субагентов на Claude SDK. Маршрутизирует вызовы и инструменты между субагентами из командной строки.",
+    "details": "",
+    "tags": [
+      "subagents"
+    ],
+    "source_url": "https://github.com/omaralisql/Claude-Zeroclaw-Nexus",
+    "source_platform": "github",
+    "author": "omaralisql",
+    "published_at": "2026-06-27",
+    "confidence": "low"
+  },
+  {
+    "id": "faa965705097",
+    "date_found": "2026-06-28",
+    "title": "Adrafinil: держит Mac с закрытой крышкой включённым только пока работают агенты",
+    "summary": "Show HN (7 баллов, 2 комментария): утилита kageroumado/adrafinil не даёт MacBook с закрытой крышкой засыпать, но только на время работы агентов. Полезно при длительных фоновых запусках кодинг-агентов.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/kageroumado/adrafinil",
+    "source_platform": "hn",
+    "author": "kageroumado",
+    "published_at": "2026-06-27",
+    "confidence": "low"
+  },
+  {
+    "id": "d497d5df0c26",
+    "date_found": "2026-06-28",
+    "title": "Видео: автоматическое взаимное ревью кода между Claude и Codex",
+    "summary": "Видео на канале Gary Chen (4 951 просмотр): как настроить, чтобы Claude и Codex автоматически проверяли код друг друга и ловили баги в сгенерированном ИИ коде. Связка двух агентов для перекрёстного ревью.",
+    "details": "",
+    "tags": [
+      "hooks"
+    ],
+    "source_url": "https://www.youtube.com/watch?v=xzrvAERmvRk",
+    "source_platform": "youtube",
+    "author": "Gary Chen",
+    "published_at": "2026-06-27",
+    "confidence": "low"
+  },
+  {
+    "id": "6cfbd9866941",
+    "date_found": "2026-06-28",
+    "title": "itlackey/akm: пакетный менеджер для скиллов, команд, инструментов и знаний ИИ-агентов",
+    "summary": "GitHub-репозиторий itlackey/akm (★47): Agent Kit Manager — пакетный менеджер для скиллов, команд, инструментов и знаний ИИ-агентов. Позволяет устанавливать и обновлять расширения агента как пакеты.",
+    "details": "",
+    "tags": [
+      "mcp",
+      "skills"
+    ],
+    "source_url": "https://github.com/itlackey/akm",
+    "source_platform": "github",
+    "author": "itlackey",
+    "published_at": "2026-06-27",
+    "confidence": "low"
+  },
+  {
+    "id": "a4e56975b691",
+    "date_found": "2026-06-28",
+    "title": "Как Boris Cherny использует Claude Code",
+    "summary": "Show HN (3 балла): сайт-разбор того, как Boris Cherny (создатель Claude Code) сам работает с инструментом. Подборка его рабочих приёмов и подходов.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://howborisusesclaudecode.com",
+    "source_platform": "hn",
+    "author": "eustoria",
+    "published_at": "2026-06-27",
+    "confidence": "low"
+  },
+  {
+    "id": "1703db1de5e7",
+    "date_found": "2026-06-28",
+    "title": "Видео: 5 «незаконных» скиллов Claude Code",
+    "summary": "Видео на канале AI adventurer (2 809 просмотров): обзор пяти нестандартных и неочевидных скиллов для Claude Code. Подборка приёмов, расширяющих возможности агента.",
+    "details": "",
+    "tags": [
+      "skills"
+    ],
+    "source_url": "https://www.youtube.com/watch?v=0qY7o6MCGfc",
+    "source_platform": "youtube",
+    "author": "AI adventurer",
+    "published_at": "2026-06-27",
+    "confidence": "low"
+  },
+  {
+    "id": "c0161a3a6958",
+    "date_found": "2026-06-28",
+    "title": "taazkareem/clickup-mcp-server: интеграция ClickUp с ИИ через MCP",
+    "summary": "GitHub-репозиторий taazkareem/clickup-mcp-server (★43): MCP-сервер, подключающий управление проектами ClickUp к ИИ-агентам через Model Context Protocol. Даёт агенту доступ к задачам и проектам ClickUp.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/taazkareem/clickup-mcp-server",
+    "source_platform": "github",
+    "author": "taazkareem",
+    "published_at": "2026-06-27",
+    "confidence": "low"
+  },
+  {
+    "id": "bc7e7a48b2aa",
+    "date_found": "2026-06-28",
+    "title": "AI-whisper: Claude работает лучше, когда его подстраховывает Codex",
+    "summary": "Show HN (3 балла, 2 комментария): проект AI-whisper связывает Claude и Codex так, что Codex «прикрывает спину» Claude — второй агент контролирует и подстраховывает работу первого.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://ai-creed.dev/projects/ai-whisper/",
+    "source_platform": "hn",
+    "author": "vuphanse",
+    "published_at": "2026-06-27",
+    "confidence": "low"
+  },
+  {
+    "id": "6eab28b16918",
+    "date_found": "2026-06-28",
+    "title": "Видео: тест Claude Code для 2D-анимации (shorts)",
+    "summary": "Короткое видео на канале The AI Hustle (1 809 просмотров): автор проверяет, как Claude Code справляется с задачами 2D-анимации. Быстрый практический тест возможностей агента.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.youtube.com/watch?v=M0sNk6nfrmg",
+    "source_platform": "youtube",
+    "author": "The AI Hustle",
+    "published_at": "2026-06-27",
+    "confidence": "low"
+  },
+  {
+    "id": "587dcfd73760",
+    "date_found": "2026-06-28",
+    "title": "sinzin91/search-sessions: быстрый CLI для поиска по истории сессий Claude Code",
+    "summary": "GitHub-репозиторий sinzin91/search-sessions (★33): быстрый CLI-инструмент для поиска по всей истории сессий Claude Code. Помогает находить прошлые диалоги и решения, не перебирая логи вручную.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/sinzin91/search-sessions",
+    "source_platform": "github",
+    "author": "sinzin91",
+    "published_at": "2026-06-27",
+    "confidence": "low"
+  },
+  {
+    "id": "5437d1403111",
+    "date_found": "2026-06-28",
+    "title": "Видео: 7 лучших скиллов Claude Code для дизайна сайтов и приложений",
+    "summary": "Видео на канале «Вкалывают Роботы | AI, SaaS, вайб-кодинг» (1 539 просмотров): подборка семи скиллов Claude Code, полезных для дизайна веб-сайтов и приложений.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://www.youtube.com/watch?v=Dp7HaDgtsEA",
+    "source_platform": "youtube",
+    "author": "Вкалывают Роботы | AI, SaaS, вайб-кодинг",
+    "published_at": "2026-06-27",
+    "confidence": "low"
+  },
+  {
+    "id": "026ad4f95dd7",
+    "date_found": "2026-06-28",
+    "title": "Pythoughts-labs/designer-skill: MCP, дающий кодинг-агенту навыки UI-дизайна",
+    "summary": "GitHub-репозиторий Pythoughts-labs/designer-skill (★20): plug-and-play MCP, который наделяет кодинг-агента способностями к UI-дизайну. Установка в одну строку, без настройки; работает с Claude Code, Codex, Cursor, VS Code и другими.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/Pythoughts-labs/designer-skill",
+    "source_platform": "github",
+    "author": "Pythoughts-labs",
+    "published_at": "2026-06-27",
+    "confidence": "low"
+  },
+  {
+    "id": "21a4e8e66455",
+    "date_found": "2026-06-28",
+    "title": "Видео: красивый сайт за 3 шага с помощью ИИ",
+    "summary": "Видео на канале Jack Roberts (1 440 просмотров): как собрать привлекательный веб-сайт всего за три шага с помощью ИИ. Пошаговая демонстрация процесса.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://www.youtube.com/watch?v=UbvWpIFXlrA",
+    "source_platform": "youtube",
+    "author": "Jack Roberts",
+    "published_at": "2026-06-27",
+    "confidence": "low"
+  },
+  {
+    "id": "84451a7f8bbc",
+    "date_found": "2026-06-28",
+    "title": "Терминальные агенты в 2026: сравнение Goose, Claude Code, OpenCode и Pi",
+    "summary": "Hacker News (4 балла): статья сравнивает четыре терминальных кодинг-агента — Goose, Claude Code, OpenCode и Pi. Обзор сильных и слабых сторон каждого инструмента.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://outofcontext.dev/blog/goose-claude-code-opencode-pi/",
+    "source_platform": "hn",
+    "author": "leianixcheese",
+    "published_at": "2026-06-26",
+    "confidence": "low"
+  },
+  {
+    "id": "0c2d75b37a41",
+    "date_found": "2026-06-28",
+    "title": "Скилл Claude Code: проверка, читают ли сайт ИИ-краулеры",
+    "summary": "Hacker News (4 балла): автор сделал скилл для Claude Code (репозиторий MerqryLabs/ai-crawler-visibility), который проверяет, могут ли ИИ-краулеры читать ваш сайт. Полезно для оценки видимости сайта в ИИ-поиске.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/MerqryLabs/ai-crawler-visibility",
+    "source_platform": "hn",
+    "author": "novaesystems",
+    "published_at": "2026-06-26",
+    "confidence": "low"
+  }
+]

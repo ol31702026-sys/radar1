@@ -25,3 +25,6 @@ secrets.json
 
 # Рабочие временные файлы (вычисления sha1, выгрузки url и т.п.)
 _tmp_*
+
+# сырые дампы постобработки (engine/postprocess_finds.py)
+radars/*/data/_raw/

@@ -1,0 +1,230 @@
+[
+  {
+    "id": "294bad98dce8",
+    "date_found": "2026-06-29",
+    "title": "ykdojo/claude-code-tips — 40+ приёмов для Claude Code",
+    "summary": "GitHub: репозиторий ykdojo/claude-code-tips (★8954). 40+ советов по работе с Claude Code, от базовых до продвинутых: кастомный скрипт status line и запуск Claude Code в контейнере. Включает плагин dx — скиллы для повседневных дев-задач.",
+    "details": "",
+    "tags": [
+      "skills",
+      "workflows",
+      "tips"
+    ],
+    "source_url": "https://github.com/ykdojo/claude-code-tips",
+    "source_platform": "github",
+    "author": "ykdojo",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "064435cfcb3b",
+    "date_found": "2026-06-29",
+    "title": "Claude Code для второго мнения по МРТ",
+    "summary": "Hacker News: «Я использовал Claude Code, чтобы получить второе мнение по своему МРТ» — 212 баллов, 318 комментариев. Разбор личного опыта применения Opus к расшифровке снимка.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://antoine.fi/mri-analysis-using-claude-code-opus",
+    "source_platform": "hn",
+    "author": "engmarketer",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "3ff061864763",
+    "date_found": "2026-06-29",
+    "title": "Как пользоваться Claude Code и Codex бесплатно через FreeModel.dev",
+    "summary": "Dev.to: «Как использовать Claude Code и OpenAI Codex бесплатно с FreeModel.dev» — 5 реакций. Гайд про бесплатный доступ к моделям. Теги: ai, claude, codex, free.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://dev.to/emmo00/how-to-use-claude-code-and-openai-codex-for-free-with-freemodeldev-2e9b",
+    "source_platform": "blog",
+    "author": "emmo00",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "ffaca82255a5",
+    "date_found": "2026-06-29",
+    "title": "averatec0773/beatos — локальная библиотека битов для продюсеров с AI-агентом",
+    "summary": "GitHub: репозиторий averatec0773/beatos (★26). Local-first библиотека битов для продюсеров: каталог, анализ BPM/тональности, лицензионные тарифы и PDF, экспорт тегированного MP3 и loopkit, полуавтоматическая публикация на площадках. Чат с каталогом через встроенный AI-агент (Claude · ChatGPT · DeepSeek) или подключение к любому MCP-клиенту. Desktop + web.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/averatec0773/beatos",
+    "source_platform": "github",
+    "author": "averatec0773",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "a03259c77b87",
+    "date_found": "2026-06-29",
+    "title": "Show HN: Engye — передача файлов между устройствами по QR-коду",
+    "summary": "Hacker News: «Show HN: Engye — передача файлов между любыми двумя устройствами сканированием QR-кода» — 12 баллов, 2 комментария.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://engye.fuzzyworld.net/",
+    "source_platform": "hn",
+    "author": "psafronov",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "5d04ce4a2751",
+    "date_found": "2026-06-29",
+    "title": "MoonLadderStudios/MoonMind — безопасный и наблюдаемый запуск Claude Code и Codex",
+    "summary": "GitHub: репозиторий MoonLadderStudios/MoonMind (★11). Запуск Claude Code и Codex с повышенной безопасностью, отказоустойчивостью и наблюдаемостью.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/MoonLadderStudios/MoonMind",
+    "source_platform": "github",
+    "author": "MoonLadderStudios",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "276dc31c2505",
+    "date_found": "2026-06-29",
+    "title": "Show HN: рендерер QR-кодов в виде шрифта TrueType",
+    "summary": "Hacker News: «Show HN: рендерер QR-кодов внутри TrueType-шрифта» — 7 баллов, 2 комментария.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://qr.jim.sh/",
+    "source_platform": "hn",
+    "author": "foodevl",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "4b1c0b0bc79c",
+    "date_found": "2026-06-29",
+    "title": "Show HN: Better Graphs — отучить агентов от убогих графиков Matplotlib",
+    "summary": "Hacker News: «Show HN: Better Graphs — научить агентов перестать делать примитивные графики на Matplotlib» — 6 баллов, 1 комментарий.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://temataro.github.io/better-graphs/",
+    "source_platform": "hn",
+    "author": "tem_alThor",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "ea504fa8963a",
+    "date_found": "2026-06-29",
+    "title": "Набор для академического письма в Claude Code",
+    "summary": "Hacker News: «Academic-writing kit для Claude Code» (репозиторий josefslerka/study-kit) — 5 баллов, 0 комментариев. Комплект для работы с академическими текстами в Claude Code.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/josefslerka/study-kit",
+    "source_platform": "hn",
+    "author": "josefslerka",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "b06166b71b29",
+    "date_found": "2026-06-29",
+    "title": "Новые модели Claude тратят больше токенов, но дешевле на решённую задачу",
+    "summary": "Hacker News: «Новые модели Claude используют больше токенов, но обходятся дешевле в пересчёте на решённую задачу» — 4 балла, 0 комментариев. Сравнение моделей в блоге SigNoz.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://signoz.io/blog/claude-code-model-comparison/",
+    "source_platform": "hn",
+    "author": "gkarthi2800",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "e7edc168ea58",
+    "date_found": "2026-06-29",
+    "title": "Как пользоваться Claude Code: полный гайд для новичка (2026)",
+    "summary": "Hacker News: «Как использовать Claude Code: полное руководство для начинающих (2026)» — 3 балла, 0 комментариев.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://dest.host/b/how-to-use-claude-code/",
+    "source_platform": "hn",
+    "author": "snorbleck",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "90900b06c3d2",
+    "date_found": "2026-06-29",
+    "title": "Claude Code превратил одного инженера в трёх — теперь нужны PM",
+    "summary": "Hacker News: «Claude Code превратил каждого инженера в трёх. Теперь компаниям нужно больше продакт-менеджеров» — 3 балла, 0 комментариев. Статья VentureBeat о сдвиге в потребности к продуктовому мышлению.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://venturebeat.com/infrastructure/claude-code-turned-every-engineer-into-three-now-companies-need-more-product-thinkers",
+    "source_platform": "hn",
+    "author": "champagnepapi",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "7b7cd8725902",
+    "date_found": "2026-06-29",
+    "title": "Show HN: Claudete — управление легионом инстансов Claude Code и шеллов",
+    "summary": "Hacker News: «Show HN: Claudete — командуй легионом инстансов Claude Code и шеллов» — 3 балла, 4 комментария. Инструмент для оркестрации множества параллельных агентов.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://claudete.co",
+    "source_platform": "hn",
+    "author": "morion4000",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "ddfbc2fc95ce",
+    "date_found": "2026-06-29",
+    "title": "Show HN: Caliper — тестирование надёжности скиллов Claude Code и Codex по pass@k",
+    "summary": "Hacker News: «Show HN: Caliper — тестирование надёжности скиллов Claude Code и Codex по метрике pass@k» (репозиторий edonadei/caliper) — 2 балла, 1 комментарий.",
+    "details": "",
+    "tags": [
+      "skills",
+      "testing"
+    ],
+    "source_url": "https://github.com/edonadei/caliper",
+    "source_platform": "hn",
+    "author": "edonadei",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "d6ec332d6de7",
+    "date_found": "2026-06-29",
+    "title": "Уроки разработки SQLite с помощью LLM",
+    "summary": "Hacker News: «Уроки, извлечённые при создании SQLite с помощью LLM» — 2 балла, 0 комментариев. Статья на Medium об эффективной разработке с Claude и Codex.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://medium.com/@sharvanath/effective-software-engineering-with-claude-codex-bf39f296b233",
+    "source_platform": "hn",
+    "author": "sharva",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  }
+]

@@ -31,9 +31,14 @@ function saveSaved() { localStorage.setItem(lsKey("saved"), JSON.stringify(state
 // Берётся из <meta name="data-root">; локально "../../", на деплое — "".
 const DATA_ROOT = (document.querySelector('meta[name="data-root"]')?.content ?? "").trim();
 const dataPath = (p) => DATA_ROOT + p;
+// Cache-buster: уникален на каждую загрузку страницы. Данные (finds/manifest)
+// грузятся без версии в URL, и при file://-кэше браузер мог отдавать старый JSON
+// даже с no-store. Параметр ?_= гарантированно заставляет взять свежий файл.
+const NOCACHE = `_=${Date.now()}`;
+const bust = (p) => p + (p.includes("?") ? "&" : "?") + NOCACHE;
 
 async function getJSON(path) {
-  const res = await fetch(dataPath(path), { cache: "no-store" });
+  const res = await fetch(bust(dataPath(path)), { cache: "no-store" });
   if (!res.ok) throw new Error(`${path}: ${res.status}`);
   return res.json();
 }

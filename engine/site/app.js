@@ -171,11 +171,20 @@ function starHtml(id) {
   return s;
 }
 
+// Вытащить блок «Зачем» из details (markdown: «**Зачем.** ... » до следующего «**»)
+function whyFromDetails(details) {
+  if (!details) return "";
+  const m = details.match(/\*\*Зачем\.\*\*\s*([\s\S]*?)(?:\n\s*\*\*|$)/);
+  return m ? m[1].trim() : "";
+}
+
 function cardHtml(f) {
   const isSaved = !!state.saved[f.id];
+  const why = whyFromDetails(f.details);
   return `<article class="card" data-id="${f.id}">
     <h3 data-open="${f.id}">${esc(f.title)}</h3>
     <p class="anons">${esc(f.summary)}</p>
+    ${why ? `<p class="why"><strong>Зачем.</strong> ${esc(why)}</p>` : ""}
     <div class="meta">
       <span class="date" title="дата публикации">${dateLabel(f)}</span>
       ${f.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}

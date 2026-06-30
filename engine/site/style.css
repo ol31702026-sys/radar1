@@ -269,7 +269,9 @@ button.primary:active { transform: translatey(2px); box-shadow: 0 1px 0 var(--co
   transition: color .15s;
 }
 .card h3:hover { color: var(--brand); }
-.card .anons { margin: 0 0 14px; color: var(--ink-soft); }
+.card .anons { margin: 0 0 10px; color: var(--ink-soft); }
+.card .why { margin: 0 0 14px; padding: 8px 10px; background: var(--brand-soft); border-left: 3px solid var(--brand); border-radius: var(--radius-s); font-size: .94rem; }
+.card .why strong { color: var(--brand-deep); }
 
 .card .meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: .8rem; }
 .tag {

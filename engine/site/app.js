@@ -67,9 +67,14 @@ async function init() {
 
   bindEvents();
 
-  // восстановить последний выбранный радар, если он ещё есть в манифесте
+  // восстановить последний выбранный радар; иначе — claude-code по умолчанию
+  // (а не алфавитно первый business-hits), иначе первый в манифесте.
+  const DEFAULT_RADAR = "claude-code";
   const remembered = localStorage.getItem(LAST_RADAR_KEY);
-  const start = manifest.radars.find((r) => r.slug === remembered) || manifest.radars[0];
+  const start =
+    manifest.radars.find((r) => r.slug === remembered) ||
+    manifest.radars.find((r) => r.slug === DEFAULT_RADAR) ||
+    manifest.radars[0];
   radarSel.value = start.slug;
   await selectRadar(start.slug);
 }

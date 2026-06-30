@@ -1,0 +1,228 @@
+[
+  {
+    "id": "7e12207576fb",
+    "date_found": "2026-06-30",
+    "title": "teng-lin/notebooklm-py — неофициальный Python-API для Google NotebookLM",
+    "summary": "GitHub: репозиторий teng-lin/notebooklm-py (★16988). Неофициальный Python-API и agentic-скилл для Google NotebookLM: полный программный доступ к функциям NotebookLM (в том числе тем, которых нет в веб-интерфейсе) через Python, CLI и AI-агентов — Claude Code, Codex, OpenClaw.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/teng-lin/notebooklm-py",
+    "source_platform": "github",
+    "author": "teng-lin",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "4043a3fc8a2c",
+    "date_found": "2026-06-30",
+    "title": "Памяти модели не нужно — нужен контекст ситуации",
+    "summary": "Dev.to: статья «The Model Does Not Need Memory. The Situation Does.» (37 реакций). Тезис: модели важна не память сама по себе, а контекст текущей ситуации. Теги: ai, rag, mcp, llm.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://dev.to/marcosomma/the-model-does-not-need-memory-the-situation-does-196g",
+    "source_platform": "blog",
+    "author": "marcosomma",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "39988d2a3e51",
+    "date_found": "2026-06-30",
+    "title": "Show HN: ScreenMind — vision-модель на каждом скриншоте локально",
+    "summary": "Hacker News (Show HN): проект ScreenMind (ayushh0110/ScreenMind) — запуск vision-модели на каждом скриншоте прямо на устройстве, без отправки в облако. 17 баллов, 3 комментария.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/ayushh0110/ScreenMind/blob/main/README.md",
+    "source_platform": "hn",
+    "author": "alexkarpathy",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "661ec9eaad59",
+    "date_found": "2026-06-30",
+    "title": "mohitagw15856/pm-claude-skills — 313 готовых Agent Skills для продактов",
+    "summary": "GitHub: репозиторий mohitagw15856/pm-claude-skills (★1079). 313 профессиональных Agent Skills (PRD, запуски, комплаенс, резюме и др.) для Claude, ChatGPT, Gemini, Cursor и Codex; есть в официальном каталоге плагинов Anthropic. Можно попробовать в браузере бесплатно или подключить через 'npx pm-claude-skills add'.",
+    "details": "",
+    "tags": [
+      "mcp",
+      "skills"
+    ],
+    "source_url": "https://github.com/mohitagw15856/pm-claude-skills",
+    "source_platform": "github",
+    "author": "mohitagw15856",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "323fc780e176",
+    "date_found": "2026-06-30",
+    "title": "Как собрать MCP-сервер на Flama",
+    "summary": "Dev.to: туториал «Building an MCP Server with Flama» (11 реакций). Пошаговая сборка MCP-сервера на Python-фреймворке Flama. Теги: ai, llm, python, mcp.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://dev.to/vortico/building-an-mcp-server-with-flama-2ad9",
+    "source_platform": "blog",
+    "author": "vortico",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "12153172b9bf",
+    "date_found": "2026-06-30",
+    "title": "Show HN: off-grid-ai — чат, генерация картинок, vision и голос офлайн на Mac",
+    "summary": "Hacker News (Show HN): проект off-grid-ai — локальный запуск AI-чата, генерации изображений, vision и голоса офлайн на Mac, без облака. 10 баллов, 1 комментарий.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/off-grid-ai",
+    "source_platform": "hn",
+    "author": "olie_h",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "6fb0413f54a1",
+    "date_found": "2026-06-30",
+    "title": "samvallad33/vestige — когнитивная память для AI-агентов на Rust",
+    "summary": "GitHub: репозиторий samvallad33/vestige (★565). Когнитивная память для AI-агентов: интервальное повторение FSRS-6, модули Brain, 3D-дашборд — всё в одном небольшом Rust-бинарнике. MCP-сервер для Claude, Cursor, VS Code, Xcode, JetBrains.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/samvallad33/vestige",
+    "source_platform": "github",
+    "author": "samvallad33",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "82a209556c78",
+    "date_found": "2026-06-30",
+    "title": "Бесплатный браузерный инструмент оценки безопасности MCP-конфигурации",
+    "summary": "Dev.to: автор сделал бесплатный браузерный инструмент, который оценивает безопасность вашей MCP-конфигурации («I built a free browser tool that scores your MCP setup for security», 2 реакции). Теги: mcp, ai, security, opensource.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://dev.to/alih552/i-built-a-free-browser-tool-that-scores-your-mcp-setup-for-security-3jo0",
+    "source_platform": "blog",
+    "author": "alih552",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "d62ad9742907",
+    "date_found": "2026-06-30",
+    "title": "Show HN: Reference MCP — поиск по прошлым сессиям соседних AI-агентов",
+    "summary": "Hacker News (Show HN): Reference MCP (kuberwastaken/reference) — MCP-сервер, позволяющий AI-агентам искать по прошлым сессиям друг друга. 5 баллов, 0 комментариев.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/kuberwastaken/reference",
+    "source_platform": "hn",
+    "author": "kuberwastaken",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "6f3f52f1508d",
+    "date_found": "2026-06-30",
+    "title": "Belkins/ai-dive-deep — практический playbook оператора с живыми артефактами",
+    "summary": "GitHub: репозиторий Belkins/ai-dive-deep (★471). «Vlad's Playbook» — полевое руководство оператора, где каждый артефакт живой, кликабельный и пересылаемый: 39 глав, 25 интерактивных виджетов, 3 встроенных кейса (AFC-питч и обезличенный аудит клиента). Онлайн: dive.vladyslavpodoliako.com.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/Belkins/ai-dive-deep",
+    "source_platform": "github",
+    "author": "Belkins",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "c95fb9ffc85d",
+    "date_found": "2026-06-30",
+    "title": "Show HN: agent-swarm — open-source-альтернатива Claude Tag",
+    "summary": "Hacker News (Show HN): agent-swarm.dev — open-source-альтернатива Claude Tag. 3 балла, 0 комментариев.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.agent-swarm.dev",
+    "source_platform": "hn",
+    "author": "tarasyarema",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "e3980f6633aa",
+    "date_found": "2026-06-30",
+    "title": "ruvnet/metaharness — мета-харнесс для создания своих agent-харнессов",
+    "summary": "GitHub: репозиторий ruvnet/metaharness (★344). Мета-харнесс для AI-агентов: позволяет собрать собственный брендированный agent-харнесс со своим npx CLI, MCP-сервером, памятью, циклом обучения и подписанными релизами. Работает с Claude Code, Codex, pi.dev, Hermes, OpenClaw и RVM (аппаратно-изолированный sandbox).",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/ruvnet/metaharness",
+    "source_platform": "github",
+    "author": "ruvnet",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "95c78b8ed39c",
+    "date_found": "2026-06-30",
+    "title": "Show HN: Brain.md — постоянная память для кодинг-агентов",
+    "summary": "Hacker News (Show HN): Brain.md (mindmuxai/brain.md) — слой постоянной памяти для кодинг-агентов. 3 балла, 0 комментариев.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/mindmuxai/brain.md",
+    "source_platform": "hn",
+    "author": "sunnygao",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "27e9d562b4e8",
+    "date_found": "2026-06-30",
+    "title": "archcore-ai/plugin — плагин для context engineering в Claude Code и Cursor",
+    "summary": "GitHub: репозиторий archcore-ai/plugin (★48). Плагин для context engineering в Claude Code, Cursor и Codex, построенный поверх Archcore CLI.",
+    "details": "",
+    "tags": [
+      "subagents"
+    ],
+    "source_url": "https://github.com/archcore-ai/plugin",
+    "source_platform": "github",
+    "author": "archcore-ai",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "311fde661f9a",
+    "date_found": "2026-06-30",
+    "title": "Show HN: TypeScript7 LSP — плагин Claude Code",
+    "summary": "Hacker News (Show HN): TypeScript7 LSP (mjn298/ts7-lsp-plugin) — плагин для Claude Code на базе LSP для TypeScript7. 2 балла, 0 комментариев.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/mjn298/ts7-lsp-plugin/tree/main",
+    "source_platform": "hn",
+    "author": "seedlessmike",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  }
+]

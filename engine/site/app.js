@@ -58,12 +58,16 @@ async function init() {
   state.manifest = manifest;
 
   // селектор тем (показываем всегда; при одном радаре он просто не мешает)
+  // Корневая деплой-обёртка index.html может НЕ содержать этот элемент —
+  // тогда пропускаем (иначе весь init падал бы на null.innerHTML → пустой экран).
   const radarSel = document.getElementById("radar-select");
-  radarSel.innerHTML = manifest.radars
-    .map((r) => `<option value="${r.slug}">${r.title}</option>`)
-    .join("");
-  radarSel.style.display = manifest.radars.length > 1 ? "" : "none";
-  radarSel.addEventListener("change", () => selectRadar(radarSel.value));
+  if (radarSel) {
+    radarSel.innerHTML = manifest.radars
+      .map((r) => `<option value="${r.slug}">${r.title}</option>`)
+      .join("");
+    radarSel.style.display = manifest.radars.length > 1 ? "" : "none";
+    radarSel.addEventListener("change", () => selectRadar(radarSel.value));
+  }
 
   bindEvents();
 
@@ -77,7 +81,7 @@ async function init() {
     manifest.radars.find((r) => r.slug === remembered) ||
     manifest.radars.find((r) => r.slug === DEFAULT_RADAR) ||
     manifest.radars[0];
-  radarSel.value = start.slug;
+  if (radarSel) radarSel.value = start.slug;
   await selectRadar(start.slug);
 }
 

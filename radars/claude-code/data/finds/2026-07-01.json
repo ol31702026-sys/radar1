@@ -1,0 +1,232 @@
+[
+  {
+    "id": "dc57a9fe5a9f",
+    "date_found": "2026-07-01",
+    "title": "Пользователи Claude Code жалуются, что их записи чата таинственным образом уничтожаются",
+    "summary": "7 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.theregister.com/ai-and-ml/2026/06/30/claude-code-users-complain-their-chat-records-are-being-mysteriously-wiped-out/5264673",
+    "source_platform": "hn",
+    "author": "jnord",
+    "published_at": "2026-07-01",
+    "confidence": "low"
+  },
+  {
+    "id": "47fc851daf2f",
+    "date_found": "2026-07-01",
+    "title": "igorjs/pragmatic-claude — Настройка личного Claude Code: лаунчер, обработчики сеансов, настраиваемая системная подсказка, навыки, команды косой черты и статусли...",
+    "summary": "Персональная настройка Claude Code: средство запуска, обработчики сеанса, настраиваемая системная подсказка, навыки, команды косой черты и строка состояния. Установка однострочного завитка. ★0",
+    "details": "",
+    "tags": [
+      "hooks",
+      "skills",
+      "slash-commands"
+    ],
+    "source_url": "https://github.com/igorjs/pragmatic-claude",
+    "source_platform": "github",
+    "author": "igorjs",
+    "published_at": "2026-07-01",
+    "confidence": "low"
+  },
+  {
+    "id": "b6617fc88cfe",
+    "date_found": "2026-07-01",
+    "title": "60 навыков ИИ, встроенных в одну исследовательскую среду #ai #claude #science",
+    "summary": "Видео на YouTube от DIY Smart Code про Claude Code.",
+    "details": "",
+    "tags": [
+      "skills"
+    ],
+    "source_url": "https://www.youtube.com/shorts/j0mDHa3TH6k",
+    "source_platform": "youtube",
+    "author": "DIY Smart Code",
+    "published_at": "2026-07-01",
+    "confidence": "low"
+  },
+  {
+    "id": "4aec04aa022c",
+    "date_found": "2026-07-01",
+    "title": "Программное обеспечение 9-го уровня/Clodex — ↔ Claude Codex - Dual-Agent R&D",
+    "summary": "↔ Claude Codex - Dual-Agent R&D ★12",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/9thLevelSoftware/Clodex",
+    "source_platform": "github",
+    "author": "9thLevelSoftware",
+    "published_at": "2026-07-01",
+    "confidence": "low"
+  },
+  {
+    "id": "4012fee7db34",
+    "date_found": "2026-07-01",
+    "title": "colbymchenry/codegraph — Предварительно проиндексированный граф знаний кода, автоматическая синхронизация при изменении кода, для Claude Code, Codex, Gemini, Cursor, OpenCode, An...",
+    "summary": "Предварительно проиндексированный граф знаний кода, автоматическая синхронизация при изменении кода, для Claude Code, Codex, Gemini, Cursor, OpenCode, AntiGravity, Kiro и Hermes Agent — меньше токенов, меньше вызовов инструментов, 100% локальный ★56665",
+    "details": "",
+    "tags": [
+      "cost-tokens",
+      "ide-integration"
+    ],
+    "source_url": "https://github.com/colbymchenry/codegraph",
+    "source_platform": "github",
+    "author": "colbymchenry",
+    "published_at": "2026-07-01",
+    "confidence": "low"
+  },
+  {
+    "id": "259ed1347cc0",
+    "date_found": "2026-07-01",
+    "title": "IoIqq/ftb-quests-skills — навык Claude Code для создания файлов конфигурации квестов FTB (современный JSON5)",
+    "summary": "Навык Claude Code для создания файлов конфигурации квестов FTB (современный JSON5) ★1",
+    "details": "",
+    "tags": [
+      "skills"
+    ],
+    "source_url": "https://github.com/IoIqq/ftb-quests-skills",
+    "source_platform": "github",
+    "author": "IoIqq",
+    "published_at": "2026-07-01",
+    "confidence": "low"
+  },
+  {
+    "id": "1cd1b59a6382",
+    "date_found": "2026-07-01",
+    "title": "bertbertov/claude-stack — рабочая конфигурация Claude Code от сольного строителя, который отправляет — 156 навыков, 6 крючков, шаблон маршрутизации проводников, авто...",
+    "summary": "Рабочая конфигурация Claude Code от сольного строителя, который отправляет — 156 навыков, 6 крючков, шаблон маршрутизации проводников, часы с автоматической дедупликацией. ★0",
+    "details": "",
+    "tags": [
+      "hooks",
+      "skills",
+      "automation"
+    ],
+    "source_url": "https://github.com/bertbertov/claude-stack",
+    "source_platform": "github",
+    "author": "bertbertov",
+    "published_at": "2026-07-01",
+    "confidence": "low"
+  },
+  {
+    "id": "32bdd2273d22",
+    "date_found": "2026-07-01",
+    "title": "Claude Code только что стал в 5 раз дороже",
+    "summary": "54 баллов, 7 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.vincentschmalbach.com/claude-code-quietly-looks-5x-more-expensive/",
+    "source_platform": "hn",
+    "author": "vincent_s",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  },
+  {
+    "id": "e989aa1ec87d",
+    "date_found": "2026-07-01",
+    "title": "Claude Sonnet 5 – результаты теста",
+    "summary": "40 баллов, 17 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://artificialanalysis.ai/models/claude-sonnet-5",
+    "source_platform": "hn",
+    "author": "lucamark",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  },
+  {
+    "id": "a00788e1709c",
+    "date_found": "2026-07-01",
+    "title": "Anthropic встроила скрытый шпионский код в Claude Code",
+    "summary": "54 баллов, 11 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://twitter.com/IntCyberDigest/status/2071971609183678544",
+    "source_platform": "hn",
+    "author": "kyokoL",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  },
+  {
+    "id": "4ff04f0b80c9",
+    "date_found": "2026-07-01",
+    "title": "Claude Desktop теперь доступен на Linux (в бета-версии)",
+    "summary": "49 баллов, 6 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://code.claude.com/docs/en/desktop-linux",
+    "source_platform": "hn",
+    "author": "adocomplete",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  },
+  {
+    "id": "9f61ba878ff5",
+    "date_found": "2026-07-01",
+    "title": "Anthropic только что показал, как мир использует Claude #anthropic #claude #aidata",
+    "summary": "Видео на YouTube от DIY Smart Code про Claude Code.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.youtube.com/shorts/RypmHiOknv8",
+    "source_platform": "youtube",
+    "author": "DIY Smart Code",
+    "published_at": "2026-06-29",
+    "confidence": "low"
+  },
+  {
+    "id": "86aac9cf357c",
+    "date_found": "2026-07-01",
+    "title": "Ornith 1.0 бьет Claude Опуса 4.7 — и это бесплатно #aimodel #coding",
+    "summary": "Видео на YouTube от DIY Smart Code про Claude Code.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.youtube.com/shorts/8Cw1jX6o9w0",
+    "source_platform": "youtube",
+    "author": "DIY Smart Code",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "66285d77f84e",
+    "date_found": "2026-07-01",
+    "title": "Claude Routines: запускайте агентов ИИ по расписанию (без няни)",
+    "summary": "Видео на YouTube от Sabrina Ramonov 🍄 про Claude Code.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.youtube.com/shorts/4UIQBz36Fhc",
+    "source_platform": "youtube",
+    "author": "Sabrina Ramonov 🍄",
+    "published_at": "2026-06-28",
+    "confidence": "low"
+  },
+  {
+    "id": "51afe308b4ad",
+    "date_found": "2026-07-01",
+    "title": "5 команд Claude Code Slash, которые вы должны использовать",
+    "summary": "Видео на YouTube от Sabrina Ramonov 🍄 про Claude Code.",
+    "details": "",
+    "tags": [
+      "slash-commands"
+    ],
+    "source_url": "https://www.youtube.com/shorts/Xv4NvXtjYSI",
+    "source_platform": "youtube",
+    "author": "Sabrina Ramonov 🍄",
+    "published_at": "2026-06-25",
+    "confidence": "low"
+  }
+]

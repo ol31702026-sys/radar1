@@ -28,3 +28,7 @@ _tmp_*
 
 # сырые дампы постобработки (engine/postprocess_finds.py)
 radars/*/data/_raw/
+
+# python bytecode
+__pycache__/
+*.pyc

@@ -1,0 +1,65 @@
+name: Daily Radar collect
+
+# Ежедневный автосбор находок для радара claude-code — полностью в облаке GitHub,
+# без локального ПК и без API-ключей. Живёт в самом GitHub, имеет write-доступ
+# к репозиторию (GITHUB_TOKEN), поэтому надёжно коммитит и пушит — в отличие от
+# облачного routine claude.ai, который не мог пушить.
+
+on:
+  schedule:
+    # 21:10 UTC = 00:10 МСК. Не ставим 21:00 ровно — минутные метки перегружены.
+    - cron: "10 21 * * *"
+  workflow_dispatch: {}   # кнопка «Run workflow» для ручного запуска/теста
+
+# Нужно право писать в репозиторий (коммит + пуш результата)
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-radar
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compute date (UTC)
+        id: d
+        run: echo "date=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+
+      - name: Collect candidates (keyless)
+        run: python3 engine/collect_keyless.py claude-code "${{ steps.d.outputs.date }}"
+
+      - name: Dedup + trim to daily_target
+        run: python3 engine/postprocess_finds.py claude-code "${{ steps.d.outputs.date }}"
+
+      - name: Translate to Russian
+        run: python3 engine/translate_finds.py claude-code "${{ steps.d.outputs.date }}"
+
+      - name: Build digest
+        run: python3 engine/build_digest.py claude-code "${{ steps.d.outputs.date }}"
+
+      - name: Rebuild manifest
+        run: python3 engine/build_manifest.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name  "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          git add radars/claude-code/data/ manifest.json
+          if git diff --cached --quiet; then
+            echo "Нет изменений — коммит не нужен."
+          else
+            git commit -m "Находки за ${{ steps.d.outputs.date }} (авто, GitHub Actions)"
+            git push
+          fi

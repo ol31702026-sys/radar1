@@ -1,31 +1,31 @@
 [
   {
-    "id": "7110f88a2cf5",
+    "id": "4d75c289460a",
     "date_found": "2026-07-01",
-    "title": "Навык рекурсивного исследования ИИ для Claude Code/ OpenClaw / Codex",
-    "summary": "3 баллов, 0 комментов на Hacker News.",
+    "title": "ZCode: Claude Code от создателей GLM",
+    "summary": "264 баллов, 12 комментов на Hacker News.",
     "details": "",
     "tags": [
-      "skills"
+      "tips"
     ],
-    "source_url": "https://github.com/Toadoum/ai-research-skill",
+    "source_url": "https://zcode.z.ai/cn",
     "source_platform": "hn",
-    "author": "Toadoum",
+    "author": "handfuloflight",
     "published_at": "2026-07-01",
     "confidence": "low"
   },
   {
-    "id": "d2ed9ee91602",
+    "id": "aeeb7e95e326",
     "date_found": "2026-07-01",
-    "title": "zhoucoolboy/vision-relay-mcp — 🖼️ однократный MCP-сервер, который дает зрение Claude Code — ретранслирует локальные образы в Anthropic/OpenAI-compatibl…",
-    "summary": "🖼️ Однократный сервер MCP, который дает видение Claude Code — ретранслирует локальные образы в API-интерфейсы, совместимые с Anthropic/OpenAI. ★0",
+    "title": "jannajoceli/agentic-app-ecosystem — 1551 приложение на трех платформах ИИ, разделенных по модели взаимодействия. Агенты интерфейса (ChatGPT, Claude) ac…",
+    "summary": "1551 приложение на трех платформах ИИ, разделенных по модели взаимодействия. Агенты интерфейса (ChatGPT, Claude) действуют от имени пользователей через пользовательский интерфейс чата. Агенты кода (Gemini CLI) - это расширения разработчика, запускаемые с терминала. ★0",
     "details": "",
     "tags": [
-      "mcp"
+      "tips"
     ],
-    "source_url": "https://github.com/zhoucoolboy/vision-relay-mcp",
+    "source_url": "https://github.com/jannajoceli/agentic-app-ecosystem",
     "source_platform": "github",
-    "author": "zhoucoolboy",
+    "author": "jannajoceli",
     "published_at": "2026-07-01",
     "confidence": "low"
   },
@@ -45,6 +45,66 @@
     "confidence": "low"
   },
   {
+    "id": "7110f88a2cf5",
+    "date_found": "2026-07-01",
+    "title": "Навык рекурсивного исследования ИИ для Claude Code/ OpenClaw / Codex",
+    "summary": "3 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "skills"
+    ],
+    "source_url": "https://github.com/Toadoum/ai-research-skill",
+    "source_platform": "hn",
+    "author": "Toadoum",
+    "published_at": "2026-07-01",
+    "confidence": "low"
+  },
+  {
+    "id": "586ad5d7bbb2",
+    "date_found": "2026-07-01",
+    "title": "camjac251/rust-statusline — Облегченная утилита статусной строки для Claude Code - стоимость сеанса в реальном времени, использование, скорость записи, контекст и контекст Git...",
+    "summary": "Облегченная утилита статусной строки для Claude Code - стоимость сеанса в реальном времени, использование, скорость записи, контекст и контекст Git в одной строке ★1",
+    "details": "",
+    "tags": [
+      "cost-tokens"
+    ],
+    "source_url": "https://github.com/camjac251/rust-statusline",
+    "source_platform": "github",
+    "author": "camjac251",
+    "published_at": "2026-07-01",
+    "confidence": "low"
+  },
+  {
+    "id": "8ff44dd85fef",
+    "date_found": "2026-07-01",
+    "title": "Использование сетевых пространств имен, чтобы узнать, как Claude Code очищает",
+    "summary": "3 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://patrickmccanna.net/inspecting-claude-codes-network-traffic-with-linux-namespaces-and-mitm-proxying-part-1/",
+    "source_platform": "hn",
+    "author": "0o_MrPatrick_o0",
+    "published_at": "2026-07-01",
+    "confidence": "low"
+  },
+  {
+    "id": "ba1ff2aa12a5",
+    "date_found": "2026-07-01",
+    "title": "yadam119988/method-mosaic — Kimono AI 2026: Устанавливаемый каталог навыков Claude Code для жизненного цикла разработки Multi-Repo AI",
+    "summary": "Kimono AI 2026: Устанавливаемый каталог навыков Claude Code для жизненного цикла разработки Multi-Repo AI ★0",
+    "details": "",
+    "tags": [
+      "skills"
+    ],
+    "source_url": "https://github.com/yadam119988/method-mosaic",
+    "source_platform": "github",
+    "author": "yadam119988",
+    "published_at": "2026-07-01",
+    "confidence": "low"
+  },
+  {
     "id": "dc57a9fe5a9f",
     "date_found": "2026-07-01",
     "title": "Пользователи Claude Code жалуются, что их записи чата таинственным образом уничтожаются",
@@ -60,64 +120,33 @@
     "confidence": "low"
   },
   {
-    "id": "d012ce406f27",
+    "id": "3858ca789e6f",
     "date_found": "2026-07-01",
-    "title": "ajbarea/techne — Девять навыков Claude для рабочих процессов с несколькими репозиториями: сборки аудита, приручение CI, синхронизация↔ кода документов и сохранение репозиториев сестер в lockstep.",
-    "summary": "Девять навыков Claude для рабочих процессов с несколькими репозиториями: сборка аудита, приручение CI, синхронизация↔ кода документов и поддержание репозиториев-побратимов в состоянии lockstep. ★0",
+    "title": "ajmalaksar25/searchlight — автономный технический агент SEO и аналитики (сервер MCP): обнаруживайте, объясняйте, исправляйте в своем репозитории, развертывайте, проверяйте. Wo…",
+    "summary": "Автономный технический-SEO и аналитический агент (сервер MCP): обнаруживайте, объясняйте, исправляйте в своем репозитории, развертывайте, проверяйте. Работает с Кодексом Claude, Кодексом и любым клиентом MCP. ★0",
     "details": "",
     "tags": [
-      "skills",
-      "workflows"
+      "mcp",
+      "automation"
     ],
-    "source_url": "https://github.com/ajbarea/techne",
+    "source_url": "https://github.com/ajmalaksar25/searchlight",
     "source_platform": "github",
-    "author": "ajbarea",
+    "author": "ajmalaksar25",
     "published_at": "2026-07-01",
     "confidence": "low"
   },
   {
-    "id": "f48712eaae77",
+    "id": "49e119c22b7b",
     "date_found": "2026-07-01",
-    "title": "Spacebody/AgentDeck —、 Codex 专为 Claude 打造的额度监控、会话管理与用量分析小工具",
-    "summary": "Codex 专为 Claude、 Codex 打造的额度监控、会话管理与用量分析小工具 ★1",
+    "title": "brownm09/dev-env — Конфигурация среды разработки — Глобальные настройки Claude Code, настройка оболочки",
+    "summary": "Конфигурация среды разработки — глобальные настройки Claude Code, настройка оболочки ★0",
     "details": "",
     "tags": [
       "tips"
     ],
-    "source_url": "https://github.com/Spacebody/AgentDeck",
+    "source_url": "https://github.com/brownm09/dev-env",
     "source_platform": "github",
-    "author": "Spacebody",
-    "published_at": "2026-07-01",
-    "confidence": "low"
-  },
-  {
-    "id": "2484f7e93212",
-    "date_found": "2026-07-01",
-    "title": "apappas1129/claude-skill-hud — Минималистичный HUD для Claude Code, который показывает, какие навыки вызывал Claude во время работы над вашим PR...",
-    "summary": "Минималистичный статусный HUD для Claude Code, который показывает, какие навыки вызывал Claude во время работы над вашим подсказкой. ★0",
-    "details": "",
-    "tags": [
-      "skills",
-      "prompting"
-    ],
-    "source_url": "https://github.com/apappas1129/claude-skill-hud",
-    "source_platform": "github",
-    "author": "apappas1129",
-    "published_at": "2026-07-01",
-    "confidence": "low"
-  },
-  {
-    "id": "c52635d85c27",
-    "date_found": "2026-07-01",
-    "title": "nirmal77-nir/RAD-Claude-Agent-Toolkit — Лучшие бесплатные агенты по обзору кода ИИ 2026 – 190+ навыков и плагинов для Claude",
-    "summary": "Лучшие бесплатные агенты по обзору кода ИИ 2026 – 190+ навыков и плагинов для Claude ★1",
-    "details": "",
-    "tags": [
-      "skills"
-    ],
-    "source_url": "https://github.com/nirmal77-nir/RAD-Claude-Agent-Toolkit",
-    "source_platform": "github",
-    "author": "nirmal77-nir",
+    "author": "brownm09",
     "published_at": "2026-07-01",
     "confidence": "low"
   },
@@ -125,7 +154,7 @@
     "id": "32bdd2273d22",
     "date_found": "2026-07-01",
     "title": "Claude Code только что стал в 5 раз дороже",
-    "summary": "54 баллов, 7 комментов на Hacker News.",
+    "summary": "55 баллов, 7 комментов на Hacker News.",
     "details": "",
     "tags": [
       "tips"
@@ -133,36 +162,6 @@
     "source_url": "https://www.vincentschmalbach.com/claude-code-quietly-looks-5x-more-expensive/",
     "source_platform": "hn",
     "author": "vincent_s",
-    "published_at": "2026-06-30",
-    "confidence": "low"
-  },
-  {
-    "id": "e989aa1ec87d",
-    "date_found": "2026-07-01",
-    "title": "Claude Sonnet 5 – результаты теста",
-    "summary": "40 баллов, 17 комментов на Hacker News.",
-    "details": "",
-    "tags": [
-      "tips"
-    ],
-    "source_url": "https://artificialanalysis.ai/models/claude-sonnet-5",
-    "source_platform": "hn",
-    "author": "lucamark",
-    "published_at": "2026-06-30",
-    "confidence": "low"
-  },
-  {
-    "id": "a00788e1709c",
-    "date_found": "2026-07-01",
-    "title": "Anthropic встроила скрытый шпионский код в Claude Code",
-    "summary": "54 баллов, 11 комментов на Hacker News.",
-    "details": "",
-    "tags": [
-      "tips"
-    ],
-    "source_url": "https://twitter.com/IntCyberDigest/status/2071971609183678544",
-    "source_platform": "hn",
-    "author": "kyokoL",
     "published_at": "2026-06-30",
     "confidence": "low"
   },

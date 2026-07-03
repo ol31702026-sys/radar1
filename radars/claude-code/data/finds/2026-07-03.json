@@ -1,197 +1,230 @@
 [
   {
-    "id": "0f764e9bc764",
+    "id": "4f082f79f0d3",
     "date_found": "2026-07-03",
-    "title": "Claude Sonnet 5 — новый дефолтный модель в Claude Code (1M контекста, промо $2/$10)",
-    "summary": "С версии Claude Code 2.1.197 моделью по умолчанию стал Claude Sonnet 5: нативное окно в 1 млн токенов и качество близко к Opus 4.8, но дешевле. До 31 августа действует вводная цена $2/$10 за млн токенов.",
-    "details": "**Зачем.** Тем, кто ежедневно кодит в Claude Code и следит за балансом цена/качество: дефолт сменился, и это влияет и на поведение, и на счёт за токены.\n\n**Как.** Обновитесь до Claude Code ≥ 2.1.197 — Sonnet 5 подхватится как модель по умолчанию (в `/model` виден как дефолт). Нативный контекст 1M токенов. Поведение: adaptive thinking включён по умолчанию, ручной extended thinking теперь возвращает ошибку 400, нестандартные sampling-параметры тоже дают 400. Вводная цена $2/$10 за млн вход/выход действует до 31 августа 2026 (далее $3/$15).\n\n**Подвох.** Промо-цена временная. Ручной extended thinking больше не вызвать (только через adaptive), а привычные скрипты с кастомными sampling-параметрами сломаются на 400. Официальная новость Anthropic не акцентирует статус дефолта именно в Claude Code — это подтверждает changelog CLI.",
-    "tags": ["cost-tokens", "tips"],
-    "source_url": "https://www.anthropic.com/news/claude-sonnet-5",
-    "source_platform": "blog",
-    "author": "Anthropic",
-    "published_at": "2026-06-30",
-    "confidence": "high"
-  },
-  {
-    "id": "f9f5ed279e1a",
-    "date_found": "2026-07-03",
-    "title": "Claude Code 2.1.196: модель по умолчанию для организации, читаемые имена сессий, кликабельные вложения",
-    "summary": "Свежий официальный changelog: админы могут задать модель по умолчанию на всю организацию (видна как «Org default» в /model), сессии получают человекочитаемые имена при старте, а файлы-вложения стали кликабельными. Плюс надёжнее фоновые задачи.",
-    "details": "**Зачем.** Командам и тим-лидам: единая модель на всю орг-учётку убирает разнобой, а читаемые имена сессий и кликабельные вложения ускоряют навигацию в длинных сессиях.\n\n**Как.** Обновитесь до 2.1.196 (30 июня). Модель по умолчанию для организации выставляет админ в консоли — она показывается как «Org default»/«Role default» в `/model`, пока вы не выбрали свою. Имена сессий генерируются автоматически на старте. Отдельно улучшены надёжность фоновых агентов и обработка stream-watchdog.\n\n**Подвох.** Орг-дефолт настраивает только админ в консоли — на своей стороне глобально его не переопределить, лишь вручную в `/model`. Это точечный QoL-релиз, а не крупная фича.",
-    "tags": ["tips"],
-    "source_url": "https://code.claude.com/docs/en/changelog#2-1-196",
-    "source_platform": "docs",
-    "author": "Anthropic",
-    "published_at": "2026-06-30",
-    "confidence": "med"
-  },
-  {
-    "id": "fadc4365881b",
-    "date_found": "2026-07-03",
-    "title": "Claudoro — Pomodoro-таймер прямо в статуслайне Claude Code",
-    "summary": "Плагин встраивает таймер помодоро в статусную строку Claude Code: живой обратный отсчёт там, куда вы и так смотрите, без переключения окон. Работает локально и не тратит токены модели.",
-    "details": "**Зачем.** Тем, кто теряет счёт времени в длинных сессиях с агентом: таймер и прогресс-бар помодоро видно прямо в статуслайне, не отвлекаясь на сторонние приложения.\n\n**Как.** `npm install -g claudoro && pomo setup` (нужен Node ≥ 22), затем `pomo start [минуты]`. Есть режимы minimal/classic/full, пауза/резюм/стоп/скип и лог. Отрисовка идёт «zero model round-trips» — без обращений к API, то есть без расхода токенов.\n\n**Подвох.** Живой тик в статуслайне требует поддержки `refreshInterval` — на старых версиях Claude Code таймер не будет идти в реальном времени. Звук зависит от аудио платформы (иначе — терминальный бип). Проект ранний (v0.1.5).",
-    "tags": ["tips"],
-    "source_url": "https://github.com/emson/claudoro",
-    "source_platform": "github",
-    "author": "emson",
-    "published_at": "2026-07-01",
-    "confidence": "med"
-  },
-  {
-    "id": "47caf98b4a82",
-    "date_found": "2026-07-03",
-    "title": "Опасный баг: AskUserQuestion сам продолжает работу через 60 секунд без ответа",
-    "summary": "В Claude Code 2.1.198 инструмент AskUserQuestion по недокументированному таймауту в 60 сек сам возвращает «действуй на своё усмотрение», обходя ручное подтверждение пользователя. Регресс с 2.1.196; мейнтейнер обещал сделать поведение opt-in.",
-    "details": "**Зачем.** Всем, кто полагается на подтверждения (rules/hooks) перед важными действиями агента: молчаливый таймаут может пропустить шаг апрува и дать Claude действовать без вашего «да».\n\n**Как.** Issue #73125 (2 июля): при отсутствии ответа за 60 с инструмент отдаёт «proceed using your best judgment». Параметра таймаута в схеме нет, в changelog не упомянуто. Мейнтейнер (ThariqS) подтвердил и пообещал сделать поведение opt-in и, возможно, управляемым аргументом. Пока — держите критичные шаги за hooks с блокирующим exit-кодом, а не только за AskUserQuestion.\n\n**Подвох.** На момент репорта фикса ещё нет — поведение включено по умолчанию в 2.1.198. Для автоматизированных/долгих прогонов таймаут может «пробить» ваши гейты подтверждения.",
-    "tags": ["tips"],
-    "source_url": "https://github.com/anthropics/claude-code/issues/73125",
-    "source_platform": "github",
-    "author": "tubignaaso",
-    "published_at": "2026-07-02",
-    "confidence": "high"
-  },
-  {
-    "id": "cd472becf031",
-    "date_found": "2026-07-03",
-    "title": "claude-chat.nvim — Claude Code внутри Neovim без реимплементации",
-    "summary": "Плагин запускает настоящий CLI `claude` в терминальном сайдбаре Neovim и поднимает два MCP-сервера, синхронизирующих состояние редактора (файлы, курсор, выделение, диагностику) и мосты к LSP. Правки показываются диффом до применения.",
-    "details": "**Зачем.** Пользователям Neovim, которым нужен агент Claude Code без ухода в VS Code/JetBrains и без потери контекста редактора.\n\n**Как.** Плагин `codegik/claude-chat.nvim` (99.8% Lua) запускает реальный `claude` как дочерний процесс в терминал-буфере; поднимает WebSocket-MCP (синхронизация файлов/курсора/выделения/диагностики) и HTTP-MCP (`open_file`, мосты к LSP: definitions/references/hover/symbol search). Установка через lazy.nvim, тоггл сайдбара `<leader>ai`, отправка файла `<leader>af`; правки показываются диффом до применения. Нужен Neovim 0.10+ и `claude` в PATH; отдельный ключ не требуется.\n\n**Подвох.** Это обёртка над CLI, а не нативный GUI — всё упирается в возможности терминального Claude. Пост описывает happy-path; о крайних случаях (большие диффы, права) автор не пишет.",
-    "tags": ["ide-integration", "mcp"],
-    "source_url": "https://inacioklassmann.com/posts/claude-chat-nvim/",
-    "source_platform": "blog",
-    "author": "Inácio Klassmann",
-    "published_at": "2026-06-30",
-    "confidence": "med"
-  },
-  {
-    "id": "068da2ef0bfd",
-    "date_found": "2026-07-03",
-    "title": "Muxer — плагин-мультиплексор: дорогой оркестратор + дешёвые исполнители в Claude Code",
-    "summary": "Плагин раздаёт работу по ролям: дорогая модель (Fable) планирует, а рутину (grep, бойлерплейт, чтение логов) выполняют дешёвые Haiku/Sonnet/Opus. Показывает оценку экономии до задачи и факт после.",
-    "details": "**Зачем.** Тем, у кого премиум-модель жжёт бюджет на мелочах: разделение «планирование vs исполнение» по тирам режет счёт, не жертвуя качеством на сложных шагах.\n\n**Как.** `git clone https://github.com/DangerousYams/muxer`, затем `claude plugin marketplace add ./muxer` и `claude plugin install muxer@muxer-local`. Агенты по ролям: Scout (Haiku), Writer (Sonnet), Builder/Reviewer (Opus), Oracle (Fable). Для внешних моделей — опционально `@openai/codex`, `@google/gemini-cli`. Есть отчёт по экономии до и после задачи.\n\n**Подвох.** Роутинг «совещательный», жёсткие гарантии — только через пины моделей на агентов. Контекст премиум-модели всё равно тарифицируется по её ставке; расходы на внешние инструменты (Codex/Gemini) в отчёте не видны; цифры экономии — по прайс-листу API, не по реальному счёту. Репозиторий очень молодой.",
-    "tags": ["cost-tokens", "workflows"],
-    "source_url": "https://github.com/DangerousYams/muxer",
-    "source_platform": "github",
-    "author": "DangerousYams",
-    "published_at": "2026-07-02",
-    "confidence": "med"
-  },
-  {
-    "id": "9a59c402c053",
-    "date_found": "2026-07-03",
-    "title": "Capacitor — общая память сессий для Claude Code, Codex и других агентов",
-    "summary": "Платформа записывает «сессию за работой»: что агент пробовал, что отклонили ревьюеры и что в итоге прошло. Позволяет передавать незавершённую работу коллеге, переключаться между агентами без потери контекста и искать по прошлым решениям.",
-    "details": "**Зачем.** Командам, где знания теряются между сессиями и агентами: Capacitor превращает историю прогонов в общий ищущийся контекст и помогает на ревью видеть «почему», а не только дифф.\n\n**Как.** Шесть сценариев: расшаривание ссылки на сессию в Slack и хендофф коллеге; переключение Codex↔Claude Code без потери контекста; обогащение PR-ревью рассуждениями; авто-гайдлайны по рубрикам команды; запуск браузерных агентов из дашборда; поиск по прошлым сессиям. Заявлен бесплатный старт; работает с Claude Code, Codex, Gemini CLI.\n\n**Подвох.** Хостовые (браузерные) агенты пока доступны только для Claude Code и Codex. Это внешний SaaS — историю сессий вы отдаёте в облако провайдера; ограничения тарифов на сайте детально не расписаны.",
-    "tags": ["mcp", "workflows"],
-    "source_url": "https://capacitor.kurrent.io/",
-    "source_platform": "other",
-    "author": "Kurrent",
-    "published_at": "2026-06-30",
+    "title": "Показать HN: Сделайте свой терминальный импульс оранжевым, когда Claude Code нуждается в вводе",
+    "summary": "3 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/rickardstureborg/claude-needs-input",
+    "source_platform": "hn",
+    "author": "rstureborg",
+    "published_at": "2026-07-03",
     "confidence": "low"
   },
   {
-    "id": "9c6c9610f1c4",
+    "id": "af29d95e4cbd",
     "date_found": "2026-07-03",
-    "title": "FleetView — браузерный кокпит для десятков агентов Claude Code сразу",
-    "summary": "Локальный веб-кокпит показывает сетку реальных терминалов, в каждом — свой Claude. Когда одному нужен ваш ответ или он закончил, ячейка подсвечивается, пикает и всплывает в верхнюю панель — чтобы не пропустить ждущего агента.",
-    "details": "**Зачем.** Тем, кто гоняет «флот» агентов параллельно и теряет, какой из них ждёт подтверждения: FleetView собирает все терминалы в одном окне с умными алертами.\n\n**Как.** Спавнит реальные шеллы через `node-pty`, рендерит их сеткой на xterm.js, держит сессии в tmux (переживают рестарт/сон). Запуск: `npm install`, `npm run doctor` (проверит tmux/curl/claude), `npm run go` → откройте `http://localhost:4280`, «+ Terminal» → выберите папку, запустится `claude`. Сохраняет раскладки и списки задач.\n\n**Подвох.** Только macOS/Linux. По умолчанию слушает 127.0.0.1 и БЕЗ аутентификации — любой, кто достучится до порта, выполнит команды; наружу выставлять рискованно. После ребута живые сессии Claude не восстанавливаются — только чистые шеллы в тех же папках.",
-    "tags": ["subagents", "workflows"],
-    "source_url": "https://github.com/schoppllc/Terminalcontrol",
+    "title": "hyunhoonj/ASSC2026 — ASSC 29 (Santiago 2026) персональный спутник для сеанса — Claude Code + git",
+    "summary": "ASSC 29 (Сантьяго 2026) личная сессия - заметки компаньона — Claude Code + git ★0",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/hyunhoonj/ASSC2026",
     "source_platform": "github",
-    "author": "schoppllc",
-    "published_at": "2026-07-02",
-    "confidence": "med"
-  },
-  {
-    "id": "cdea342b3f4c",
-    "date_found": "2026-07-03",
-    "title": "Shipwright Harness — открытый автономный «доставщик» на базе Claude Code (MIT)",
-    "summary": "Оркестрирует полный цикл фичи: план (спека → очередь задач в GitHub Issues) → сборка (код, тесты, PR) → ревью (инлайн-фидбек по политике) → деплой. Есть локальный дашборд метрик без аккаунтов и секретов.",
-    "details": "**Зачем.** Командам, которым нужен конвейер «спека → PR → деплой» на своей кодовой базе с политиками ревью, а не ручное дирижирование агентом.\n\n**Как.** Установка плагина: `/plugin install shipwright@app-vitals/shipwright`. Быстрый локальный старт: `git clone https://github.com/app-vitals/shipwright.git && cd shipwright && ./scripts/quickstart.sh`; дашборд метрик на `http://localhost:3460/dashboard` в offline-режиме. Команды пайплайна: `/shipwright:prd`, `:plan-session`, `:dev-task`, `:review`, `:patch`, `:deploy`. Лицензия MIT.\n\n**Подвох.** Ранний релиз (v0.1.0). Полный стек требует Bun и go-task, а для развёртывания — Docker, tmux, PostgreSQL. Автономный деплой на своём коде — риск: нужна аккуратная настройка политик ревью.",
-    "tags": ["automation", "ci-cd", "workflows"],
-    "source_url": "https://github.com/app-vitals/shipwright",
-    "source_platform": "github",
-    "author": "app-vitals",
-    "published_at": "2026-06-30",
-    "confidence": "med"
-  },
-  {
-    "id": "a0b9c72d14d7",
-    "date_found": "2026-07-03",
-    "title": "От «вайб-кодинга» к agentic engineering: трёхфазный воркфлоу с Claude Code",
-    "summary": "Разбор, как не принимать вывод агента вслепую: структурированный промпт с критериями приёмки → план до реализации (/plan) → ревью и walkthrough (/code-review). Практический шаблон дисциплины вокруг Claude Code.",
-    "details": "**Зачем.** Разработчикам, которые хотят предсказуемого результата от агента, а не «как получится»: три фазы возвращают инженерную дисциплину в работу с Claude Code.\n\n**Как.** Фаза 1 — структурированный промпт: одна императивная задача, интент, ссылки на файлы/паттерны, ограничения, что вне scope, ожидания по тестам и проверяемые критерии приёмки. Фаза 2 — `/plan`: агент исследует код и составляет план, снимает неоднозначности до кода; согласуйте план. Фаза 3 — `/code-review` + проверка покрытия тестами + walkthrough по изменениям.\n\n**Подвох.** Это дисциплина, а не автоматика: качество зависит от того, насколько тщательно вы пишете критерии приёмки и ревьюите план. Команды `/plan` и `/code-review` должны быть доступны в вашей сборке/плагинах.",
-    "tags": ["workflows", "prompting"],
-    "source_url": "https://www.apimatic.io/blog/agentic-engineering-claude-code",
-    "source_platform": "blog",
-    "author": "Mehdi Raza Jaffery",
-    "published_at": "2026-06-29",
-    "confidence": "med"
-  },
-  {
-    "id": "3be9b45eca63",
-    "date_found": "2026-07-03",
-    "title": "VPSMaxxing — скилл, чтобы поднять Claude Code и Codex на удалённом VPS недорого",
-    "summary": "Скилл для Claude Code, который помогает настроить рабочие процессы Claude Code и Codex на удалённом VPS «без разорения» — для тех, кто хочет вынести агентов с ноутбука на постоянный сервер.",
-    "details": "**Зачем.** Тем, кто хочет гонять агентов на выделенном VPS (постоянный аптайм, ресурсы, независимость от локальной машины), но опасается расходов и сложной настройки.\n\n**Как.** Позиционируется как «скилл, который заставит Claude настроить ваши воркфлоу Claude Code и Codex на удалённом VPS без разорения» — то есть сам агент по скиллу проводит настройку сервера. Установка — как обычный скилл Claude Code из репозитория.\n\n**Подвох.** README на момент сбора вытащить не удалось — конкретные шаги/скрипты не подтверждены, оцениваю по описанию репозитория. Автономная настройка сервера агентом требует осторожности с доступами и секретами. Проект нишевый.",
-    "tags": ["automation", "tips"],
-    "source_url": "https://github.com/Kuberwastaken/VPSmaxxing",
-    "source_platform": "github",
-    "author": "Kuberwastaken",
-    "published_at": "2026-06-30",
+    "author": "hyunhoonj",
+    "published_at": "2026-07-03",
     "confidence": "low"
   },
   {
-    "id": "89370cbf2176",
+    "id": "bc91059df23b",
     "date_found": "2026-07-03",
-    "title": "Видео: свой субагент Claude Code одной командой (Run the Docs)",
-    "summary": "Короткий туториал канала Run the Docs: как создать кастомный субагент Claude Code буквально одной командой — быстрый вход в тему для тех, кто ещё не выносил специализированные задачи в отдельных агентов.",
-    "details": "**Зачем.** Новичкам в субагентах Claude Code: показывает самый быстрый способ завести специализированного агента, не разбираясь сразу во всей конфигурации.\n\n**Как.** Видео демонстрирует создание кастомного субагента «одной командой» (по формату канала — через встроенный генератор/команду Claude Code). Точные шаги — в самом ролике.\n\n**Подвох.** Это видео-туториал; расшифровку и точные команды в тексте не привожу, чтобы не выдумывать — смотрите ролик. Формат вводный, глубоких кейсов оркестрации не ждите.",
-    "tags": ["subagents"],
-    "source_url": "https://www.youtube.com/watch?v=xOL1dVTQp_c",
+    "title": "Claude получил новый навык - /dataviz",
+    "summary": "Видео на YouTube от DIY Smart Code про Claude Code.",
+    "details": "",
+    "tags": [
+      "skills"
+    ],
+    "source_url": "https://www.youtube.com/shorts/jFdi6qtCE3U",
     "source_platform": "youtube",
-    "author": "Run the Docs",
-    "published_at": "2026-07-01",
+    "author": "DIY Smart Code",
+    "published_at": "2026-07-03",
     "confidence": "low"
   },
   {
-    "id": "34dbe3f3ee7a",
+    "id": "0c10ecdd4a10",
     "date_found": "2026-07-03",
-    "title": "Видео: Claude Code + Codex + OpenCode вместе в мульти-агентном воркфлоу",
-    "summary": "Разбор от James Goldbach: как совмещать Claude Code, Codex и OpenCode в одном мульти-агентном процессе — распределять роли между разными CLI-агентами вместо ставки на один инструмент.",
-    "details": "**Зачем.** Тем, кто упёрся в потолок одного агента и хочет комбинировать сильные стороны разных CLI (Claude Code, Codex, OpenCode) в общем воркфлоу.\n\n**Как.** Видео показывает совместное использование трёх агентов в мульти-агентном процессе — разделение ролей и шагов между ними. Конкретную схему автор демонстрирует в ролике.\n\n**Подвох.** Видео-формат: детальную конфигурацию из заголовка не восстановить, смотрите первоисточник. Совмещение трёх инструментов повышает сложность настройки и стоимость.",
-    "tags": ["workflows"],
-    "source_url": "https://www.youtube.com/watch?v=egDwgI1Klv8",
-    "source_platform": "youtube",
-    "author": "James Goldbach",
-    "published_at": "2026-07-02",
+    "title": "Show HN: Втягивание расшифровок Claude Code в сеанс Codex и наоборот",
+    "summary": "4 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://contextify.sh/",
+    "source_platform": "hn",
+    "author": "bredren",
+    "published_at": "2026-07-03",
     "confidence": "low"
   },
   {
-    "id": "b739a4ecc2ac",
+    "id": "99d654daa618",
     "date_found": "2026-07-03",
-    "title": "Кейс: 3D-сайт, собранный в Claude Code (видео WPDev)",
-    "summary": "Видео-демка канала WPDev: автор показывает, как с помощью Claude Code собрал сайт с 3D-графикой — пример «вот что я построил» для тех, кто прикидывает Claude Code под фронтенд и визуальные проекты.",
-    "details": "**Зачем.** Фронтендерам и веб-дизайнерам, которым интересно, тянет ли Claude Code интерактивный 3D-сайт: наглядный кейс от идеи до работающей страницы.\n\n**Как.** В ролике автор пошагово собирает 3D-сайт, оркестрируя Claude Code (по формату канала — генерация кода фронтенда/3D и правки под демонстрацию). Конкретный стек и промпты — в видео.\n\n**Подвох.** Это демонстрационное видео, а не продовый разбор; метрик и ссылки на репозиторий в описании не подтверждено. Точные детали — в ролике, не додумываю.",
-    "tags": ["case-study", "ide-integration"],
-    "source_url": "https://www.youtube.com/watch?v=ckrE_c39MTk",
-    "source_platform": "youtube",
-    "author": "WPDev",
-    "published_at": "2026-07-02",
-    "confidence": "low"
-  },
-  {
-    "id": "2c46b80aa12c",
-    "date_found": "2026-07-03",
-    "title": "Кейс: Claude Code на часах Garmin — управление сессиями с запястья",
-    "summary": "ClaudeWatch связывает часы Garmin Forerunner 165 с демоном на Mac: с запястья видно сессии Claude Code, можно запускать задачи («Create PR», «Run tests») headless и следить за расходом токенов. Необычный, но рабочий инженерный кейс.",
-    "details": "**Зачем.** Гикам и тем, кто хочет мониторить и дёргать длинные прогоны Claude Code, не сидя за ноутом — пример нетривиальной интеграции CLI-агента с носимым устройством.\n\n**Как.** Три части: приложение на часах (Monkey C, Connect IQ), демон на Mac (Node/TS) читает транскрипты сессий из `~/.claude` и вызывает `claude` CLI, и сетевой мост через телефонное приложение Garmin Connect + публичный HTTPS (Cloudflare Tunnel/Tailscale Funnel), т.к. у часов нет Wi-Fi. Быстрый старт без туннеля: `npm run sim`.\n\n**Подвох.** Для реального устройства нужен публичный HTTPS-эндпоинт, сборка подписанного `.prg` и сайдлоад по MTP — не для всех. Проект экспериментальный (Forerunner 165, пара звёзд на GitHub), но код рабочий и открытый.",
-    "tags": ["case-study", "automation"],
-    "source_url": "https://github.com/fashton28/garmin-code",
+    "title": "sadjow/claude-code-nix — Всегда актуальный пакет Nix для Claude Code с ежечасными обновлениями из родных релизов Anthropic",
+    "summary": "Всегда актуальный пакет NIX для Claude Code с ежечасными обновлениями от собственных релизов Anthropic ★444",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/sadjow/claude-code-nix",
     "source_platform": "github",
-    "author": "fashton28",
-    "published_at": "2026-07-01",
-    "confidence": "med"
+    "author": "sadjow",
+    "published_at": "2026-07-03",
+    "confidence": "low"
+  },
+  {
+    "id": "e1fcf77efb8d",
+    "date_found": "2026-07-03",
+    "title": "Alibaba запрещает сотрудникам использовать Claude Code из-за проблем с антропным шпионским ПО",
+    "summary": "4 баллов, 2 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.scmp.com/tech/big-tech/article/3359375/alibaba-bans-staff-using-claude-code-over-anthropic-spyware-concerns",
+    "source_platform": "hn",
+    "author": "dstala",
+    "published_at": "2026-07-03",
+    "confidence": "low"
+  },
+  {
+    "id": "8c78b2a19e2e",
+    "date_found": "2026-07-03",
+    "title": "NexaDuo/mARC — mARC · Multi-Agent Relay Control — устанавливаемая команда инженеров ИИ для Claude Code. Технический руководитель организует работу специалиста с...",
+    "summary": "mARC · Multi-Agent Relay Control — устанавливаемая команда инженеров ИИ для Claude Code. Технический руководитель организует специализированные субагенты (dev · SRE · design · security), применяет шлюз безопасности перед слиянием и запускается в любом репозитории через один плагин. ★2",
+    "details": "",
+    "tags": [
+      "subagents"
+    ],
+    "source_url": "https://github.com/NexaDuo/mARC",
+    "source_platform": "github",
+    "author": "NexaDuo",
+    "published_at": "2026-07-03",
+    "confidence": "low"
+  },
+  {
+    "id": "e15be7a0c1df",
+    "date_found": "2026-07-03",
+    "title": "Claude Code Dynamic Island на macOS",
+    "summary": "3 баллов, 1 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://pookify.vercel.app/",
+    "source_platform": "hn",
+    "author": "eyadh",
+    "published_at": "2026-07-03",
+    "confidence": "low"
+  },
+  {
+    "id": "532db89407fc",
+    "date_found": "2026-07-03",
+    "title": "acerigor/Dialpad-pages-for-claude-code",
+    "summary": "GitHub-репозиторий acerigor/Dialpad-pages-for-claude-code. ★0",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/acerigor/Dialpad-pages-for-claude-code",
+    "source_platform": "github",
+    "author": "acerigor",
+    "published_at": "2026-07-03",
+    "confidence": "low"
+  },
+  {
+    "id": "63d15fcb7cb9",
+    "date_found": "2026-07-03",
+    "title": "Alibaba запретит Claude Code на рабочем месте из-за предполагаемых рисков бэкдора, говорит источник",
+    "summary": "304 баллов, 261 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.reuters.com/world/china/alibaba-ban-claude-code-workplace-over-alleged-backdoor-risks-source-says-2026-07-03/",
+    "source_platform": "hn",
+    "author": "nsoonhui",
+    "published_at": "2026-07-03",
+    "confidence": "low"
+  },
+  {
+    "id": "06cea88734e5",
+    "date_found": "2026-07-03",
+    "title": "malakazlan/claude-security-skill — оркестратор аудита безопасности для репозиториев кода.",
+    "summary": "Оркестратор аудита безопасности для репозиториев кода. ★0",
+    "details": "",
+    "tags": [
+      "subagents",
+      "skills"
+    ],
+    "source_url": "https://github.com/malakazlan/claude-security-skill",
+    "source_platform": "github",
+    "author": "malakazlan",
+    "published_at": "2026-07-03",
+    "confidence": "low"
+  },
+  {
+    "id": "a03343527171",
+    "date_found": "2026-07-03",
+    "title": "Настройки Claude Code, которые сделали меня более быстрым архитектором программного обеспечения",
+    "summary": "3 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://jsdev.space/claude-code-settings-software-architect/",
+    "source_platform": "hn",
+    "author": "javatuts",
+    "published_at": "2026-07-03",
+    "confidence": "low"
+  },
+  {
+    "id": "a2de909442af",
+    "date_found": "2026-07-03",
+    "title": "pffigueiredo/code-agent-eval — библиотека TypeScript для оценки подсказок против агентов кодирования (Claude Code, Cursor и т. д.) с несколькими буквами...",
+    "summary": "Библиотека TypeScript для оценки подсказок против агентов кодирования (Claude Code, Cursor и т. д.) с многоитерационным тестированием и оценкой ★0",
+    "details": "",
+    "tags": [
+      "testing",
+      "prompting",
+      "ide-integration"
+    ],
+    "source_url": "https://github.com/pffigueiredo/code-agent-eval",
+    "source_platform": "github",
+    "author": "pffigueiredo",
+    "published_at": "2026-07-03",
+    "confidence": "low"
+  },
+  {
+    "id": "0c59889fd39f",
+    "date_found": "2026-07-03",
+    "title": "Доказательство того, что Claude знает вас по вашему стилю кода: Author2Vec",
+    "summary": "4 баллов, 1 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://author2vec.com/",
+    "source_platform": "hn",
+    "author": "tristenharr",
+    "published_at": "2026-07-03",
+    "confidence": "low"
+  },
+  {
+    "id": "fb3f2dad879b",
+    "date_found": "2026-07-03",
+    "title": "lis186/ccxray — рентгеновское зрение для сеансов ИИ-агента — прозрачный HTTP-прокси и дашборд для Claude Code",
+    "summary": "Рентгеновское зрение для сеансов ИИ-агента — прозрачный HTTP-прокси и дашборд для Claude Code ★201",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/lis186/ccxray",
+    "source_platform": "github",
+    "author": "lis186",
+    "published_at": "2026-07-03",
+    "confidence": "low"
   }
 ]

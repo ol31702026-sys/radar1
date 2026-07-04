@@ -1,0 +1,228 @@
+[
+  {
+    "id": "3f63f5475779",
+    "date_found": "2026-07-04",
+    "title": "Show HN: Routing24 – бесплатный агент оптимизации маршрута для Claude Cowork/WebMCP",
+    "summary": "3 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/routing24/skill",
+    "source_platform": "hn",
+    "author": "dennis16384",
+    "published_at": "2026-07-04",
+    "confidence": "low"
+  },
+  {
+    "id": "c064155c15fe",
+    "date_found": "2026-07-04",
+    "title": "GhostlyGawd/engineering-board — плагин Claude Code: автономное управление инженерным советом — маршрутизация результатов, проверка записей, поверхностей...",
+    "summary": "Плагин Claude Code: автономное управление инженерной доской — маршрутизирует результаты, проверяет записи, выполняет работу над поверхностью, обеспечивает маршрутизацию до окончания сеанса. ★0",
+    "details": "",
+    "tags": [
+      "automation"
+    ],
+    "source_url": "https://github.com/GhostlyGawd/engineering-board",
+    "source_platform": "github",
+    "author": "GhostlyGawd",
+    "published_at": "2026-07-04",
+    "confidence": "low"
+  },
+  {
+    "id": "6a5a1175b774",
+    "date_found": "2026-07-04",
+    "title": "Новая защита Claude от побега из тюрьмы изменила все #ai #anthropic #claude",
+    "summary": "Видео на YouTube от DIY Smart Code про Claude Code.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.youtube.com/shorts/OHmdooMOa2k",
+    "source_platform": "youtube",
+    "author": "DIY Smart Code",
+    "published_at": "2026-07-04",
+    "confidence": "low"
+  },
+  {
+    "id": "137650dbee23",
+    "date_found": "2026-07-04",
+    "title": "Show HN: Crew – Пусть агенты Claude Code разговаривают друг с другом",
+    "summary": "4 баллов, 2 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/0xmmo/crew",
+    "source_platform": "hn",
+    "author": "mmoustafa",
+    "published_at": "2026-07-04",
+    "confidence": "low"
+  },
+  {
+    "id": "f2e2cae139a5",
+    "date_found": "2026-07-04",
+    "title": "trinity-organism/bridle-audit — аудит конфигурации Claude Code: мертвые крючки, дублирующие рычаги, стоимость загрузочного токена. Ноль Deps, одна команда.",
+    "summary": "Проверьте конфигурацию Claude Code: мертвые хуки, дубликаты рычагов, стоимость загрузочного токена. Ноль Deps, одна команда. ★0",
+    "details": "",
+    "tags": [
+      "hooks",
+      "cost-tokens"
+    ],
+    "source_url": "https://github.com/trinity-organism/bridle-audit",
+    "source_platform": "github",
+    "author": "trinity-organism",
+    "published_at": "2026-07-04",
+    "confidence": "low"
+  },
+  {
+    "id": "e4d13210cc6f",
+    "date_found": "2026-07-04",
+    "title": "earlvanze/sage-router — первый локальный маршрутизатор модели ИИ для серьезных агентов. Одна конечная точка для OpenClaw, Codex, Claude Code, Cursor, Ollama, NVID...",
+    "summary": "Локальный первый маршрутизатор модели ИИ для серьезных агентов. Одна конечная точка для OpenClaw, Codex, Claude Code, Cursor, Ollama, NVIDIA NIM и резервного авторизованного провайдера. ★6",
+    "details": "",
+    "tags": [
+      "ide-integration"
+    ],
+    "source_url": "https://github.com/earlvanze/sage-router",
+    "source_platform": "github",
+    "author": "earlvanze",
+    "published_at": "2026-07-04",
+    "confidence": "low"
+  },
+  {
+    "id": "eb17a646ad60",
+    "date_found": "2026-07-04",
+    "title": "Carliemajuscular804/ClaudePortable — Резервное копирование и восстановление проектов Claude Desktop, Cowork и Claude Code в виде единого ZIP-ФАЙЛА для loc...",
+    "summary": "Резервное копирование и восстановление проектов Claude Desktop, Cowork и Claude Code в виде единого ZIP-ФАЙЛА для локального хранилища или облачной синхронизации. ★3",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/Carliemajuscular804/ClaudePortable",
+    "source_platform": "github",
+    "author": "Carliemajuscular804",
+    "published_at": "2026-07-04",
+    "confidence": "low"
+  },
+  {
+    "id": "164b0269f0d3",
+    "date_found": "2026-07-04",
+    "title": "Kurotsuke94/Claude-code-",
+    "summary": "GitHub-репозиторий Kurotsuke94/Claude-code-. ★0",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/Kurotsuke94/Claude-code-",
+    "source_platform": "github",
+    "author": "Kurotsuke94",
+    "published_at": "2026-07-04",
+    "confidence": "low"
+  },
+  {
+    "id": "0c69da455f31",
+    "date_found": "2026-07-04",
+    "title": "mister-good-deal/claude-design-exchange — Repo pour échange entre Claude Design et Claude Code",
+    "summary": "Repo pour échange entre Claude Design et Claude Код ★0",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/mister-good-deal/claude-design-exchange",
+    "source_platform": "github",
+    "author": "mister-good-deal",
+    "published_at": "2026-07-04",
+    "confidence": "low"
+  },
+  {
+    "id": "41db89cb412a",
+    "date_found": "2026-07-04",
+    "title": "MAXZL1/hackingtool-plugin — Интегрируйте 183 инструмента пентестирования и OSINT в Claude Code для выполнения задач безопасности через локальные бэкенды или Docke...",
+    "summary": "Интегрируйте 183 инструмента пентестирования и OSINT в Claude Code для выполнения задач безопасности с помощью локальных бэкендов или Docker-контейнеров. ★3",
+    "details": "",
+    "tags": [
+      "testing"
+    ],
+    "source_url": "https://github.com/MAXZL1/hackingtool-plugin",
+    "source_platform": "github",
+    "author": "MAXZL1",
+    "published_at": "2026-07-04",
+    "confidence": "low"
+  },
+  {
+    "id": "486734b2c22c",
+    "date_found": "2026-07-04",
+    "title": "Сэкономьте токены с кодом Claude с помощью умной маршрутизации",
+    "summary": "11 баллов, 3 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "cost-tokens"
+    ],
+    "source_url": "https://github.com/regolo-ai/brick-SR1",
+    "source_platform": "hn",
+    "author": "FrancescoMassa",
+    "published_at": "2026-07-03",
+    "confidence": "low"
+  },
+  {
+    "id": "3c5c2393c37a",
+    "date_found": "2026-07-04",
+    "title": "Show HN: Ultracodex – Запуск динамических рабочих процессов Claude Ultracode с агентами Codex",
+    "summary": "3 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "workflows"
+    ],
+    "source_url": "https://github.com/YuanpingSong/ultracodex",
+    "source_platform": "hn",
+    "author": "yuansong",
+    "published_at": "2026-07-03",
+    "confidence": "low"
+  },
+  {
+    "id": "8a0330331f14",
+    "date_found": "2026-07-04",
+    "title": "Show HN: Тем временем – превратите время простоя Claude Code в обучение",
+    "summary": "4 баллов, 1 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/riccardomusumeci11/meanwhile",
+    "source_platform": "hn",
+    "author": "RiccardoMus",
+    "published_at": "2026-07-02",
+    "confidence": "low"
+  },
+  {
+    "id": "86a9eb979b71",
+    "date_found": "2026-07-04",
+    "title": "Показать HN: таймер Claudoro, Pomodoro, встроенный в строку статуса Claude Code",
+    "summary": "49 баллов, 35 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/emson/claudoro",
+    "source_platform": "hn",
+    "author": "emson",
+    "published_at": "2026-07-01",
+    "confidence": "low"
+  },
+  {
+    "id": "aaa81007bbf8",
+    "date_found": "2026-07-04",
+    "title": "Claude Sonnet 5 Обзор",
+    "summary": "3 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.coderabbit.ai/blog/claude-sonnet-5-review",
+    "source_platform": "hn",
+    "author": "bgubitosa",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  }
+]

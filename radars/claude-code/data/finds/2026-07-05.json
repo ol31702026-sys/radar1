@@ -1,0 +1,229 @@
+[
+  {
+    "id": "3bcff58dcd5e",
+    "date_found": "2026-07-05",
+    "title": "Show HN: Nomlings – виртуальный питомец, который ест токены вашей сессии Claude Code",
+    "summary": "4 баллов, 1 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "cost-tokens"
+    ],
+    "source_url": "https://www.nomlings.cc/",
+    "source_platform": "hn",
+    "author": "franwbu",
+    "published_at": "2026-07-05",
+    "confidence": "low"
+  },
+  {
+    "id": "ee6885a29217",
+    "date_found": "2026-07-05",
+    "title": "Unfathomable-siren38/mcp-terinal-server — Запуск встроенного терминального сервера MCP с поддержкой МНОГОСЕССИОННОГО PTY и вкладками xterm.js для Claude...",
+    "summary": "Запустите встроенный терминальный сервер MCP с поддержкой многосессионных PTY и вкладками xterm.js для Claude Code и Claude Desktop ★0",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/Unfathomable-siren38/mcp-terminal-server",
+    "source_platform": "github",
+    "author": "Unfathomable-siren38",
+    "published_at": "2026-07-05",
+    "confidence": "low"
+  },
+  {
+    "id": "ae9df33e4d77",
+    "date_found": "2026-07-05",
+    "title": "Show HN: Handoff – проверенный мост контекста между сессиями Claude Code.",
+    "summary": "6 баллов, 1 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/ostikwhy-blip/claude-code-handoff-skill",
+    "source_platform": "hn",
+    "author": "ostik",
+    "published_at": "2026-07-05",
+    "confidence": "low"
+  },
+  {
+    "id": "73c4e215eaf9",
+    "date_found": "2026-07-05",
+    "title": "fabionfsc/nuzo-memory — Локальная, проверяемая память для агентов ИИ, совместимых с Codex, Claude Code и MCP.",
+    "summary": "Локальная, проверяемая память для агентов ИИ, совместимых с Codex, Claude Code и MCP. ★0",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/fabionfsc/nuzo-memory",
+    "source_platform": "github",
+    "author": "fabionfsc",
+    "published_at": "2026-07-05",
+    "confidence": "low"
+  },
+  {
+    "id": "89f9aea47a52",
+    "date_found": "2026-07-05",
+    "title": "Показать HN: Contextrot – Анализ причин ухудшения работы Claude Code на основе его собственного журнала сеанса.",
+    "summary": "3 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/Priyanshu-byte-coder/contextrot",
+    "source_platform": "hn",
+    "author": "PriyanshuDoshi",
+    "published_at": "2026-07-05",
+    "confidence": "low"
+  },
+  {
+    "id": "9e98dad9edb2",
+    "date_found": "2026-07-05",
+    "title": "crisnahine/chameleon — плагин Claude Code, который изучает соглашения вашего репозитория и показывает модели реальный пример из вашего собственного кода перед…",
+    "summary": "Плагин Claude Code, который изучает соглашения вашего репозитория и показывает модели реальный пример из вашего собственного кода перед каждым редактированием, так что сгенерированный ИИ код будет соответствовать вашему стилю с первой попытки. TypeScript, Ruby и Python. ★8",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/crisnahine/chameleon",
+    "source_platform": "github",
+    "author": "crisnahine",
+    "published_at": "2026-07-05",
+    "confidence": "low"
+  },
+  {
+    "id": "651470171ed6",
+    "date_found": "2026-07-05",
+    "title": "Показать HN: Локальный MCP – Claude/ChatGPT читает ваши сообщения iMessage, Teams и файлы на устройстве",
+    "summary": "3 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://www.local-mcp.com/en",
+    "source_platform": "hn",
+    "author": "lanchuske",
+    "published_at": "2026-07-05",
+    "confidence": "low"
+  },
+  {
+    "id": "c0ce7846c5b3",
+    "date_found": "2026-07-05",
+    "title": "Recepay6358/claude-code-best-practice — Продемонстрируйте лучшие практики кодирования с помощью Claude с помощью четких примеров и организованных рабочих процессов для...",
+    "summary": "Продемонстрируйте лучшие практики программирования с помощью Claude на наглядных примерах и в виде структурированных рабочих процессов, чтобы повысить навыки и эффективность. ★2",
+    "details": "",
+    "tags": [
+      "skills",
+      "workflows"
+    ],
+    "source_url": "https://github.com/Recepay6358/claude-code-best-practice",
+    "source_platform": "github",
+    "author": "Recepay6358",
+    "published_at": "2026-07-05",
+    "confidence": "low"
+  },
+  {
+    "id": "fb3097ad6cce",
+    "date_found": "2026-07-05",
+    "title": "mendelsohnelderhand853/claude_code_journaling — Анализируйте ежедневные записи в дневнике и преобразуйте их в структурированные ежемесячные обзоры с помощью Claude Code из терапии…",
+    "summary": "Анализируйте ежедневные записи в дневнике и создавайте структурированные ежемесячные обзоры с помощью метода Claude, рассматривая их с точки зрения терапевта, коуча и других специалистов ★0",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/mendelsohnelderhand853/claude_code_journaling",
+    "source_platform": "github",
+    "author": "mendelsohnelderhand853",
+    "published_at": "2026-07-05",
+    "confidence": "low"
+  },
+  {
+    "id": "0e51a0223a38",
+    "date_found": "2026-07-05",
+    "title": "phuati/claude-skills-arsenal — Your Ultimate Claude Skills Library & Hub 2026 – Интеграция и организация рабочих процессов ИИ",
+    "summary": "Ваша исчерпывающая библиотека навыков и центр Claude Skills 2026 – Интеграция и организация рабочих процессов ИИ ★1",
+    "details": "",
+    "tags": [
+      "skills",
+      "workflows"
+    ],
+    "source_url": "https://github.com/phuati/claude-skills-arsenal",
+    "source_platform": "github",
+    "author": "phuati",
+    "published_at": "2026-07-05",
+    "confidence": "low"
+  },
+  {
+    "id": "7226ed728280",
+    "date_found": "2026-07-05",
+    "title": "AmmDuncan/Easel — вкладка браузера в реальном времени для каждого сеанса работы с кодом Claude. Инструмент display_push MCP проталкивает HTML-карты (макеты, отличия, сравнение...",
+    "summary": "Вкладка браузера в реальном времени для каждой сессии Claude Code. Инструмент display_push MCP выводит HTML-карточки (макеты, различия, сравнения) в прокручиваемую ленту, которую вы держите открытой в режиме разделенного экрана. ★0",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/AmmDuncan/easel",
+    "source_platform": "github",
+    "author": "AmmDuncan",
+    "published_at": "2026-07-05",
+    "confidence": "low"
+  },
+  {
+    "id": "db19f73773d7",
+    "date_found": "2026-07-05",
+    "title": "Claude Code стеганографически маркирует запросы",
+    "summary": "2436 баллов, 746 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://thereallo.dev/blog/claude-code-prompt-steganography",
+    "source_platform": "hn",
+    "author": "kirushik",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  },
+  {
+    "id": "2d6ed547d596",
+    "date_found": "2026-07-05",
+    "title": "Компании заставляют Claude и Codex говорить как пещерные люди, чтобы остановить резкий рост затрат на ИИ",
+    "summary": "4 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "cost-tokens"
+    ],
+    "source_url": "https://www.404media.co/companies-are-making-claude-and-codex-talk-like-cavemen-to-stop-ais-soaring-costs/",
+    "source_platform": "hn",
+    "author": "beardyw",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  },
+  {
+    "id": "e9d0a63fac9e",
+    "date_found": "2026-07-05",
+    "title": "Осторожно, Claude Code удаляет >30-дневные стенограммы. Anthropic не исправит это",
+    "summary": "30 баллов, 37 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/anthropics/claude-code/issues/62476",
+    "source_platform": "hn",
+    "author": "ojura",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  },
+  {
+    "id": "770b1a6c6098",
+    "date_found": "2026-07-05",
+    "title": "Show HN: Autoharness – самообучающийся, поддерживающий уровень навыков для Claude Code",
+    "summary": "3 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "skills"
+    ],
+    "source_url": "https://github.com/tigerless-labs/autoharness",
+    "source_platform": "hn",
+    "author": "Tigerless_ailab",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  }
+]

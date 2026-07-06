@@ -1,0 +1,227 @@
+[
+  {
+    "id": "b30391eb8808",
+    "date_found": "2026-07-06",
+    "title": "Anthropic спрятал трекер в Claude Codex, чтобы пометить китайских пользователей",
+    "summary": "9 баллов, 1 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://arstechnica.com/tech-policy/2026/07/anthropic-outed-for-claude-tracker-that-secretly-monitored-chinese-users/",
+    "source_platform": "hn",
+    "author": "logickkk1",
+    "published_at": "2026-07-06",
+    "confidence": "low"
+  },
+  {
+    "id": "79a24115457f",
+    "date_found": "2026-07-06",
+    "title": "Erica-J-01/ai-pm - AI PM Assistant: цепные навыки Claude Codex, которые превращают исходные данные заинтересованных сторон в готовые к принятию решений артефакты, от приема...",
+    "summary": "Помощник ИИ PM: объединил навыки Claude Code, которые превращают исходные данные заинтересованных сторон в готовые к принятию решений артефакты, от сортировки поступления и сканирования рисков до PRD, пользовательских историй и планов спринта. ★6",
+    "details": "",
+    "tags": [
+      "skills"
+    ],
+    "source_url": "https://github.com/Erica-J-01/ai-pm",
+    "source_platform": "github",
+    "author": "Erica-J-01",
+    "published_at": "2026-07-06",
+    "confidence": "low"
+  },
+  {
+    "id": "576b1d4f54c8",
+    "date_found": "2026-07-06",
+    "title": "Показать HN: оркестровка параллельных агентов Claude Code и Codex на карте в реальном времени",
+    "summary": "3 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "subagents"
+    ],
+    "source_url": "https://github.com/Latand/live-log-viewer-next",
+    "source_platform": "hn",
+    "author": "latand6",
+    "published_at": "2026-07-06",
+    "confidence": "low"
+  },
+  {
+    "id": "c51678ccc67f",
+    "date_found": "2026-07-06",
+    "title": "chicken-noodle-chris/tome — Tome — это плагин Claude Code и инструмент CLI с навыками и скриптами для создания llm-wiki на основе...",
+    "summary": "Tome - это плагин Claude Code и инструмент CLI с навыками и скриптами для создания llm-wiki на основе предложения karpathy, с слоем кварцевого рендеринга для улучшения читаемости пользователем и CLI, который поддерживает спецификацию контента.  Это должна быть установка в один клик, просто поместите ее в свой личный репозиторий и вперед. ★0",
+    "details": "",
+    "tags": [
+      "skills"
+    ],
+    "source_url": "https://github.com/chicken-noodle-chris/tome",
+    "source_platform": "github",
+    "author": "chicken-noodle-chris",
+    "published_at": "2026-07-06",
+    "confidence": "low"
+  },
+  {
+    "id": "2891658a178b",
+    "date_found": "2026-07-06",
+    "title": "jesserobbins/whoops — соотнесите данные сердечного ритма Whoop с активностью кодирующего агента, чтобы определить, когда Джесси злится, а Claude - чушь собачья",
+    "summary": "Сопоставьте данные частоты сердечных сокращений Whoop с активностью кодирующего агента, чтобы определить, когда Джесси злится, а Claude - чушь собачья ★0",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/jesserobbins/whoops",
+    "source_platform": "github",
+    "author": "jesserobbins",
+    "published_at": "2026-07-06",
+    "confidence": "low"
+  },
+  {
+    "id": "35b25a561677",
+    "date_found": "2026-07-06",
+    "title": "tyler-sterkly/claude-plugins — плагины Claude Code от tyler-sterkly",
+    "summary": "Плагины Claude Code от tyler-sterkly ★0",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/tyler-sterkly/claude-plugins",
+    "source_platform": "github",
+    "author": "tyler-sterkly",
+    "published_at": "2026-07-06",
+    "confidence": "low"
+  },
+  {
+    "id": "aa552390b4c7",
+    "date_found": "2026-07-06",
+    "title": "codewithrunningjay/claude-proxy-pro — маршрутизация запросов Claude Code к любому провайдеру ИИ с использованием собственного настольного приложения.",
+    "summary": "Маршрут запросов Claude Code к любому провайдеру ИИ с использованием собственного настольного приложения. ★1",
+    "details": "",
+    "tags": [
+      "ide-integration"
+    ],
+    "source_url": "https://github.com/codewithrunningjay/claude-proxy-pro",
+    "source_platform": "github",
+    "author": "codewithrunningjay",
+    "published_at": "2026-07-06",
+    "confidence": "low"
+  },
+  {
+    "id": "d42dd9cb3961",
+    "date_found": "2026-07-06",
+    "title": "Louisedinky226/superstack — создание и запуск готовых к производству программных продуктов с использованием Claude без написания кода.",
+    "summary": "Создавайте и запускайте готовые к производству программные продукты с использованием Claude без написания кода. ★0",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/Louisedinky226/superstack",
+    "source_platform": "github",
+    "author": "Louisedinky226",
+    "published_at": "2026-07-06",
+    "confidence": "low"
+  },
+  {
+    "id": "014d9cd9e540",
+    "date_found": "2026-07-06",
+    "title": "JBSag/pm-artisan — 15 навыков Claude Code PM 2026 - мгновенное создание артефактов DOCX XLSX PPTX",
+    "summary": "15 Навыки Claude Code PM 2026 - Мгновенное создание артефактов DOCX XLSX PPTX ★0",
+    "details": "",
+    "tags": [
+      "skills"
+    ],
+    "source_url": "https://github.com/JBSag/pm-artisan",
+    "source_platform": "github",
+    "author": "JBSag",
+    "published_at": "2026-07-06",
+    "confidence": "low"
+  },
+  {
+    "id": "59bf5d56e138",
+    "date_found": "2026-07-06",
+    "title": "Show HN: Peek-CLI: Let Claude Code See the Browser (Показать HN: Peek-CLI: Пусть код К",
+    "summary": "11 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/puffinsoft/peek-cli",
+    "source_platform": "hn",
+    "author": "ReactRocks",
+    "published_at": "2026-07-05",
+    "confidence": "low"
+  },
+  {
+    "id": "5182b4b62e21",
+    "date_found": "2026-07-06",
+    "title": "Показать HN: Statuslin.es – библиотека сообщества пользовательских строк статуса Claude Code",
+    "summary": "4 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://statuslin.es",
+    "source_platform": "hn",
+    "author": "nastynate",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  },
+  {
+    "id": "1f522891cb9d",
+    "date_found": "2026-07-06",
+    "title": "VPSMaxxing – миграция Codex, Claude Code и других агентов в VPS",
+    "summary": "3 баллов, 1 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "refactoring"
+    ],
+    "source_url": "https://github.com/Kuberwastaken/VPSmaxxing",
+    "source_platform": "hn",
+    "author": "kuberwastaken",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  },
+  {
+    "id": "18631123c5b2",
+    "date_found": "2026-07-06",
+    "title": "Claude Code тихо снимает отпечатки пальцев с API-маршрутизаторов, связанных с Китаем",
+    "summary": "9 баллов, 4 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.vincentschmalbach.com/claude-code-china-router-fingerprint/",
+    "source_platform": "hn",
+    "author": "vincent_s",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  },
+  {
+    "id": "5327f9c08146",
+    "date_found": "2026-07-06",
+    "title": "Антропное встроенное шпионское ПО в Claude Code – и попытка скрыть его от вас",
+    "summary": "7 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "ide-integration"
+    ],
+    "source_url": "https://www.reddit.com/r/ClaudeCode/s/Z690c1Y9Zk",
+    "source_platform": "hn",
+    "author": "cromka",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  },
+  {
+    "id": "589d36d7abe4",
+    "date_found": "2026-07-06",
+    "title": "Отчеты о лимитах использования антропной резки снова",
+    "summary": "3 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://old.reddit.com/r/ClaudeCode/comments/1uim4jb/this_is_a_message_for_anthropic_bring_back_the/",
+    "source_platform": "hn",
+    "author": "quux0r",
+    "published_at": "2026-06-30",
+    "confidence": "low"
+  }
+]

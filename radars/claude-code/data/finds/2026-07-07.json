@@ -1,0 +1,227 @@
+[
+  {
+    "id": "d52de13628de",
+    "date_found": "2026-07-07",
+    "title": "Выбор модели Claude и уровня усилий в Claude Codex",
+    "summary": "4 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://claude.com/blog/claude-model-and-effort-level-in-claude-code",
+    "source_platform": "hn",
+    "author": "geoffbp",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "01d1ef452403",
+    "date_found": "2026-07-07",
+    "title": "switchroom/switchroom — запускайте Claude Code 24/7 в своей подписке Claude Pro/Max через Telegram.",
+    "summary": "Запустите Claude Code 24/7 на своей подписке Claude Pro/Max через Telegram. ★4",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/switchroom/switchroom",
+    "source_platform": "github",
+    "author": "switchroom",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "457e664e523f",
+    "date_found": "2026-07-07",
+    "title": "Проверьте свои разрешения по Claude Code с помощью Vanta",
+    "summary": "3 баллов, 1 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/OpenVanta/GrantGuard",
+    "source_platform": "hn",
+    "author": "hermanerr",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "ca8daeac457d",
+    "date_found": "2026-07-07",
+    "title": "gdm257/cc-plugins — Элегантные плагины Claude Code",
+    "summary": "Элегантные плагины Claude Code ★0",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/gdm257/cc-plugins",
+    "source_platform": "github",
+    "author": "gdm257",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "8cfac5c02a8d",
+    "date_found": "2026-07-07",
+    "title": "Codex делает меньше ошибок, но больше людей используют Claude",
+    "summary": "5 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.cubic.dev/state-of-ai-coding-2026",
+    "source_platform": "hn",
+    "author": "mikeborozdin",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "034f57d24f70",
+    "date_found": "2026-07-07",
+    "title": "kenn-io/agentsview — поиск локальной сессии, аналитика, аналитика и статистика использования токенов для агентов кодирования, поддержка Claude Code, C...",
+    "summary": "Локальный поиск, аналитика, аналитика и статистика использования маркеров для агентов кодирования, поддерживающих Claude Code, Codex и более 20 других агентов. ★4080",
+    "details": "",
+    "tags": [
+      "cost-tokens"
+    ],
+    "source_url": "https://github.com/kenn-io/agentsview",
+    "source_platform": "github",
+    "author": "kenn-io",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "3d1acbe9026d",
+    "date_found": "2026-07-07",
+    "title": "Show HN: Rowboat – Open-source, локальная альтернатива Claude Desktop",
+    "summary": "52 баллов, 14 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/rowboatlabs/rowboat",
+    "source_platform": "hn",
+    "author": "segmenta",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "e46649c6eee7",
+    "date_found": "2026-07-07",
+    "title": "kalinbogatzevski/captain-memo — Локальная память Cross-AI для агентов кодирования — Claude Code, Codex, Gemini & Cursor разделяют один частный локальный корпус...",
+    "summary": "Локальная память Cross-AI для агентов кодирования — Claude Code, Codex, Gemini & Cursor используют один частный локальный корпус. Гибридный поиск, регрессия-распад, неопределенное удержание. ★1",
+    "details": "",
+    "tags": [
+      "ide-integration"
+    ],
+    "source_url": "https://github.com/kalinbogatzevski/captain-memo",
+    "source_platform": "github",
+    "author": "kalinbogatzevski",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "a4ff66514564",
+    "date_found": "2026-07-07",
+    "title": "Показать HN: Shellular – запустите Claude Code, Codex, Pi со своего телефона",
+    "summary": "28 баллов, 27 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://shellular.dev/",
+    "source_platform": "hn",
+    "author": "sherlock-holmes",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "5158b9a37317",
+    "date_found": "2026-07-07",
+    "title": "CorvinLabs/CorvinOS — Self-hosted agentic OS — соединяет Claude Code, Codex или Hermes Agent с Discord, Telegram, WhatsApp, Slack и Email. E...",
+    "summary": "Self-hosted agentic OS — соединяет Claude Code, Codex или Hermes Agent с Discord, Telegram, WhatsApp, Slack и Email. EU AI Act 2026 и соответствие GDPR архитектуре. ★6",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/CorvinLabs/CorvinOS",
+    "source_platform": "github",
+    "author": "CorvinLabs",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "f24c998e260e",
+    "date_found": "2026-07-07",
+    "title": "Создание Claude Codex",
+    "summary": "49 баллов, 28 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.anthropic.com/features/making-of-claude-code",
+    "source_platform": "hn",
+    "author": "kanamekun",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "87b3ac04b3dd",
+    "date_found": "2026-07-07",
+    "title": "luminik-io/alfred — Local agent OS for solo builders: launchd-managed Claude Code/Codex fleets, git-worktree isolation, Slack reporting, sa…",
+    "summary": "Локальная агентская ОС для сборщиков соло: автопарки, управляемые кодом Claude/Кодексом, изоляция git-worktree, отчетность Slack, защитные ворота и воспроизводимая настройка. ★3",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/luminik-io/alfred",
+    "source_platform": "github",
+    "author": "luminik-io",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "31f7c6617a70",
+    "date_found": "2026-07-07",
+    "title": "Claude Sonnet 5: Anthropic's Most Agentic AI Model Comes at a Reduced Price (2026)",
+    "summary": "4 баллов, 0 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://lucasaguiar.xyz/en/posts/claude-sonnet-5-2026/",
+    "source_platform": "hn",
+    "author": "isfttr",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "9180a1868247",
+    "date_found": "2026-07-07",
+    "title": "vinicius91carvalho/harness-engineering — Проектирование жгутов для хост-агентов Claude Code, Codex, Opencode и Control: Hemes, Nanobot и Pi",
+    "summary": "Проектирование жгута проводов для хост-агентов Claude Code, Codex, Opencode и Control: Hemes, Nanobot и Pi ★0",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/vinicius91carvalho/harness-engineering",
+    "source_platform": "github",
+    "author": "vinicius91carvalho",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "07d385e65862",
+    "date_found": "2026-07-07",
+    "title": "Claude, Codex и Грок: мой текущий рабочий процесс и его трение",
+    "summary": "3 баллов, 1 комментов на Hacker News.",
+    "details": "",
+    "tags": [
+      "workflows"
+    ],
+    "source_url": "https://www.nativesoul.dev/",
+    "source_platform": "hn",
+    "author": "fillipecordeiro",
+    "published_at": "2026-07-06",
+    "confidence": "low"
+  }
+]

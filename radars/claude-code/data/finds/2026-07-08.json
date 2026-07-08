@@ -1,0 +1,253 @@
+[
+  {
+    "id": "94d69a90ce66",
+    "date_found": "2026-07-08",
+    "title": "Claude Code 2.1.202: настройка размера динамических воркфлоу + OTel-атрибуты запусков",
+    "summary": "Официальный релиз: в /config добавлена настройка «Dynamic workflow size» — насколько большие динамические воркфлоу (число агентов) генерирует Claude Code; плюс OpenTelemetry-атрибуты workflow.run_id/name для разбора запусков в телеметрии.",
+    "details": "**Зачем.** Тем, кто гоняет многоагентные динамические воркфлоу и хочет управлять их масштабом, стоимостью и наблюдаемостью.\n\n**Как.** Обнови до v2.1.202; в /config выбери «Dynamic workflow size» (small/medium/large — контролирует число агентов). В OTel-телеметрию агентов, порождённых воркфлоу, добавлены атрибуты workflow.run_id и workflow.name — по ним восстанавливается активность одного запуска. Также фиксы: inline Ctrl+R history search, /rename фоновых сессий, mTLS-handshake, зависание валидации PowerShell-команд.\n\n**Подвох.** Точечный релиз (в основном багфиксы); настройка влияет только на динамические воркфлоу, не на обычные сабагенты.",
+    "tags": [
+      "workflows",
+      "automation",
+      "tips"
+    ],
+    "source_url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.202",
+    "source_platform": "github",
+    "author": "Anthropic",
+    "published_at": "2026-07-06",
+    "confidence": "high"
+  },
+  {
+    "id": "69c215f0bf18",
+    "date_found": "2026-07-08",
+    "title": "Claude Code 2.1.198: сабагенты по умолчанию в фоне, Claude in Chrome в GA, скилл /dataviz",
+    "summary": "Крупный релиз: сабагенты теперь стартуют в фоне по умолчанию (не блокируют основную сессию), расширение Claude in Chrome вышло в общий доступ, добавлен скилл /dataviz для визуализаций.",
+    "details": "**Зачем.** Тем, кто параллелит работу сабагентами и не хочет ждать их в основном чате; кто работает в браузере.\n\n**Как.** Обнови до v2.1.198; сабагенты запускаются в фоне — следи за ними в панели задач/agents view. Скилл /dataviz строит визуализации данных; Claude in Chrome доступен всем; добавлены поддержка AWS gateway-провайдера и создание черновиков PR при работе с кодом.\n\n**Подвох.** Фоновые сабагенты множат расход токенов; «по умолчанию в фоне» меняет привычный поток — часть пользователей захочет вернуть синхронный режим.",
+    "tags": [
+      "subagents",
+      "ide-integration",
+      "tips"
+    ],
+    "source_url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.198",
+    "source_platform": "github",
+    "author": "Anthropic",
+    "published_at": "2026-07-01",
+    "confidence": "high"
+  },
+  {
+    "id": "c9b523c535e6",
+    "date_found": "2026-07-08",
+    "title": "Claude Code 2.1.197: запуск Claude Sonnet 5 с окном 1M токенов и промо-ценой",
+    "summary": "Официально: Sonnet 5 стал моделью по умолчанию в Claude Code — нативное окно 1M токенов и промо-цена $2/$10 за Mtok до 31 августа 2026; плюс модели по умолчанию на уровне организации.",
+    "details": "**Зачем.** Тем, кто упирается в контекст на больших кодовых базах и следит за стоимостью токенов.\n\n**Как.** Обнови CC; Sonnet 5 включается как дефолт (1M контекст, промо $2/$10 за Mtok до 31.08.2026). В соседнем релизе v2.1.196 добавлены организационные модели по умолчанию и читаемые имена сессий.\n\n**Подвох.** 1M-контекст соблазняет грузить весь репозиторий, но большой контекст всё равно жжёт токены и снижает точность; промо-цена временная (до конца августа).",
+    "tags": [
+      "cost-tokens",
+      "tips",
+      "ide-integration"
+    ],
+    "source_url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.197",
+    "source_platform": "github",
+    "author": "Anthropic",
+    "published_at": "2026-06-30",
+    "confidence": "high"
+  },
+  {
+    "id": "68a2db85d562",
+    "date_found": "2026-07-08",
+    "title": "Claude Code 2.1.200: AskUserQuestion больше не автопродолжается, режим прав по умолчанию — Manual",
+    "summary": "Релиз смещает автономность к безопасности: всплывающие AskUserQuestion больше не продолжаются автоматически (опт-ин через /config), а режим прав по умолчанию переключён на «Manual» — CC чаще спрашивает подтверждение.",
+    "details": "**Зачем.** Тем, кого раздражало, что агент «проскакивал» вопросы и действовал без явного согласия; безопаснее для прод-репозиториев.\n\n**Как.** Обнови до v2.1.200; по умолчанию AskUserQuestion ждёт ответа (автопродолжение включается в /config); дефолтный permission mode = «Manual»; команда /review <pr> снова однопроходная (быстрее). Плюс фиксы стабильности фоновых сессий и сообщений об ошибках MCP.\n\n**Подвох.** Больше ручных подтверждений = медленнее автономные прогоны; кто полагался на авто-продолжение, должен явно включить его обратно.",
+    "tags": [
+      "tips",
+      "workflows"
+    ],
+    "source_url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.200",
+    "source_platform": "github",
+    "author": "Anthropic",
+    "published_at": "2026-07-03",
+    "confidence": "high"
+  },
+  {
+    "id": "246ad4608dcd",
+    "date_found": "2026-07-08",
+    "title": "Claude Code 2.1.199: стек слэш-скиллов — за один вызов подгружается до 5 скиллов",
+    "summary": "Релиз: сцепленные вызовы слэш-скиллов теперь подгружают несколько скиллов сразу (до 5) в одном запросе; плюс улучшены обработка SSL-ошибок и отчётность об ошибках сабагентов.",
+    "details": "**Зачем.** Тем, кто комбинирует несколько скиллов в одном действии и не хотел вызывать их по одному.\n\n**Как.** Обнови до v2.1.199; сцепляй слэш-скиллы — загрузится до 5 за раз. Также: сохранение частичного стриминга при обрыве ответа, более понятные ошибки сабагентов, стабильнее фоновый демон на Linux.\n\n**Подвох.** Точечный релиз; лимит — 5 скиллов; много скиллов за раз раздувают контекст.",
+    "tags": [
+      "skills",
+      "slash-commands"
+    ],
+    "source_url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.199",
+    "source_platform": "github",
+    "author": "Anthropic",
+    "published_at": "2026-07-02",
+    "confidence": "high"
+  },
+  {
+    "id": "f60c8decb96e",
+    "date_found": "2026-07-08",
+    "title": "HeyClaude: курируемый реестр из 1340+ ресурсов для Claude — агенты, MCP, скиллы, хуки",
+    "summary": "Проверяемый человеком каталог-реестр для Claude: 1340+ записей в 10 категориях (106 агентов, 468 MCP-серверов, 175 скиллов, 87 хуков, 43 команды) с доступом через сайт, JSON/RSS-ленты, npm-MCP и Raycast.",
+    "details": "**Зачем.** Тем, кто ищет готовые агенты/MCP/скиллы/хуки и хочет источник с проверкой, а не случайную свалку ссылок.\n\n**Как.** Смотри каталог на heyclau.de/browse; интегрируй как MCP (remote endpoint heyclau.de/api/mcp или npm-пакет), есть RSS/Atom/LLM-форматы и Raycast-расширение. Заявки принимаются только «source-backed» через PR с AI-валидацией.\n\n**Подвох.** ZIP/MCPB-пакеты у HeyClaude не хостятся (только ссылки на источники); коммерческие листинги идут через формы сайта; качество записей зависит от модерации.",
+    "tags": [
+      "skills",
+      "mcp",
+      "hooks"
+    ],
+    "source_url": "https://github.com/JSONbored/awesome-claude",
+    "source_platform": "github",
+    "author": "JSONbored",
+    "published_at": "2026-07-07",
+    "confidence": "med"
+  },
+  {
+    "id": "4f655ef80d43",
+    "date_found": "2026-07-08",
+    "title": "Stash: общая память для кодинг-агентов — ускорил длинные сессии Claude Code на 49%",
+    "summary": "База знаний, связывающая агентов с командными данными (GitHub, Drive, Gmail, Notion, Slack): стримит сессии/транскрипты и отдаёт их агенту через CLI, MCP-сервер и виртуальную ФС. По README — ускоряет длинные прогоны Claude Code на 49%.",
+    "details": "**Зачем.** Командам, где агенты повторно ищут одно и то же по разным сервисам; для персистентной общей памяти между сессиями.\n\n**Как.** `bash -c \"$(curl -fsSL https://joinstash.ai/install)\"` или `pip install stashai`, затем `stash signin` (может авто-поставить хуки для Claude Code). Поиск по виртуальной ФС: `stash vfs \"rg \\\"query\\\" /\"`, `stash vfs \"tree / -L 2\"`.\n\n**Подвох.** Загрузка транскриптов — opt-in; LLM-фичи требуют Anthropic API-ключ; самохостинг — через Docker Compose; заявленные +49% — из README автора, независимо не подтверждены.",
+    "tags": [
+      "mcp",
+      "workflows",
+      "cost-tokens"
+    ],
+    "source_url": "https://github.com/Fergana-Labs/stash",
+    "source_platform": "github",
+    "author": "Fergana-Labs",
+    "published_at": "2026-07-07",
+    "confidence": "med"
+  },
+  {
+    "id": "8b8aace8a216",
+    "date_found": "2026-07-08",
+    "title": "Catalyst: токен-экономный воркспейс для Claude Code с циклом Research→Plan→Implement→Validate",
+    "summary": "Набор из 8 плагинов для Claude Code: структурированный цикл /research-codebase→/create-plan→/implement-plan→/validate-plan, параллельные агенты и трёхуровневая модель (Opus/Sonnet/Haiku) с персистентной памятью между сессиями.",
+    "details": "**Зачем.** Тем, кто хочет воспроизводимый процесс с передачей контекста между фазами и экономией токенов на больших задачах.\n\n**Как.** `curl -O .../setup-catalyst.sh && ./setup-catalyst.sh`, затем в Claude Code: `/plugin marketplace add coalesce-labs/catalyst`, `/plugin install catalyst-dev`, `catalyst-stack start`. Агенты создают handoff-документы до исчерпания контекста; распределение моделей — Opus (план/имплементация), Sonnet (CI), Haiku (сбор данных).\n\n**Подвох.** Заточен под стиль автора («your mileage may vary»); тяжёлые MCP-интеграции (~40k/~20k токенов) надо включать/выключать вручную; /loop живёт максимум ~3 дня, для расписания нужен GitHub Actions.",
+    "tags": [
+      "workflows",
+      "cost-tokens",
+      "subagents"
+    ],
+    "source_url": "https://github.com/coalesce-labs/catalyst",
+    "source_platform": "github",
+    "author": "coalesce-labs",
+    "published_at": "2026-07-07",
+    "confidence": "med"
+  },
+  {
+    "id": "e48fad93f337",
+    "date_found": "2026-07-08",
+    "title": "Live Memory: постоянная память репозитория, чтобы агент перестал перечитывать файлы",
+    "summary": "Плагин Claude Code с отдельной дешёвой моделью: пассивно учится на читаемых/редактируемых файлах и отвечает на вопросы `ask_live_memory` («где X», «как работает Y»). На understanding-задачах снижает стоимость на 61%.",
+    "details": "**Зачем.** Тем, кто теряет токены на повторном чтении одних и тех же файлов в длинных сессиях.\n\n**Как.** Подними HTTP-MCP-сервер (`cd server && python -m live_memory`), затем `/plugin marketplace add https://github.com/shofer-dev/claude-code-live-memory`, `/plugin install live-memory@shofer-live-memory`. Хуки пассивно «подслушивают» читаемые файлы; команды `/live-memory-stats|config|empty`. Компаньон-модель read-only и path-jailed.\n\n**Подвох.** Нужен Python ≥3.10 и запущенный сервер (HTTP-транспорт не авто-стартует); память привязана к workspace (cwd) и не переносится; на чисто-редакторских задачах экономия ~нулевая.",
+    "tags": [
+      "mcp",
+      "cost-tokens"
+    ],
+    "source_url": "https://github.com/shofer-dev/claude-code-live-memory",
+    "source_platform": "github",
+    "author": "shofer-dev",
+    "published_at": "2026-07-06",
+    "confidence": "med"
+  },
+  {
+    "id": "9365f5d426ac",
+    "date_found": "2026-07-08",
+    "title": "claude-skills-pack: 12 скиллов-«позвоночник» разработки (spec→plan→build→audit→ship)",
+    "summary": "Плагин-маркетплейс со скиллами полного цикла: рабочий «позвоночник» spec→plan→build→audit→e2e→ship (+debug) и авто-срабатывающие доменные скиллы. Ребилд из 2597 реальных промптов, неиспользуемые скиллы удаляются.",
+    "details": "**Зачем.** Тем, кто хочет дисциплинированный процесс из проверенных на практике скиллов, а не набор «на всякий случай».\n\n**Как.** `claude plugin marketplace add OmexIT/claude-skills-pack`, затем включи «garage» в Claude Code. Идёт с хуками (автоформат, блок деструктивных команд, предупреждение о чувствительных файлах); планы живут чекбоксами в docs/.../plans/.\n\n**Подвох.** Правила ship/merge задаются per-repo в локальном CLAUDE.md (нет «из коробки»); новые доменные скиллы требуют ≥3 реальных применений; квартальные чистки удаляют неиспользуемое — набор намеренно узкий.",
+    "tags": [
+      "skills",
+      "hooks",
+      "testing"
+    ],
+    "source_url": "https://github.com/OmexIT/claude-skills-pack",
+    "source_platform": "github",
+    "author": "OmexIT",
+    "published_at": "2026-07-07",
+    "confidence": "med"
+  },
+  {
+    "id": "dd568c8bc9c8",
+    "date_found": "2026-07-08",
+    "title": "Официальный MCP-сервер Anthropic в песочнице gVisor: 60+ атак, разбор изоляции",
+    "summary": "Практический тест: reference-сервер @modelcontextprotocol/server-filesystem запустили в gVisor (userspace-ядро Google) на GitHub Actions и прогнали 60+ вредоносных вводов (path traversal, SSRF, инъекции, prompt injection) — риск-скор 10/10 (низкий).",
+    "details": "**Зачем.** Тем, кто пускает сторонние/непроверенные MCP-серверы и думает об изоляции сверх обычного Docker.\n\n**Как.** `docker run --runtime=runsc --network none --read-only --cap-drop ALL ...` — gVisor перехватывает syscalls до реального ядра. Проверено 6 категорий атак: ни сетевых вызовов, ни записи в чувствительные пути, ни доступа к env/секретам.\n\n**Подвох.** Автор честно отмечает: для этого «воспитанного» сервера gVisor не поймал ничего, чего не поймал бы обычный Docker. Ценность — защита от будущих вредоносных серверов, эксплуатирующих ядро.",
+    "tags": [
+      "mcp",
+      "testing"
+    ],
+    "source_url": "https://dev.to/edison_flores_6d2cd381b13/i-ran-anthropics-official-mcp-server-in-a-gvisor-sandbox-heres-what-happened-a6j",
+    "source_platform": "blog",
+    "author": "edison_flores",
+    "published_at": "2026-07-07",
+    "confidence": "med"
+  },
+  {
+    "id": "0d7e040399e4",
+    "date_found": "2026-07-08",
+    "title": "Optimus Claude: подготовка проекта под Claude Code — CLAUDE.md, хуки, тесты за один /optimus:init",
+    "summary": "Плагин анализирует кодовую базу и генерирует под неё гайдлайны, оптимизированный CLAUDE.md, хуки-форматтеры и тест-инфраструктуру. Идея: «ИИ усиливает то, что находит», поэтому сперва навести порядок в проекте.",
+    "details": "**Зачем.** Тем, кто заводит Claude Code на существующем проекте и хочет сразу задать чистый контекст и стандарты.\n\n**Как.** `/plugin marketplace add https://github.com/oprogramadorreal/optimus-claude.git`, `/plugin install optimus@optimus-claude`, затем `/optimus:init`. Скиллы `/optimus:tdd`, `:code-review`, `:refactor`, `:unit-test`; суффикс `-deep` = многоцикловый авто-фикс со свежим контекстом на каждой итерации.\n\n**Подвох.** Почти ничего не авто-триггерится — скиллы надо вызывать явно (кроме лёгкого SessionStart-хука); плагин намеренно консервативен (напр. `/optimus:unit-test` не рефакторит исходники).",
+    "tags": [
+      "tips",
+      "prompting",
+      "testing"
+    ],
+    "source_url": "https://github.com/oprogramadorreal/optimus-claude",
+    "source_platform": "github",
+    "author": "oprogramadorreal",
+    "published_at": "2026-07-07",
+    "confidence": "med"
+  },
+  {
+    "id": "68e9f47c1b07",
+    "date_found": "2026-07-08",
+    "title": "VNX: governance-оркестрация CLI-агентов (Claude/Codex/Gemini) с квитанциями и quality-gates",
+    "summary": "Локальный control plane гоняет CLI-воркеры (Claude, Codex, Gemini, Ollama) в tmux и изолированных git-worktree через ревью-гейты, с append-only NDJSON-квитанцией и hash-chain на каждый диспатч.",
+    "details": "**Зачем.** Командам, которым нужен аудируемый след и governance над параллельными агентами, а не «чёрный ящик» автономного мерджа.\n\n**Как.** `pip install vnx-orchestration`, затем `vnx init`, `vnx migrate`, `vnx doctor`, `vnx dispatch-agent --agent name`. Dual-LLM adversarial review (Codex+Gemini), человек подтверждает мерджи; память слоями PAST (NDJSON-леджер) / CURRENT (SQLite) / FUTURE (roadmap).\n\n**Подвох.** Worktree-изоляция выключена по умолчанию и не гарантирует race-free при параллели; часть фич — Tier 2/3 (не достроено); «это не sandbox и не сертификация» — только аудит-след; нужен установленный и залогиненный CLI на PATH.",
+    "tags": [
+      "workflows",
+      "subagents",
+      "automation"
+    ],
+    "source_url": "https://github.com/Vinix24/vnx-orchestration",
+    "source_platform": "github",
+    "author": "Vinix24",
+    "published_at": "2026-07-07",
+    "confidence": "med"
+  },
+  {
+    "id": "3ab5b0d7cff1",
+    "date_found": "2026-07-08",
+    "title": "Кейс: полная автоматизация видеомонтажа через Claude Code (сетап + гайд)",
+    "summary": "Практический разбор на канале Zinho Automates: как собрать пайплайн автоматического видеомонтажа под управлением Claude Code — от установки инструментов до рабочего процесса.",
+    "details": "**Зачем.** Контент-мейкерам и автоматизаторам, кто хочет увидеть конкретный сквозной кейс «что и как построено», а не общий обзор.\n\n**Как.** Видео показывает пошаговый сетап и запуск автоматизации монтажа с Claude Code — подключение инструментов, скрипты и прогон пайплайна. Смотреть на YouTube.\n\n**Подвох.** Это ютуб-туториал одного автора: воспроизводимость зависит от его стека и инструментов; измеримых метрик результата в заголовке нет; язык — английский. Транскрипцию я не разбирал — детали по видео.",
+    "tags": [
+      "case-study",
+      "automation",
+      "tips"
+    ],
+    "source_url": "https://www.youtube.com/watch?v=dX_UtTmZR9E",
+    "source_platform": "youtube",
+    "author": "Zinho Automates",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  },
+  {
+    "id": "597ef1d58389",
+    "date_found": "2026-07-08",
+    "title": "Кейс: собственные команды в WhatsApp через Claude Code, чтобы не печатать одно и то же",
+    "summary": "На канале Emanuel Mendoza автор показывает, как с помощью Claude Code сделал собственные команды в WhatsApp и перестал вручную писать одинаковые сообщения.",
+    "details": "**Зачем.** Тем, кто автоматизирует рутинную переписку/операции и ищет живой пример кастомных команд, построенных с Claude Code.\n\n**Как.** Видео демонстрирует, как автор с Claude Code создал свои команды для WhatsApp (шаблоны/скрипты вместо ручного набора одинаковых сообщений). Смотреть на YouTube.\n\n**Подвох.** Разбор на испанском; это персональный кейс без опубликованного репозитория и цифр; воспроизводимость зависит от связки инструментов автора. Транскрипцию я не разбирал — детали по видео.",
+    "tags": [
+      "case-study",
+      "slash-commands",
+      "automation"
+    ],
+    "source_url": "https://www.youtube.com/watch?v=vpzgMX0phLA",
+    "source_platform": "youtube",
+    "author": "Emanuel Mendoza",
+    "published_at": "2026-07-07",
+    "confidence": "low"
+  }
+]

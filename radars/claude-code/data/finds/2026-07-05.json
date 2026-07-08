@@ -1,229 +1,197 @@
 [
   {
-    "id": "3bcff58dcd5e",
+    "id": "bf9b28bccccf",
     "date_found": "2026-07-05",
-    "title": "Show HN: Nomlings – виртуальный питомец, который ест токены вашей сессии Claude Code",
-    "summary": "4 баллов, 1 комментов на Hacker News.",
-    "details": "",
-    "tags": [
-      "cost-tokens"
-    ],
-    "source_url": "https://www.nomlings.cc/",
-    "source_platform": "hn",
-    "author": "franwbu",
-    "published_at": "2026-07-05",
-    "confidence": "low"
+    "title": "Claude Code — дайджест недели 26: claude mcp login, ответ на !-команды, /rewind до /clear",
+    "summary": "Официальный недельный дайджест Claude Code (v2.1.185–193): OAuth к MCP-серверам прямо из шелла командой claude mcp login, ответ модели на вывод !-команд и /rewind, поднимающий контекст из состояния до /clear.",
+    "details": "**Зачем.** Тем, кто скриптует MCP и гоняет фоновые сабагенты: собраны точечные изменения за неделю с готовыми командами, а не общий обзор.\n\n**Как.** `claude mcp login <name>` / `claude mcp logout <name>` прогоняют OAuth сервера без интерактивного меню `/mcp`; префикс `!` теперь даёт ответ на вывод (`! npm test` → разбор падений, отключается `respondToBashCommands:false`); `/rewind` восстанавливает разговор из состояния до `/clear`; новый `sandbox.credentials` запрещает песочнице читать секреты; фоновые сабагенты показывают запрос прав в основной сессии вместо авто-отказа.\n\n**Подвох.** Ответ на `!`-команду стоит как обычный промпт (лишние токены). Часть настроек (`autoMode.classifyAllShell`, OTEL-логи ответов) — для продвинутых и по умолчанию выключены.",
+    "tags": ["mcp", "subagents", "automation", "tips"],
+    "source_url": "https://code.claude.com/docs/en/whats-new/2026-w26",
+    "source_platform": "docs",
+    "author": "Anthropic",
+    "published_at": "2026-06-26",
+    "confidence": "high"
   },
   {
-    "id": "ee6885a29217",
+    "id": "75b014bce855",
     "date_found": "2026-07-05",
-    "title": "Unfathomable-siren38/mcp-terinal-server — Запуск встроенного терминального сервера MCP с поддержкой МНОГОСЕССИОННОГО PTY и вкладками xterm.js для Claude...",
-    "summary": "Запустите встроенный терминальный сервер MCP с поддержкой многосессионных PTY и вкладками xterm.js для Claude Code и Claude Desktop ★0",
-    "details": "",
-    "tags": [
-      "mcp"
-    ],
-    "source_url": "https://github.com/Unfathomable-siren38/mcp-terminal-server",
+    "title": "Claude Code — дайджест недели 25: права по параметрам инструмента и /config из промпта",
+    "summary": "Официальный дайджест Claude Code (v2.1.178–183): правила прав теперь матчат параметры инструмента — например Agent(model:opus) блокирует запуск Opus-сабагентов; /config key=value ставит любую настройку прямо из промпта; авто-режим блокирует деструктивные git-команды.",
+    "details": "**Зачем.** Командам, которым нужна тонкая настройка прав и безопасный авто-режим в CI: конкретный синтаксис управления сабагентами и настройками.\n\n**Как.** Deny/ask-правила вида `Tool(param:value)` — например `Agent(model:opus)`, чтобы запретить дорогие Opus-сабагенты; `/config key=value` (в т.ч. в `-p`-режиме) меняет настройку без редактирования файла; авто-режим по умолчанию блокирует деструктивные `git` и `terraform/pulumi destroy`; Артефакты публикуют живую страницу сессии.\n\n**Подвох.** В параметрическом матчинге прав легко ошибиться синтаксисом; авто-блокировку деструктивных команд можно обойти явным запросом — не полагаться как на единственную защиту.",
+    "tags": ["subagents", "automation", "workflows", "tips"],
+    "source_url": "https://code.claude.com/docs/en/whats-new/2026-w25",
+    "source_platform": "docs",
+    "author": "Anthropic",
+    "published_at": "2026-06-19",
+    "confidence": "high"
+  },
+  {
+    "id": "3b40bdcdf249",
+    "date_found": "2026-07-05",
+    "title": "Что менять при переходе на Sonnet 5 по умолчанию в Claude Code (гайд билдера)",
+    "summary": "Разбор для команд: Sonnet 5 стал моделью по умолчанию (новый токенайзер жрёт ~+30% токенов), появился фикс MCP-безопасности (серверы из .mcp.json в недоверенном воркспейсе больше не авто-стартуют) и корпоративное управление моделями по орг/ролям.",
+    "details": "**Зачем.** Тем, кто ведёт общие конфиги команды и следит за расходом: объясняет, что поменять при переходе на Sonnet 5 и новый MCP-флоу подтверждений.\n\n**Как.** Новые сессии — на Sonnet 5 с адаптивным thinking; ручной extended thinking и sampling-параметры убраны, токенайзер новый (пересчитать `max_tokens`). MCP: серверы из закоммиченного `.mcp.json` в недоверенном воркспейсе теперь требуют явного approve. Организации задают дефолтные модели на уровне орг/роли.\n\n**Подвох.** Цена за токен не изменилась, но «тот же промпт стоит дороже» из-за нового токенайзера — предупредить команду заранее, иначе счёт вырастет незаметно.",
+    "tags": ["mcp", "cost-tokens", "automation"],
+    "source_url": "https://chatforest.com/builders-log/claude-code-week-27-sonnet-5-default-mcp-security-org-models-builder-guide",
+    "source_platform": "blog",
+    "author": "ChatForest",
+    "published_at": "2026-07-02",
+    "confidence": "med"
+  },
+  {
+    "id": "a4bd860eabc8",
+    "date_found": "2026-07-05",
+    "title": "Claude in Chrome в GA, фоновые агенты с уведомлениями и мульти-скилл — недельный обзор",
+    "summary": "Обзор трёх свежих изменений экосистемы Claude Code: Claude in Chrome вышел в GA (агент видит контекст браузера), фоновые сабагенты шлют уведомления о завершении и запросах прав, а в одном процессе подгружается несколько скиллов.",
+    "details": "**Зачем.** Быстро понять три свежих изменения вокруг Claude Code и зачем агенту браузерный контекст.\n\n**Как.** Claude in Chrome (GA) даёт агенту доступ к вкладкам и контексту браузера; фоновые сабагенты уведомляют о завершении и всплывающих запросах прав; несколько ведущих скиллов подгружаются в одном вызове. Обзор со ссылками на первоисточники.\n\n**Подвох.** Это агрегатор-роундап, а не глубокий разбор; браузерный агент — новая поверхность атаки, осторожнее с доступом к аккаунтам и вкладкам.",
+    "tags": ["subagents", "automation", "ide-integration"],
+    "source_url": "https://www.joinnextdev.com/blog/ai-tools-weekly-claude-code-gets-chrome-background-agents-2-more",
+    "source_platform": "blog",
+    "author": "NextDev",
+    "published_at": "2026-07-03",
+    "confidence": "med"
+  },
+  {
+    "id": "bf6f1be7da31",
+    "date_found": "2026-07-05",
+    "title": "8 продакшн-процессов Claude Code с правилом, когда они окупаются",
+    "summary": "Восемь воспроизводимых процессов для Claude Code: план-затем-билд с гейтами апрува, TDD-циклы, аудит незнакомого репо, мульти-репо рефактор, генерация доков, паранойя-ревью безопасности, оркестрация роя агентов и апгрейд зависимостей.",
+    "details": "**Зачем.** Командам, уставшим от one-shot промптов: готовые паттерны плюс правило, когда они реально окупаются.\n\n**Как.** Ключевое правило: задача <30 мин — просто промпт; 30 мин–часы — план-затем-билд (`/plan {id}` → апрув → `/task-start` → `/review` → `/task-done`). Остальное: read-only аудит в `AUDIT.md`, общий `REFACTOR.md` для мульти-репо, файловые локи + `HANDOFFS.md` для параллельных агентов, `UPGRADE.md` для зависимостей.\n\n**Подвох.** Паттерны требуют дисциплины скоупинга и ревью-гейтов; на мульти-репо и рое агентов координационные накладные расходы могут перевесить пользу. Шаблоны надо адаптировать под свой домен.",
+    "tags": ["workflows", "automation", "refactoring", "testing"],
+    "source_url": "https://www.ayautomate.com/blog/best-claude-code-workflows",
+    "source_platform": "blog",
+    "author": "Taha",
+    "published_at": "2026-06-22",
+    "confidence": "med"
+  },
+  {
+    "id": "61692c13fac6",
+    "date_found": "2026-07-05",
+    "title": "Как мониторить расход токенов Claude Code и где они утекают",
+    "summary": "Практика контроля токенов Claude Code: /usage, /cost, /status и community-тулзы (ccusage, Claude-Code-Usage-Monitor), плюс пять главных пожирателей токенов — от раздутого вывода инструментов до extended thinking.",
+    "details": "**Зачем.** Инженерным командам, у которых счёт за Claude Code растёт непонятно куда, — как измерить и где утекает.\n\n**Как.** Подписка — `/usage` и `/status`; API — `/cost`. Историю разбирает `ccusage` (фильтры по дате/проекту/модели), реалтайм — `Claude-Code-Usage-Monitor` (burn rate, время до лимита). Топ-драйверы расхода: раздутый вывод инструментов (один grep ≈ 10–15k токенов), размытые промпты с переделками, сабагенты (+200–500% оверхеда), Agent Teams, extended thinking (по умолчанию, ×5 к input).\n\n**Подвох.** Локальные логи сессий хранятся лишь 30 дней по умолчанию — для долгой аналитики заранее поднять `cleanupPeriodDays` в настройках.",
+    "tags": ["cost-tokens", "tips"],
+    "source_url": "https://www.faros.ai/blog/claude-code-token-usage",
+    "source_platform": "blog",
+    "author": "Faros AI",
+    "published_at": "2026-06-25",
+    "confidence": "med"
+  },
+  {
+    "id": "6db95ef40128",
+    "date_found": "2026-07-05",
+    "title": "Как Anthropic сдерживает собственные кодинг-агенты — и почему это трудно повторить",
+    "summary": "Разбор трёхслойной модели containment для Claude Code: детерминированные границы ОС (песочница, egress-allowlist, изоляция кредов), поведенческая рулёжка модели и аудит внешнего контента/MCP. Опора — именно детерминированная граница.",
+    "details": "**Зачем.** Security-командам, которым нужно масштабировать контроль над кодинг-агентами на весь парк инструментов, а не только Claude Code.\n\n**Как.** Три слоя: (1) Environment — процесс/VM-песочницы, egress-allowlist, режимы монтирования ФС, изоляция кредов (Anthropic выложил `sandbox-runtime` с профилями Seatbelt/bubblewrap); (2) Model — системные промпты, классификаторы, флоу апрувов, защита от prompt-injection; (3) External — аудит MCP-серверов, инспекция вывода инструментов, отношение к клонированным репо как к враждебному вводу.\n\n**Подвох.** Anthropic может так защищаться, потому что контролирует весь стек; у большинства организаций зоопарк агентов (Cursor, Copilot, Gemini CLI) с несогласованными политиками — централизованное управление парком пока не решено.",
+    "tags": ["automation", "tips"],
+    "source_url": "https://www.highflame.com/blog/how-anthropic-contains-its-own-coding-agents-and-get-that-coverage-across-your-fleet/",
+    "source_platform": "blog",
+    "author": "Highflame",
+    "published_at": "2026-06-22",
+    "confidence": "med"
+  },
+  {
+    "id": "016630ddf1b5",
+    "date_found": "2026-07-05",
+    "title": "Crew: параллельные сессии Claude Code видят друг друга и переписываются",
+    "summary": "Crew даёт нескольким сессиям Claude Code на одном репозитории видеть статусы друг друга и обмениваться сообщениями — без веток и worktree, чтобы координировать параллельных агентов.",
+    "details": "**Зачем.** Тем, кто гоняет несколько Claude Code одновременно по одному коду и хочет, чтобы агенты не мешали друг другу, а обменивались статусом.\n\n**Как.** `npm install -g @0xmmo/crew` либо плагином `/plugin marketplace add 0xmmo/crew`. Каждая сессия получает контекст-блок с активными сессиями; `crew send <target> \"...\"` шлёт сообщение; команда `crew` показывает статусы, выжимки и куски транскриптов. Ноль конфигурации, авто-встраивается в настройки Claude Code.\n\n**Подвох.** Node ≥18, только macOS/Linux; спящую сессию нельзя разбудить извне (сообщения ждут до 24 ч); отображение ограничено 5 записями на сессию и 8 сессиями; читает сессии, но не меняет их.",
+    "tags": ["subagents", "workflows"],
+    "source_url": "https://github.com/0xmmo/crew",
     "source_platform": "github",
-    "author": "Unfathomable-siren38",
-    "published_at": "2026-07-05",
-    "confidence": "low"
+    "author": "0xmmo",
+    "published_at": "2026-07-04",
+    "confidence": "med"
   },
   {
-    "id": "ae9df33e4d77",
+    "id": "efe0bc4d745b",
     "date_found": "2026-07-05",
-    "title": "Show HN: Handoff – проверенный мост контекста между сессиями Claude Code.",
-    "summary": "6 баллов, 1 комментов на Hacker News.",
-    "details": "",
-    "tags": [
-      "tips"
-    ],
-    "source_url": "https://github.com/ostikwhy-blip/claude-code-handoff-skill",
-    "source_platform": "hn",
-    "author": "ostik",
-    "published_at": "2026-07-05",
-    "confidence": "low"
-  },
-  {
-    "id": "73c4e215eaf9",
-    "date_found": "2026-07-05",
-    "title": "fabionfsc/nuzo-memory — Локальная, проверяемая память для агентов ИИ, совместимых с Codex, Claude Code и MCP.",
-    "summary": "Локальная, проверяемая память для агентов ИИ, совместимых с Codex, Claude Code и MCP. ★0",
-    "details": "",
-    "tags": [
-      "mcp"
-    ],
-    "source_url": "https://github.com/fabionfsc/nuzo-memory",
+    "title": "harness: Rust control plane для флота агентов с governance и кросс-ревью",
+    "summary": "Rust-control-plane для параллельного запуска кодинг-агентов (Claude Code, Codex) с управлением: независимое перекрёстное ревью между агентами, Starlark-политики исполнения, вебхуки GitHub и телеметрия OpenTelemetry.",
+    "details": "**Зачем.** Тем, кто оркестрирует «флот» агентов и хочет governance: единый жизненный цикл задач, независимое ревью (агент не ревьюит сам себя), политики исполнения.\n\n**Как.** `cargo build --release -p harness-cli`, `bash scripts/doctor.sh`, `./start-server.sh`, проверка `curl http://127.0.0.1:9800/health`. Нужны Rust 1.88+, Postgres 14+, GitHub-токен и хотя бы один рантайм агента (Claude CLI / Codex CLI / Anthropic API). Есть режим MCP-сервера (JSON-RPC) и экспорт OpenTelemetry.\n\n**Подвох.** HTTP API «fails closed»: без `HARNESS_API_TOKEN` (или явного `allow_unauthenticated`) не поднимется. Инфраструктурно тяжёлый (Postgres, сборка на Rust), зрелость средняя — последний релиз конца мая.",
+    "tags": ["workflows", "automation"],
+    "source_url": "https://github.com/majiayu000/harness",
     "source_platform": "github",
-    "author": "fabionfsc",
-    "published_at": "2026-07-05",
+    "author": "majiayu000",
+    "published_at": "2026-07-04",
     "confidence": "low"
   },
   {
-    "id": "89f9aea47a52",
+    "id": "edb2208d6745",
     "date_found": "2026-07-05",
-    "title": "Показать HN: Contextrot – Анализ причин ухудшения работы Claude Code на основе его собственного журнала сеанса.",
-    "summary": "3 баллов, 0 комментов на Hacker News.",
-    "details": "",
-    "tags": [
-      "tips"
-    ],
-    "source_url": "https://github.com/Priyanshu-byte-coder/contextrot",
-    "source_platform": "hn",
-    "author": "PriyanshuDoshi",
-    "published_at": "2026-07-05",
-    "confidence": "low"
-  },
-  {
-    "id": "9e98dad9edb2",
-    "date_found": "2026-07-05",
-    "title": "crisnahine/chameleon — плагин Claude Code, который изучает соглашения вашего репозитория и показывает модели реальный пример из вашего собственного кода перед…",
-    "summary": "Плагин Claude Code, который изучает соглашения вашего репозитория и показывает модели реальный пример из вашего собственного кода перед каждым редактированием, так что сгенерированный ИИ код будет соответствовать вашему стилю с первой попытки. TypeScript, Ruby и Python. ★8",
-    "details": "",
-    "tags": [
-      "tips"
-    ],
-    "source_url": "https://github.com/crisnahine/chameleon",
+    "title": "Brick-SR1: роутер, отправляющий запрос Claude Code на самую дешёвую подходящую модель",
+    "summary": "Brick маршрутизирует каждый запрос Claude Code на самую дешёвую модель, которая справится (haiku/sonnet/opus), эскалируя только по необходимости — чтобы резать расход токенов без потери качества.",
+    "details": "**Зачем.** Тем, кто жжёт бюджет, гоняя всё на дорогой модели: роутер сам выбирает модель под сложность запроса.\n\n**Как.** `git clone`, `cd brick-SR1/apps/cli && npm install && npm run build && npm link`, `brick claude on`, затем в НОВОЙ сессии выбрать `brick-claude` в `/model`. Роутер оценивает промпт по 6 осям (код, синтез, следование инструкциям, матан, планирование, знания) и направляет в пул моделей с учётом цены. Режимы eco/mid/max привязаны к слайдеру усилий.\n\n**Подвох.** Бета (интеграция с Codex сырая), Docker-дистрибутив только с v2.1.0 — пока собирать из исходников; добавляет свой прокси-слой между вами и моделью.",
+    "tags": ["cost-tokens"],
+    "source_url": "https://github.com/regolo-ai/brick-SR1",
     "source_platform": "github",
-    "author": "crisnahine",
-    "published_at": "2026-07-05",
+    "author": "regolo-ai",
+    "published_at": "2026-07-03",
     "confidence": "low"
   },
   {
-    "id": "651470171ed6",
+    "id": "cba648d509bc",
     "date_found": "2026-07-05",
-    "title": "Показать HN: Локальный MCP – Claude/ChatGPT читает ваши сообщения iMessage, Teams и файлы на устройстве",
-    "summary": "3 баллов, 0 комментов на Hacker News.",
-    "details": "",
-    "tags": [
-      "mcp"
-    ],
-    "source_url": "https://www.local-mcp.com/en",
-    "source_platform": "hn",
-    "author": "lanchuske",
-    "published_at": "2026-07-05",
+    "title": "Видео: как заметно снизить расход токенов в Claude Code",
+    "summary": "Видео-туториал Tech With Tim с практическими приёмами и настройками против раздувания контекста в Claude Code — чтобы реже упираться в лимиты и счёт.",
+    "details": "**Зачем.** Тем, кто быстро упирается в лимиты или растущий счёт: видео-разбор приёмов экономии токенов.\n\n**Как.** Автор показывает настройки и рабочие привычки, снижающие расход: управление контекстом, выбор модели/режима, урезание лишнего вывода инструментов. Формат — практический туториал на канале Tech With Tim.\n\n**Подвох.** Видео без текстовой выжимки; часть приёмов — общие советы, применимость зависит от вашего проекта и версии CLI.",
+    "tags": ["cost-tokens", "tips"],
+    "source_url": "https://www.youtube.com/watch?v=3d5S7i0vYC4",
+    "source_platform": "youtube",
+    "author": "Tech With Tim",
+    "published_at": "2026-07-04",
     "confidence": "low"
   },
   {
-    "id": "c0ce7846c5b3",
+    "id": "b7766feb3452",
     "date_found": "2026-07-05",
-    "title": "Recepay6358/claude-code-best-practice — Продемонстрируйте лучшие практики кодирования с помощью Claude с помощью четких примеров и организованных рабочих процессов для...",
-    "summary": "Продемонстрируйте лучшие практики программирования с помощью Claude на наглядных примерах и в виде структурированных рабочих процессов, чтобы повысить навыки и эффективность. ★2",
-    "details": "",
-    "tags": [
-      "skills",
-      "workflows"
-    ],
-    "source_url": "https://github.com/Recepay6358/claude-code-best-practice",
-    "source_platform": "github",
-    "author": "Recepay6358",
-    "published_at": "2026-07-05",
+    "title": "Видео: Dune Analytics через MCP в Claude Code — он-чейн аналитика из чата",
+    "summary": "Короткое русскоязычное видео о подключении Dune Analytics через MCP к Claude Code, чтобы получать он-чейн аналитику прямо из диалога — сценарий, за который обычно платят подписку.",
+    "details": "**Зачем.** Аналитикам и крипто-разработчикам — наглядный пример реального MCP-сценария: Dune внутри Claude Code.\n\n**Как.** Автор показывает подключение Dune MCP-сервера к Claude Code и запросы аналитики прямо из диалога. Формат — короткий ролик (#Shorts) на русском.\n\n**Подвох.** Shorts — мало деталей по настройке; сторонний MCP-сервер требует доступа/ключа Dune и несёт обычные риски доверия MCP-серверам.",
+    "tags": ["mcp"],
+    "source_url": "https://www.youtube.com/watch?v=4mP_THtM3i4",
+    "source_platform": "youtube",
+    "author": "Тимур Севостьянов",
+    "published_at": "2026-07-04",
     "confidence": "low"
   },
   {
-    "id": "fb3097ad6cce",
+    "id": "b8b5f603405f",
     "date_found": "2026-07-05",
-    "title": "mendelsohnelderhand853/claude_code_journaling — Анализируйте ежедневные записи в дневнике и преобразуйте их в структурированные ежемесячные обзоры с помощью Claude Code из терапии…",
-    "summary": "Анализируйте ежедневные записи в дневнике и создавайте структурированные ежемесячные обзоры с помощью метода Claude, рассматривая их с точки зрения терапевта, коуча и других специалистов ★0",
-    "details": "",
-    "tags": [
-      "tips"
-    ],
-    "source_url": "https://github.com/mendelsohnelderhand853/claude_code_journaling",
-    "source_platform": "github",
-    "author": "mendelsohnelderhand853",
-    "published_at": "2026-07-05",
+    "title": "Contextify: единая история и поиск по сессиям Claude Code и Codex",
+    "summary": "Contextify ведёт постоянную историю сессий Claude Code и Codex в одной базе с полнотекстовым поиском — закрывает пробел «у Claude Code нет искомой истории».",
+    "details": "**Зачем.** Тем, кто теряет прошлые решения между сессиями и инструментами: единый timeline и поиск по всем разговорам Claude Code и Codex.\n\n**Как.** Приложение следит за обоими инструментами и складывает всё в одну искомую базу; полнотекстовый поиск по прошлым командам/решениям, сводки сообщений для быстрого скимминга. Ставится как Mac-приложение (App Store или DMG), недавно добавили Linux; на macOS 26 сводки генерятся локально (Apple Intelligence), по умолчанию работает офлайн.\n\n**Подвох.** В основном под Mac (Linux помечен «New»); на macOS 15 — только timeline и поиск без AI-сводок («Lite Mode»); дата релиза на сайте не указана явно.",
+    "tags": ["ide-integration", "tips"],
+    "source_url": "https://contextify.sh/",
+    "source_platform": "blog",
+    "author": "bredren",
+    "published_at": "2026-07-03",
     "confidence": "low"
   },
   {
-    "id": "0e51a0223a38",
+    "id": "4b32e09ee68b",
     "date_found": "2026-07-05",
-    "title": "phuati/claude-skills-arsenal — Your Ultimate Claude Skills Library & Hub 2026 – Интеграция и организация рабочих процессов ИИ",
-    "summary": "Ваша исчерпывающая библиотека навыков и центр Claude Skills 2026 – Интеграция и организация рабочих процессов ИИ ★1",
-    "details": "",
-    "tags": [
-      "skills",
-      "workflows"
-    ],
-    "source_url": "https://github.com/phuati/claude-skills-arsenal",
-    "source_platform": "github",
-    "author": "phuati",
-    "published_at": "2026-07-05",
-    "confidence": "low"
+    "title": "Кейс: игры, целиком написанные Claude Code — с цифрами и честным ROI",
+    "summary": "Обзор реальных игр, собранных на Claude Code: roguelite Spell Cascade (~7 220 строк, 100% кода от Claude, Godot) и Azure Flame Dungeon (22 000+ строк, Pygame), плюс честный 30-дневный итог автора yurukusa: 5 игр, 50 000+ строк — и $4.99 выручки (ROI −97.5%).",
+    "details": "**Зачем.** Гейм-девелоперам и всем, кто прикидывает Claude Code под реальный проект: конкретные объёмы кода, движки и трезвая экономика вместо хайпа.\n\n**Как.** Автор разбирает набор проектов: Spell Cascade (Godot 4.3/GDScript, ~7 220 строк, «100% кода сгенерировано Claude Code»), Azure Flame Dungeon (Python/Pygame, 22 000+ строк), Blackholio (Phaser + SpacetimeDB, мультиплеер «с первого раза» за ~30 мин), Tidewater Cove (Godot в headless/Docker + GitHub Actions). Показаны и провалы, где нужна была ручная доработка (Stellar Throne).\n\n**Подвох.** Экономика отрезвляет: 5 игр и 50 000+ строк принесли $4.99 (ROI −97.5%). Часть исходных проектов датируется ранее; ценна именно сводка-обзор от 21 июня, а не отдельные старые демки.",
+    "tags": ["case-study", "cost-tokens", "workflows"],
+    "source_url": "https://chierhu.medium.com/claude-code-for-game-development-7a88fcd19992",
+    "source_platform": "blog",
+    "author": "Chier Hu",
+    "published_at": "2026-06-21",
+    "confidence": "high"
   },
   {
-    "id": "7226ed728280",
+    "id": "28b5331bc35d",
     "date_found": "2026-07-05",
-    "title": "AmmDuncan/Easel — вкладка браузера в реальном времени для каждого сеанса работы с кодом Claude. Инструмент display_push MCP проталкивает HTML-карты (макеты, отличия, сравнение...",
-    "summary": "Вкладка браузера в реальном времени для каждой сессии Claude Code. Инструмент display_push MCP выводит HTML-карточки (макеты, различия, сравнения) в прокручиваемую ленту, которую вы держите открытой в режиме разделенного экрана. ★0",
-    "details": "",
-    "tags": [
-      "mcp"
-    ],
-    "source_url": "https://github.com/AmmDuncan/easel",
-    "source_platform": "github",
-    "author": "AmmDuncan",
-    "published_at": "2026-07-05",
-    "confidence": "low"
-  },
-  {
-    "id": "db19f73773d7",
-    "date_found": "2026-07-05",
-    "title": "Claude Code стеганографически маркирует запросы",
-    "summary": "2436 баллов, 746 комментов на Hacker News.",
-    "details": "",
-    "tags": [
-      "tips"
-    ],
-    "source_url": "https://thereallo.dev/blog/claude-code-prompt-steganography",
-    "source_platform": "hn",
-    "author": "kirushik",
-    "published_at": "2026-06-30",
-    "confidence": "low"
-  },
-  {
-    "id": "2d6ed547d596",
-    "date_found": "2026-07-05",
-    "title": "Компании заставляют Claude и Codex говорить как пещерные люди, чтобы остановить резкий рост затрат на ИИ",
-    "summary": "4 баллов, 0 комментов на Hacker News.",
-    "details": "",
-    "tags": [
-      "cost-tokens"
-    ],
-    "source_url": "https://www.404media.co/companies-are-making-claude-and-codex-talk-like-cavemen-to-stop-ais-soaring-costs/",
-    "source_platform": "hn",
-    "author": "beardyw",
-    "published_at": "2026-06-30",
-    "confidence": "low"
-  },
-  {
-    "id": "e9d0a63fac9e",
-    "date_found": "2026-07-05",
-    "title": "Осторожно, Claude Code удаляет >30-дневные стенограммы. Anthropic не исправит это",
-    "summary": "30 баллов, 37 комментов на Hacker News.",
-    "details": "",
-    "tags": [
-      "tips"
-    ],
-    "source_url": "https://github.com/anthropics/claude-code/issues/62476",
-    "source_platform": "hn",
-    "author": "ojura",
-    "published_at": "2026-06-30",
-    "confidence": "low"
-  },
-  {
-    "id": "770b1a6c6098",
-    "date_found": "2026-07-05",
-    "title": "Show HN: Autoharness – самообучающийся, поддерживающий уровень навыков для Claude Code",
-    "summary": "3 баллов, 0 комментов на Hacker News.",
-    "details": "",
-    "tags": [
-      "skills"
-    ],
-    "source_url": "https://github.com/tigerless-labs/autoharness",
-    "source_platform": "hn",
-    "author": "Tigerless_ailab",
-    "published_at": "2026-06-30",
-    "confidence": "low"
+    "title": "Кейс: полгода с Claude Code — как автор удвоил продуктивность своим тулингом",
+    "summary": "Личный разбор после полугода с Claude Code: автор встроил его в PyCharm своим плагином, сделал скиллы под форматирование тикетов и публикацию в Jira, гоняет Claude в Docker-песочнице и собрал персонального ассистента поверх Gmail/Slack/GitHub.",
+    "details": "**Зачем.** Тем, кто хочет превратить Claude Code из «иногда-инструмента» в основного напарника: разобран реальный сквозной процесс от брейншторма до PR.\n\n**Как.** Автор написал плагин `agent-cli-plugin`, рендерящий сессии Claude Code прямо в PyCharm; сделал специализированные скиллы (формат тикетов, публикация в Jira); гоняет реализацию в песочнице на минимальном Docker-образе `claude-crate`; поднял ассистента «Jarvis» с доступом к Gmail, Slack, GitHub и календарям. По его словам, продуктивность выросла вдвое.\n\n**Подвох.** Честный компромисс: в песочнице «no MCPs or extra skills» на фазе реализации — изоляция убирает прерывания на права и защищает от разрушительных изменений, но и урезает возможности Claude в самый момент кодинга.",
+    "tags": ["case-study", "ide-integration", "skills"],
+    "source_url": "https://sajith.me/blog/2026/six_months_with_claude_code.html",
+    "source_platform": "blog",
+    "author": "sajithdilshan",
+    "published_at": "2026-06-24",
+    "confidence": "med"
   }
 ]

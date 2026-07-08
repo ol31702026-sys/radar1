@@ -1,227 +1,251 @@
 [
   {
-    "id": "b30391eb8808",
+    "id": "ce903d712a96",
     "date_found": "2026-07-06",
-    "title": "Anthropic спрятал трекер в Claude Codex, чтобы пометить китайских пользователей",
-    "summary": "9 баллов, 1 комментов на Hacker News.",
-    "details": "",
+    "title": "Claude Code 2.1.199 — цепочки навыков в одной команде и фиксы SSL/стрим-ошибок",
+    "summary": "Официальный changelog 2.1.199: команда вида `/skill-a /skill-b сделай X` теперь подгружает все ведущие скиллы (до 5) сразу, а не только первый. Плюс починены ошибки SSL-сертификатов и потеря ответа при mid-stream сбое сервера.",
+    "details": "**Зачем.** Тем, кто собрал набор своих скиллов и хочет комбинировать их одной строкой (например, `/plan /review отрефактори модуль`), не запуская по очереди. И всем, кого раздражали случайные обрывы ответа и лишние ретраи из-за SSL.\n\n**Как.** Обновиться до 2.1.199 (`claude update` или менеджер пакетов). После этого до 5 стоящих подряд слэш-скиллов в начале сообщения загружаются вместе; SSL- и стрим-ошибки обрабатываются без потери прогресса.\n\n**Подвох.** Это точечный патч, а не крупная фича: полезен, только если вы реально пользуетесь несколькими скиллами. Стек ограничен 5 ведущими скиллами; всё, что дальше в строке, — обычный промпт.",
+    "tags": [
+      "skills",
+      "slash-commands",
+      "workflows"
+    ],
+    "source_url": "https://code.claude.com/docs/en/changelog#2-1-199",
+    "source_platform": "docs",
+    "author": "Anthropic",
+    "published_at": "2026-07-02",
+    "confidence": "high"
+  },
+  {
+    "id": "488850a1e034",
+    "date_found": "2026-07-06",
+    "title": "Claude Code 2.1.187 — настройка sandbox.credentials блокирует чтение секретов в песочнице",
+    "summary": "В changelog добавлена настройка sandbox.credentials: команды, выполняемые в песочнице, не могут читать файлы с ключами и секретные переменные окружения. Защита от утечки секретов, когда агент выполняет недоверенный код.",
+    "details": "**Зачем.** Командам, гоняющим Claude Code в CI/CD или с MCP-серверами, где недоверенный ввод может спровоцировать вызов инструмента и попытку прочитать `.env`/токены. Снижает риск эксфильтрации секретов автономным агентом.\n\n**Как.** Обновиться и включить настройку sandbox.credentials в конфиге. После этого sandboxed-команды не видят перечисленные credential-файлы и секретные env-переменные, даже если модель попробует их прочитать.\n\n**Подвох.** Это защита только для sandboxed-команд — код, запущенный вне песочницы, по-прежнему имеет доступ к окружению. Не заменяет нормальное управление секретами (vault, ограничение прав), а лишь добавляет слой.",
+    "tags": [
+      "ci-cd",
+      "automation",
+      "mcp"
+    ],
+    "source_url": "https://code.claude.com/docs/en/changelog#2-1-187",
+    "source_platform": "docs",
+    "author": "Anthropic",
+    "published_at": "2026-06-23",
+    "confidence": "high"
+  },
+  {
+    "id": "1ad63ab7004d",
+    "date_found": "2026-07-06",
+    "title": "Claude Code Hooks Explained: детерминированный слой вокруг агента",
+    "summary": "Разбор хуков как гарантированных точек исполнения: они срабатывают на событиях жизненного цикла независимо от того, что решила модель. Автор описывает 30 событий, контракт по exit-кодам и JSON-выводу и 5 готовых к продакшену хуков.",
+    "details": "**Зачем.** Тем, кто хочет жёстко (а не «попросив модель») enforced-правила: авто-форматирование после правок, блокировку опасных команд, запуск тестов на Stop, гейтинг субагентов. Хук выполняется всегда, промпт — нет.\n\n**Как.** Хуки описываются в settings как shell-команды на событие (PreToolUse/PostToolUse/Stop/SubagentStop и др.). Управление поведением — через exit-код (0/блокировка) и JSON на stdout. В статье даны 5 конкретных реализаций для копирования.\n\n**Подвох.** Хуки — это shell-скрипты с вашими правами: кривой хук может ломать сессию или замедлять каждый вызов инструмента. Их надо тестировать; часть из 30 событий узкоспециальны и на практике не нужны.",
+    "tags": [
+      "hooks",
+      "automation",
+      "workflows"
+    ],
+    "source_url": "https://blakecrosley.com/blog/claude-code-hooks-explained",
+    "source_platform": "blog",
+    "author": "Blake Crosley",
+    "published_at": "2026-07-01",
+    "confidence": "high"
+  },
+  {
+    "id": "af28323e06a0",
+    "date_found": "2026-07-06",
+    "title": "CLAUDE.md, Skills, Subagents, Hooks — когда что использовать",
+    "summary": "Чёткая ментальная модель выбора между четырьмя примитивами Claude Code: CLAUDE.md — то, что Claude знает всегда; скилл — процедура по требованию; хук — правило, форсируемое харнессом; субагент — изолированная «комната» для рассуждения.",
+    "details": "**Зачем.** Новичкам и тем, кто путается, во что оформлять знание/процесс. Правильный выбор экономит контекст и токены: не пихать в CLAUDE.md то, что должно быть скиллом по требованию, и не делать хуком то, что достаточно описать.\n\n**Как.** Правило из статьи: всегда нужно → CLAUDE.md; вызвать по запросу → skill; должно исполниться независимо от модели → hook; нужна изоляция контекста/параллельность → subagent. Дальше — по возрастанию сложности.\n\n**Подвох.** Это концептуальный гайд, а не пошаговая инструкция с командами: конкретику установки/синтаксиса берите из офиц. доков. Границы между примитивами на практике размываются, модель — субъективная.",
+    "tags": [
+      "skills",
+      "subagents",
+      "hooks",
+      "tips"
+    ],
+    "source_url": "https://www.buildthisnow.com/blog/tools/claude-code-skills-vs-subagents-vs-hooks",
+    "source_platform": "blog",
+    "author": "speedy_devv",
+    "published_at": "2026-06-23",
+    "confidence": "med"
+  },
+  {
+    "id": "c7640b853cf6",
+    "date_found": "2026-07-06",
+    "title": "Playwright MCP + Claude Code: автогенерация и прогон браузерных тестов",
+    "summary": "Гайд, как подключить Playwright MCP, чтобы агент сам управлял реальным браузером: читал DOM, кликал, снимал скриншоты и генерировал/чинил e2e-тесты по описанию на естественном языке.",
+    "details": "**Зачем.** QA и фронтендерам, которым надоело руками писать селекторы и болванки тестов. С MCP можно сказать «зайди на страницу, кликни Blog, сделай скриншот» — и получить рабочий сценарий плюс анализ падений.\n\n**Как.** Добавить Playwright MCP-сервер к клиенту (в Claude Code — `claude mcp add`; в статье показан вариант через `claude_desktop_config.json` для Claude Desktop) и перезапустить. Затем управлять браузером промптами и просить сгенерировать тесты.\n\n**Подвох.** Инструкции в статье написаны под конфиг Claude Desktop, а не под CLI Claude Code — для CLI команду добавления MCP берите из доков. Не годится для строгих <100мс сценариев, жжёт токены на больших прогонах, требует доступа к облачному API.",
+    "tags": [
+      "mcp",
+      "testing",
+      "automation"
+    ],
+    "source_url": "https://testomat.io/blog/playwright-mcp-claude-code/",
+    "source_platform": "blog",
+    "author": "Mykhailo Poliarush",
+    "published_at": "2026-07-02",
+    "confidence": "med"
+  },
+  {
+    "id": "997340ec9d4b",
+    "date_found": "2026-07-06",
+    "title": "Скрытая цена Claude Sonnet 5: почему «cost-neutral» может выйти дороже",
+    "summary": "Разбор реальной стоимости Sonnet 5 (модель по умолчанию в Claude Code): промо-цена $2/$10 за Mtok, но повышение ставок с 1 сентября и новый токенизатор, раздувающий счёт токенов до ~35%, могут дать +20–35% к фактическим расходам.",
+    "details": "**Зачем.** Тем, кто считает бюджет на Claude Code и повёлся на формулировку «cost-neutral». Полезно спланировать переход до окончания промо-окна и заложить эффект токенизатора в оценку затрат.\n\n**Как.** Практика из статьи: не сравнивать только ставки за Mtok — умножать на реальный рост числа токенов (тот же текст = больше токенов). Использовать промо-цену до 31.08, отслеживать фактический расход, а не прайс-лист.\n\n**Подвох.** Оценка «+20–35%» — модельная и зависит от вашего профиля использования; на коротких задачах эффект токенизатора меньше. Материал от вендора cost-мониторинга, т.е. с очевидным интересом в теме.",
+    "tags": [
+      "cost-tokens",
+      "tips"
+    ],
+    "source_url": "https://www.finout.io/blog/claude-sonnet-5-pricing-2026-the-hidden-costs-and-real-savings-behind-the-cost-neutral-launch",
+    "source_platform": "blog",
+    "author": "Finout",
+    "published_at": "2026-07-01",
+    "confidence": "med"
+  },
+  {
+    "id": "84bc51127f94",
+    "date_found": "2026-07-06",
+    "title": "Обсуждение: возможная утечка сессии/кэша между аккаунтами в Claude Code",
+    "summary": "Issue в репозитории Claude Code (и горячее обсуждение на HN, 313 баллов): пользователи сообщают о потенциальной утечке сессии/кэша между разными workspace-инстансами и потребительскими аккаунтами.",
+    "details": "**Зачем.** Всем, кто держит несколько аккаунтов/воркспейсов (личный + рабочий) в одном Claude Code: стоит знать о риске пересечения сессий и кэша и следить за реакцией Anthropic до подтверждения фикса.\n\n**Как.** Прочитать issue и тред, сверить симптомы со своим окружением. До ясности — не смешивать чувствительные рабочие и личные сессии в одном инстансе, обновляться по мере выхода патчей.\n\n**Подвох.** Это репорт/обсуждение, а не подтверждённая уязвимость с CVE и не готовое решение — часть деталей на уровне догадок. Ценность в раннем сигнале, а не в инструкции к действию.",
     "tags": [
       "tips"
     ],
-    "source_url": "https://arstechnica.com/tech-policy/2026/07/anthropic-outed-for-claude-tracker-that-secretly-monitored-chinese-users/",
+    "source_url": "https://github.com/anthropics/claude-code/issues/74066",
     "source_platform": "hn",
-    "author": "logickkk1",
-    "published_at": "2026-07-06",
+    "author": "chatmasta",
+    "published_at": "2026-07-04",
     "confidence": "low"
   },
   {
-    "id": "79a24115457f",
+    "id": "09159c2c2639",
     "date_found": "2026-07-06",
-    "title": "Erica-J-01/ai-pm - AI PM Assistant: цепные навыки Claude Codex, которые превращают исходные данные заинтересованных сторон в готовые к принятию решений артефакты, от приема...",
-    "summary": "Помощник ИИ PM: объединил навыки Claude Code, которые превращают исходные данные заинтересованных сторон в готовые к принятию решений артефакты, от сортировки поступления и сканирования рисков до PRD, пользовательских историй и планов спринта. ★6",
-    "details": "",
+    "title": "claude-swap — переключение между несколькими аккаунтами Claude Code",
+    "summary": "CLI-утилита (★771), которая переключает Claude Code между несколькими аккаунтами без разлогина — вручную или автоматически при упоре в rate-limit, с мониторингом расхода и параллельными сессиями.",
+    "details": "**Зачем.** Тем, кто упирается в лимиты одного аккаунта и держит несколько: авто-ротация при достижении порога позволяет не простаивать. Работает и с CLI, и с VS Code-расширением.\n\n**Как.** `uv tool install claude-swap` (или `pipx install claude-swap`). Дальше: `cswap add` — добавить текущий аккаунт, `cswap switch` — переключить, `cswap auto` — авто-переключение по лимитам, `cswap list` — расход по аккаунтам.\n\n**Подвох.** Нужен Python 3.12+. На macOS изменения применяются с задержкой ~30с из-за кэша Keychain; для API-ключей метрики расхода не показываются; на Windows пока нет общей истории чатов между сессиями. Жонглирование аккаунтами может нарушать ToS — на свой риск.",
     "tags": [
-      "skills"
+      "tips",
+      "cost-tokens"
     ],
-    "source_url": "https://github.com/Erica-J-01/ai-pm",
+    "source_url": "https://github.com/realiti4/claude-swap",
     "source_platform": "github",
-    "author": "Erica-J-01",
-    "published_at": "2026-07-06",
-    "confidence": "low"
+    "author": "realiti4",
+    "published_at": "2026-07-05",
+    "confidence": "med"
   },
   {
-    "id": "576b1d4f54c8",
+    "id": "b50dd58a0e5b",
     "date_found": "2026-07-06",
-    "title": "Показать HN: оркестровка параллельных агентов Claude Code и Codex на карте в реальном времени",
-    "summary": "3 баллов, 0 комментов на Hacker News.",
-    "details": "",
+    "title": "Storybloq — кросс-сессионная память для Claude Code (CLI + MCP + скилл /story)",
+    "summary": "Инструмент (★636), решающий проблему «беспамятства» между сессиями: хранит тикеты, issue, хендоверы и роадмап в git-папке `.story/`. Ставит скилл и MCP-сервер; в Claude Code статус проекта поднимается командой `/story`.",
+    "details": "**Зачем.** Тем, кто теряет контекст между сессиями Claude Code и вручную пересказывает агенту, «на чём остановились». `.story/` коммитится в git, так что состояние проекта переживает рестарты и шарится в команде.\n\n**Как.** `npm install -g @storybloq/storybloq@latest`, затем `storybloq setup --client all` (ставит скилл, регистрирует MCP, вешает хуки). Инициализация: `storybloq init --name \"project\"`; в Claude Code — `/story` (плюс `/story handover`, `/story review`, `/story auto`).\n\n**Подвох.** Нужен Node.js 20+ и Claude Code/Codex CLI ≥0.130.0. Лицензия PolyForm Noncommercial — бесплатно для личного использования, коммерческое требует отдельной лицензии. Командный режим усложняет одновременное редактирование.",
     "tags": [
-      "subagents"
+      "mcp",
+      "skills",
+      "workflows"
     ],
-    "source_url": "https://github.com/Latand/live-log-viewer-next",
-    "source_platform": "hn",
-    "author": "latand6",
-    "published_at": "2026-07-06",
-    "confidence": "low"
-  },
-  {
-    "id": "c51678ccc67f",
-    "date_found": "2026-07-06",
-    "title": "chicken-noodle-chris/tome — Tome — это плагин Claude Code и инструмент CLI с навыками и скриптами для создания llm-wiki на основе...",
-    "summary": "Tome - это плагин Claude Code и инструмент CLI с навыками и скриптами для создания llm-wiki на основе предложения karpathy, с слоем кварцевого рендеринга для улучшения читаемости пользователем и CLI, который поддерживает спецификацию контента.  Это должна быть установка в один клик, просто поместите ее в свой личный репозиторий и вперед. ★0",
-    "details": "",
-    "tags": [
-      "skills"
-    ],
-    "source_url": "https://github.com/chicken-noodle-chris/tome",
+    "source_url": "https://github.com/Storybloq/storybloq",
     "source_platform": "github",
-    "author": "chicken-noodle-chris",
-    "published_at": "2026-07-06",
-    "confidence": "low"
+    "author": "Storybloq",
+    "published_at": "2026-07-05",
+    "confidence": "med"
   },
   {
-    "id": "2891658a178b",
+    "id": "423cfac46708",
     "date_found": "2026-07-06",
-    "title": "jesserobbins/whoops — соотнесите данные сердечного ритма Whoop с активностью кодирующего агента, чтобы определить, когда Джесси злится, а Claude - чушь собачья",
-    "summary": "Сопоставьте данные частоты сердечных сокращений Whoop с активностью кодирующего агента, чтобы определить, когда Джесси злится, а Claude - чушь собачья ★0",
-    "details": "",
+    "title": "scaffolding — спец-driven плагин мульти-агентной оркестрации для Claude Code",
+    "summary": "Портативный конфиг-плагин Claude Code: 13 специализированных агентов (analyst, architect, developer, reviewer, debugger, mcp-builder и др.), 35 скиллов, 19 команд и 15 lifecycle-хуков с помодельными тирами по фазам.",
+    "details": "**Зачем.** Тем, кто хочет готовый каркас spec-driven разработки, а не собирать агентов/скиллы/хуки с нуля. Хуки уже блокируют опасный `rm`, валидируют пре-коммиты и авто-форматируют правки.\n\n**Как.** В Claude Code: `/plugin marketplace add komluk/scaffolding`, затем `/plugin install scaffolding@komluk-scaffolding` и обязательно `/reload-plugins` (иначе агенты не подхватятся). Опционально `/init-scaffolding`.\n\n**Подвох.** Без бэкенда по умолчанию: семантическая память требует self-hosted mem0 + PostgreSQL. Файловая память ограничена 200 строками на тир. Работает только внутри Claude Code + git, standalone-использования нет.",
+    "tags": [
+      "subagents",
+      "skills",
+      "hooks",
+      "workflows"
+    ],
+    "source_url": "https://github.com/komluk/scaffolding",
+    "source_platform": "github",
+    "author": "komluk",
+    "published_at": "2026-07-05",
+    "confidence": "med"
+  },
+  {
+    "id": "f7fedb639155",
+    "date_found": "2026-07-06",
+    "title": "Видео: 100 сетапов новичков Claude Code — 7 типовых ошибок",
+    "summary": "Автор разобрал 100 сетапов новичков Claude Code и свёл к 7 повторяющимся ошибкам конфигурации — практический чек-лист, чего не делать при настройке.",
+    "details": "**Зачем.** Тем, кто только настраивает Claude Code и не хочет наступать на грабли: раздутый CLAUDE.md, лишние MCP-серверы, неверные права/хуки. Быстрый способ вычистить свой сетап по чужому опыту.\n\n**Как.** Посмотреть видео и пройтись по своему конфигу: CLAUDE.md, набор MCP, permissions, хуки. Сверить каждую из 7 названных ошибок со своей настройкой и убрать лишнее.\n\n**Подвох.** Формат — YouTube-обзор без гарантии глубины; часть советов субъективна и может устареть с новыми версиями. Конкретику всё равно стоит сверять с офиц. доками.",
     "tags": [
       "tips"
     ],
-    "source_url": "https://github.com/jesserobbins/whoops",
-    "source_platform": "github",
-    "author": "jesserobbins",
-    "published_at": "2026-07-06",
-    "confidence": "low"
-  },
-  {
-    "id": "35b25a561677",
-    "date_found": "2026-07-06",
-    "title": "tyler-sterkly/claude-plugins — плагины Claude Code от tyler-sterkly",
-    "summary": "Плагины Claude Code от tyler-sterkly ★0",
-    "details": "",
-    "tags": [
-      "tips"
-    ],
-    "source_url": "https://github.com/tyler-sterkly/claude-plugins",
-    "source_platform": "github",
-    "author": "tyler-sterkly",
-    "published_at": "2026-07-06",
-    "confidence": "low"
-  },
-  {
-    "id": "aa552390b4c7",
-    "date_found": "2026-07-06",
-    "title": "codewithrunningjay/claude-proxy-pro — маршрутизация запросов Claude Code к любому провайдеру ИИ с использованием собственного настольного приложения.",
-    "summary": "Маршрут запросов Claude Code к любому провайдеру ИИ с использованием собственного настольного приложения. ★1",
-    "details": "",
-    "tags": [
-      "ide-integration"
-    ],
-    "source_url": "https://github.com/codewithrunningjay/claude-proxy-pro",
-    "source_platform": "github",
-    "author": "codewithrunningjay",
-    "published_at": "2026-07-06",
-    "confidence": "low"
-  },
-  {
-    "id": "d42dd9cb3961",
-    "date_found": "2026-07-06",
-    "title": "Louisedinky226/superstack — создание и запуск готовых к производству программных продуктов с использованием Claude без написания кода.",
-    "summary": "Создавайте и запускайте готовые к производству программные продукты с использованием Claude без написания кода. ★0",
-    "details": "",
-    "tags": [
-      "tips"
-    ],
-    "source_url": "https://github.com/Louisedinky226/superstack",
-    "source_platform": "github",
-    "author": "Louisedinky226",
-    "published_at": "2026-07-06",
-    "confidence": "low"
-  },
-  {
-    "id": "014d9cd9e540",
-    "date_found": "2026-07-06",
-    "title": "JBSag/pm-artisan — 15 навыков Claude Code PM 2026 - мгновенное создание артефактов DOCX XLSX PPTX",
-    "summary": "15 Навыки Claude Code PM 2026 - Мгновенное создание артефактов DOCX XLSX PPTX ★0",
-    "details": "",
-    "tags": [
-      "skills"
-    ],
-    "source_url": "https://github.com/JBSag/pm-artisan",
-    "source_platform": "github",
-    "author": "JBSag",
-    "published_at": "2026-07-06",
-    "confidence": "low"
-  },
-  {
-    "id": "59bf5d56e138",
-    "date_found": "2026-07-06",
-    "title": "Show HN: Peek-CLI: Let Claude Code See the Browser (Показать HN: Peek-CLI: Пусть код К",
-    "summary": "11 баллов, 0 комментов на Hacker News.",
-    "details": "",
-    "tags": [
-      "tips"
-    ],
-    "source_url": "https://github.com/puffinsoft/peek-cli",
-    "source_platform": "hn",
-    "author": "ReactRocks",
+    "source_url": "https://www.youtube.com/watch?v=UuUleyxal8s",
+    "source_platform": "youtube",
+    "author": "Hyperautomation Labs",
     "published_at": "2026-07-05",
     "confidence": "low"
   },
   {
-    "id": "5182b4b62e21",
+    "id": "1ae2827a131c",
     "date_found": "2026-07-06",
-    "title": "Показать HN: Statuslin.es – библиотека сообщества пользовательских строк статуса Claude Code",
-    "summary": "4 баллов, 0 комментов на Hacker News.",
-    "details": "",
+    "title": "Видео: поставил 15 MCP-серверов, чтобы вы не ставили (9 удалил)",
+    "summary": "Автор установил 15 MCP-серверов для Claude Code, 9 из них удалил и объясняет почему — отсев того, что реально полезно, от того, что жрёт контекст и мешает.",
+    "details": "**Зачем.** Тем, кто хочет добавить MCP, но боится замусорить сетап: видео экономит время на самостоятельном переборе и показывает, какие серверы окупаются, а какие только раздувают контекст.\n\n**Как.** Посмотреть, отобрать 5–6 рекомендованных MCP и добавить их через `claude mcp add`, не ставя всё подряд. Периодически ревизовать список и удалять неиспользуемые серверы.\n\n**Подвох.** Выбор «оставить/удалить» — вкус автора под его задачи; ваш профиль может отличаться. Список MCP быстро устаревает. Это ориентир, а не истина в последней инстанции.",
     "tags": [
-      "tips"
+      "mcp"
     ],
-    "source_url": "https://statuslin.es",
-    "source_platform": "hn",
-    "author": "nastynate",
-    "published_at": "2026-06-30",
+    "source_url": "https://www.youtube.com/watch?v=wLgocH5mmb8",
+    "source_platform": "youtube",
+    "author": "Hyperautomation Labs",
+    "published_at": "2026-07-05",
     "confidence": "low"
   },
   {
-    "id": "1f522891cb9d",
+    "id": "343a92bef3ff",
     "date_found": "2026-07-06",
-    "title": "VPSMaxxing – миграция Codex, Claude Code и других агентов в VPS",
-    "summary": "3 баллов, 1 комментов на Hacker News.",
-    "details": "",
+    "title": "Видео: как я использую agent loops и цели (Claude Code + Codex)",
+    "summary": "Owain Lewis показывает свой рабочий приём: агентные циклы с явно заданной целью, где Claude Code (в связке с Codex) итеративно движется к результату, а не выполняет одноразовый промпт.",
+    "details": "**Зачем.** Тем, кто хочет запускать длинные автономные задачи и понять, как формулировать цель и условие остановки, чтобы агент не «расплывался». Полезно для сравнения связки Claude Code + Codex.\n\n**Как.** Из видео: задать чёткую цель и критерий готовности, дать агенту петлю (сделал → проверил → поправил) и минимально вмешиваться. Автор демонстрирует это на реальном рабочем процессе.\n\n**Подвох.** Это демонстрация личного workflow одного практика, а не универсальный рецепт; частично про Codex, а не только Claude Code. Без своей адаптации приёмы могут не подойти под ваш стек.",
     "tags": [
-      "refactoring"
+      "workflows",
+      "subagents"
     ],
-    "source_url": "https://github.com/Kuberwastaken/VPSmaxxing",
-    "source_platform": "hn",
-    "author": "kuberwastaken",
-    "published_at": "2026-06-30",
+    "source_url": "https://www.youtube.com/watch?v=WRkVuebZqLU",
+    "source_platform": "youtube",
+    "author": "Owain Lewis",
+    "published_at": "2026-07-01",
     "confidence": "low"
   },
   {
-    "id": "18631123c5b2",
+    "id": "33b7bc88271c",
     "date_found": "2026-07-06",
-    "title": "Claude Code тихо снимает отпечатки пальцев с API-маршрутизаторов, связанных с Китаем",
-    "summary": "9 баллов, 4 комментов на Hacker News.",
-    "details": "",
+    "title": "Кейс: автономные dev-воркфлоу на Claude Code в codecentric",
+    "summary": "Инженер консалтинга codecentric описывает реальные мульти-агентные сетапы Claude Code: специализированные субагенты работают параллельно, ревьюят друг друга и координируются автономно, доводя задачу до результата.",
+    "details": "**Зачем.** Тимлидам и инженерам, которым интересен не гайд, а опыт применения субагентов в реальной разработке: как разложить работу между агентами, кто кого проверяет и где это реально ускоряет.\n\n**Как.** Подход из статьи: под задачу поднимается набор субагентов с узкими ролями (реализация, ревью, отладка), они идут параллельно и проверяют результаты друг друга перед слиянием — а не один агент делает всё.\n\n**Подвох.** Это обзор практики конкретной команды, детали ролей и промптов обобщены; перенос на ваш проект требует адаптации. Часть выигрыша зависит от зрелости кодовой базы и тестов.",
     "tags": [
-      "tips"
+      "case-study",
+      "subagents",
+      "workflows",
+      "automation"
     ],
-    "source_url": "https://www.vincentschmalbach.com/claude-code-china-router-fingerprint/",
-    "source_platform": "hn",
-    "author": "vincent_s",
-    "published_at": "2026-06-30",
-    "confidence": "low"
+    "source_url": "https://www.codecentric.de/en/knowledge-hub/blog/autonomous-development-workflows-with-claude-code",
+    "source_platform": "blog",
+    "author": "Christoph Dalski (codecentric)",
+    "published_at": "2026-06-22",
+    "confidence": "med"
   },
   {
-    "id": "5327f9c08146",
+    "id": "b465c5fee4a9",
     "date_found": "2026-07-06",
-    "title": "Антропное встроенное шпионское ПО в Claude Code – и попытка скрыть его от вас",
-    "summary": "7 баллов, 0 комментов на Hacker News.",
-    "details": "",
+    "title": "Кейс: доведение macOS-приложения перевода встреч с помощью Claude Code",
+    "summary": "Разбор реального проекта: macOS-приложение с живыми двуязычными субтитрами для Zoom/Google Meet, доведённое до продакшена в связке с Claude Code — авто-reconnect WebSocket, плавающее окно субтитров, экспорт стенограммы.",
+    "details": "**Зачем.** Тем, кто хочет увидеть Claude Code на настоящем нетривиальном приложении (аудио-захват, WebSocket, SwiftUI, системные права), а не на todo-демке — включая решение конкретных багов вроде обрыва сессии Gemini Live через ~10 минут.\n\n**Как.** Автор применял цикл «План → реализация субагентами → AI-ревью»: Claude сперва задаёт уточняющие вопросы, пишет спецификацию, затем разводит независимых субагентов-исполнителя и ревьюера и ловит баги замкнутой проверкой. Пример: экспоненциальный backoff 2с→4с→6с + ping-keepalive для авто-reconnect.\n\n**Подвох.** Это опыт одного разработчика на узком стеке (macOS/SwiftUI/Gemini Live API); цифр экономии времени нет. Часть решений специфична для этого приложения и напрямую не переносится.",
     "tags": [
+      "case-study",
+      "workflows",
       "ide-integration"
     ],
-    "source_url": "https://www.reddit.com/r/ClaudeCode/s/Z690c1Y9Zk",
-    "source_platform": "hn",
-    "author": "cromka",
-    "published_at": "2026-06-30",
-    "confidence": "low"
-  },
-  {
-    "id": "589d36d7abe4",
-    "date_found": "2026-07-06",
-    "title": "Отчеты о лимитах использования антропной резки снова",
-    "summary": "3 баллов, 0 комментов на Hacker News.",
-    "details": "",
-    "tags": [
-      "tips"
-    ],
-    "source_url": "https://old.reddit.com/r/ClaudeCode/comments/1uim4jb/this_is_a_message_for_anthropic_bring_back_the/",
-    "source_platform": "hn",
-    "author": "quux0r",
-    "published_at": "2026-06-30",
-    "confidence": "low"
+    "source_url": "https://dev.to/gde/ai-in-action-refining-a-macos-meeting-translation-app-with-claude-code-auto-reconnect-floating-2856",
+    "source_platform": "blog",
+    "author": "evanlin",
+    "published_at": "2026-07-05",
+    "confidence": "med"
   }
 ]

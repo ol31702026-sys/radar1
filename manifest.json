@@ -193,6 +193,52 @@
         }
       ],
       "total_finds": 439
+    },
+    {
+      "slug": "claude-practice",
+      "title": "Claude Code — практикум",
+      "description": "Плейбук + еженедельная доза: как применять Claude Code в реальной работе (автоматизация процессов, интернет-магазины, небольшие сервисы) на уровне начальный+. Не новости, а вечнозелёные разборы «сделай в своём проекте».",
+      "language": "ru",
+      "taxonomy": [
+        "возможности",
+        "проверка",
+        "старт",
+        "рецепт",
+        "автоматизация",
+        "магазин",
+        "mcp",
+        "hooks",
+        "skills",
+        "slash-commands",
+        "subagents",
+        "безопасность",
+        "git",
+        "prompting"
+      ],
+      "platforms": [],
+      "days": [
+        {
+          "date": "50-svezhaya-doza",
+          "count": 4
+        },
+        {
+          "date": "40-vozmozhnosti",
+          "count": 5
+        },
+        {
+          "date": "30-proverka",
+          "count": 5
+        },
+        {
+          "date": "20-start",
+          "count": 5
+        },
+        {
+          "date": "10-recepty",
+          "count": 5
+        }
+      ],
+      "total_finds": 24
     }
   ]
 }

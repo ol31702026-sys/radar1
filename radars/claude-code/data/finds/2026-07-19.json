@@ -1,0 +1,186 @@
+[
+  {
+    "id": "30905c3403f9",
+    "date_found": "2026-07-19",
+    "title": "wshobson/agents: маркетплейс из 94 плагинов (203 агента, 175 скиллов) для Claude Code",
+    "summary": "Готовый каталог доменных субагентов, скиллов и команд для Claude Code: 94 плагина (Python, безопасность, инфраструктура, ML). Ставится одной командой, в контекст грузится только выбранный пакет, а не весь маркетплейс.",
+    "details": "**Зачем.** Тем, кто не хочет писать субагентов с нуля, а хочет взять проверенный набор специалистов под конкретный домен.\n\n**Как.** `/plugin marketplace add wshobson/agents`, затем `/plugin install python-development` (или любой из 94 плагинов). Внутри — многоуровневая стратегия моделей: Opus на архитектуру, Sonnet на доки, Haiku на рутину.\n\n**Подвох.** Это сторонний каталог, качество плагинов разное; много подключённых ролей = раздувание контекста и токенов, ставьте точечно.",
+    "tags": [
+      "subagents",
+      "skills",
+      "slash-commands"
+    ],
+    "source_url": "https://github.com/wshobson/agents",
+    "source_platform": "github",
+    "author": "wshobson",
+    "published_at": "2026-07-18",
+    "confidence": "med"
+  },
+  {
+    "id": "3f3b6cec003c",
+    "date_found": "2026-07-19",
+    "title": "claude-code-studio: браузерный воркспейс над Claude Code CLI (kanban, планировщик, Telegram, SSH)",
+    "summary": "Веб-обёртка над Claude Code CLI: чат со скриншотами, kanban-очередь задач (параллельно или последовательно), планировщик повторяющихся запусков, управление через Telegram и доступ к удалённым серверам по SSH. Агент работает автономно, а вы следите за ним из браузера или телефона.",
+    "details": "**Зачем.** Тем, кто гоняет несколько задач разом и хочет пульт (доска + расписание + удалёнка) вместо голого терминала.\n\n**Как.** Быстрый старт: `npx github:Lexus2016/claude-code-studio`, открыть `http://localhost:3000`, задать пароль. Есть Docker (`docker compose up -d --build`) и десктоп-сборки. Нужен Node 18+ и установленный Claude Code CLI.\n\n**Подвох.** Десктоп-версия single-user и привязана к 127.0.0.1; планировщик — до 5 параллельных воркеров; известный баг npm 10.x с git-install (обновить npm до последней).",
+    "tags": [
+      "workflows",
+      "automation",
+      "ide-integration",
+      "mcp"
+    ],
+    "source_url": "https://github.com/Lexus2016/claude-code-studio",
+    "source_platform": "github",
+    "author": "Lexus2016",
+    "published_at": "2026-07-18",
+    "confidence": "med"
+  },
+  {
+    "id": "15266a1e8042",
+    "date_found": "2026-07-19",
+    "title": "CodeAlive-AI/ai-driven-development: 22 скилла и safety-hook bash-guard для Claude Code",
+    "summary": "Набор из 22 скиллов (промпт-инжиниринг, протоколы багфикса, планирование, менеджмент MCP/хуков/субагентов) плюс хук bash-guard: он на AST-уровне ловит опасные команды (rm, миграции БД, мутации облака) и переспрашивает, а не молча блокирует.",
+    "details": "**Зачем.** Тем, кто хочет безопаснее пускать агента в bash и разом получить базовый набор инженерных скиллов.\n\n**Как.** `npx skills add CodeAlive-AI/ai-driven-development` (все скиллы) или `--skill prompt-engineering` (один); либо `/plugin marketplace add CodeAlive-AI/ai-driven-development` + install. Хук ставится скриптом `install-prebuilt.sh`.\n\n**Подвох.** Подход «ask, не deny»: bash-guard требует подтверждения, а не предотвращает действие; кросс-платформенность в ущерб специфичным фишкам агента; активные скиллы всё равно едят токены.",
+    "tags": [
+      "skills",
+      "hooks"
+    ],
+    "source_url": "https://github.com/CodeAlive-AI/ai-driven-development",
+    "source_platform": "github",
+    "author": "CodeAlive-AI",
+    "published_at": "2026-07-18",
+    "confidence": "med"
+  },
+  {
+    "id": "7dd1f1241d4d",
+    "date_found": "2026-07-19",
+    "title": "deja-vu: слой памяти для Claude Code — семантический recall по прошлым сессиям через MCP",
+    "summary": "Индексирует историю сессий Claude Code и других агентов и даёт MCP-инструмент recall: ищет по гигабайтам логов за ~12 мс и подсовывает готовое решение из прошлого, чтобы не отлаживать одно и то же дважды. С флагом --auto подмешивает релевантную память проекта на старте сессии.",
+    "details": "**Зачем.** Если постоянно ловите «где-то я это уже чинил»: вытащить прошлое решение без ручного грепа по логам.\n\n**Как.** Установка `curl -fsSL https://raw.githubusercontent.com/vshulcz/deja-vu/main/install.sh | sh` или `brew install vshulcz/tap/deja-vu`. Подключение: `deja install --all` (MCP-инструмент recall) или `deja install --auto` (авто-подмешивание на SessionStart, ≤2 КБ). Инструменты: recall / recall_context / remember.\n\n**Подвох.** По умолчанию поиск лексический, семантика требует Ollama/LM Studio; фильтра по проектам пока нет; Windows-сборки есть, но обкатаны macOS/Linux; транскрипты субагентов по умолчанию пропускаются.",
+    "tags": [
+      "mcp",
+      "cost-tokens"
+    ],
+    "source_url": "https://github.com/vshulcz/deja-vu",
+    "source_platform": "github",
+    "author": "vshulcz",
+    "published_at": "2026-07-17",
+    "confidence": "med"
+  },
+  {
+    "id": "1f8d23033bc5",
+    "date_found": "2026-07-19",
+    "title": "pluxx: один исходник плагина → нативные плагины для Claude Code, Cursor, Codex и OpenCode",
+    "summary": "CLI, который превращает сырой MCP в нативный плагин сразу для Claude Code, Cursor, Codex и OpenCode — чтобы не вести четыре расходящихся репозитория под разные форматы манифестов. Одна команда генерирует пакеты под все хосты.",
+    "details": "**Зачем.** Авторам плагинов и MCP-серверов, кто устал синхронизировать четыре реализации вручную.\n\n**Как.** `npx @orchid-labs/pluxx init --from-mcp <url> --name my-plugin --yes`. Есть `autopilot` для полностью автоматического пути и вариант для локального MCP: `--from-mcp \"npx -y -p @acme/mcp acme-mcp\"`. Нужен Node ≥18.\n\n**Подвох.** Заточен под 4 хоста, остальные цели помечены как beta; работает только с уже настроенными MCP; общий рантайм требует детерминированного bootstrap для тяжёлых зависимостей.",
+    "tags": [
+      "mcp",
+      "automation",
+      "skills"
+    ],
+    "source_url": "https://github.com/orchidautomation/pluxx",
+    "source_platform": "github",
+    "author": "orchidautomation",
+    "published_at": "2026-07-18",
+    "confidence": "med"
+  },
+  {
+    "id": "931df61432fb",
+    "date_found": "2026-07-19",
+    "title": "CrewCtl: оркестратор-«оператор» для команды из Claude Code, Codex, Gemini и OpenCode",
+    "summary": "Локальный дирижёр для CLI-агентов: роль «оператор» разбирает задачу, планирует, раздаёт её специализированным агентам (Claude Code / Codex / Gemini / OpenCode), ревьюит результат и гоняет по кругу. Kanban-доска, расписания и живой стрим команды — в одном веб-интерфейсе.",
+    "details": "**Зачем.** Тем, кто параллелит несколько CLI-агентов и хочет единый пульт с планированием и ревью вместо ручного жонглирования терминалами.\n\n**Как.** Запуск без установки: `npx @omerrgocmen/crewctl` (или глобально `npm install -g @omerrgocmen/crewctl && crewctl`), интерфейс на `http://localhost:4317`. Есть Kanban (Pending·Running·Done·Failed), пресеты расписаний, live-diff и авто-версии с откатом в один клик. Node 18+, без рантайм-зависимостей.\n\n**Подвох.** Расписания работают только пока «мотор» запущен (без unattended-автозапуска); откат версий — только на простое; для критичной работы автор советует обычный git. Проект молодой.",
+    "tags": [
+      "workflows",
+      "subagents",
+      "automation"
+    ],
+    "source_url": "https://github.com/omergocmen/CrewCtl",
+    "source_platform": "github",
+    "author": "omergocmen",
+    "published_at": "2026-07-18",
+    "confidence": "med"
+  },
+  {
+    "id": "7ca03133a0f9",
+    "date_found": "2026-07-19",
+    "title": "quil: tmux-альтернатива, которая переживает ребут и авто-возобновляет сессии Claude Code",
+    "summary": "Терминальный мультиплексор на Go: сохраняет весь воркспейс через перезагрузку и сам восстанавливает сессии Claude Code/OpenCode по session-id (~30 сек). Плюс встроенный MCP-сервер, через который агент сам управляет панелями — читает вывод и шлёт команды.",
+    "details": "**Зачем.** Тем, кто теряет длинные сессии Claude Code после ребута или сна машины, и тем, кто хочет, чтобы агент сам рулил панелями терминала.\n\n**Как.** Установка: `curl -sSfL https://raw.githubusercontent.com/artyomsv/quil/master/scripts/install.sh | sh`, запуск `quil`. Для управления панелями добавить MCP-сервер в конфиг Claude Code: `\"quil\": {\"command\": \"quil\", \"args\": [\"mcp\"]}` — откроет 15+ инструментов (list_panes, read_pane_output, send_to_pane). После ребута каждая панель переподключается к прежнему диалогу сама.\n\n**Подвох.** Проект свежий (v1.37.0), явных ограничений в README нет — обкатывать на некритичном; Windows-сборка ставится вручную из релизов.",
+    "tags": [
+      "workflows",
+      "automation",
+      "mcp"
+    ],
+    "source_url": "https://github.com/artyomsv/quil",
+    "source_platform": "github",
+    "author": "artyomsv",
+    "published_at": "2026-07-18",
+    "confidence": "med"
+  },
+  {
+    "id": "13dd69ea993b",
+    "date_found": "2026-07-19",
+    "title": "symphony-rust: десктоп-оркестратор, который сажает Claude Code на задачи из доски Linear",
+    "summary": "Десктоп-приложение, которое следит за доской Linear и раздаёт задачи агентам (Claude Code или Codex): каждая issue уезжает в свежесклонированный воркспейс, агент работает, а вы только триажите и ревьюите результат.",
+    "details": "**Зачем.** Небольшой команде или соло-мейкеру с потоком задач в Linear, кто хочет «автономную инженерную бригаду».\n\n**Как.** Symphony мониторит доску Linear, диспатчит каждую issue в отдельный клон репозитория на агента (Claude Code/Codex) и собирает результаты обратно в контекст ведущего агента; вы триажите и ревьюите.\n\n**Подвох.** Очень свежий проект (Rust, мало звёзд), заточен под связку с Linear; автономный прогон агентов требует присмотра и лимитов на расход.",
+    "tags": [
+      "workflows",
+      "automation"
+    ],
+    "source_url": "https://github.com/anantjain-xyz/symphony-rust",
+    "source_platform": "github",
+    "author": "anantjain-xyz",
+    "published_at": "2026-07-18",
+    "confidence": "low"
+  },
+  {
+    "id": "2f19de75315b",
+    "date_found": "2026-07-19",
+    "title": "nix-ai: весь сетап Claude Code (плагины, хуки, агенты, 15+ MCP) декларативно в одном Nix-флейке",
+    "summary": "Nix-флейк, который декларативно описывает всё окружение Claude Code — плагины, хуки, агентов, команды, правила и каталог из 15+ MCP-серверов (GitHub, Terraform, Context7, filesystem, memory). Модель и уровень усилий тоже задаются опциями home-manager.",
+    "details": "**Зачем.** Nix/home-manager-пользователям, кто хочет воспроизводимый версионируемый сетап Claude Code вместо ручной возни с конфигами на каждой машине.\n\n**Как.** Добавить в inputs флейка `url = \"github:dryvist/nix-ai\"` и подключить модуль `nix-ai.homeManagerModules.default`. Опции: `programs.claude.model`, `programs.claude.effortLevel`, `programs.claude.trustedProjectDirs`; в комплекте cclint, doppler-mcp, claude-flow и каталог MCP.\n\n**Подвох.** Нужен Nix с flakes и home-manager; поддержка только aarch64-darwin и x86_64-linux; локальный MLX-инференс (macOS) простаивает, пока не настроишь. Порог входа высокий, не для новичков.",
+    "tags": [
+      "mcp",
+      "automation",
+      "hooks",
+      "skills"
+    ],
+    "source_url": "https://github.com/dryvist/nix-ai",
+    "source_platform": "github",
+    "author": "dryvist",
+    "published_at": "2026-07-18",
+    "confidence": "med"
+  },
+  {
+    "id": "4c135e09a32b",
+    "date_found": "2026-07-19",
+    "title": "iris-agentic-dev: single-binary MCP-сервер, чтобы Claude Code работал с InterSystems IRIS",
+    "summary": "Один бинарник соединяет Claude Code с живым инстансом InterSystems IRIS: агент прямо из чата компилирует классы, гоняет ObjectScript/SQL, запускает тесты и ищет по неймспейсу. Опасные операции на проде по умолчанию заблокированы.",
+    "details": "**Зачем.** Разработчикам на InterSystems IRIS/ObjectScript, кто хочет, чтобы Claude Code реально проверял и запускал код в IRIS, а не гадал.\n\n**Как.** Поставить бинарник (`brew install intersystems-community/iris-agentic-dev/iris-agentic-dev` или curl из релизов) и прописать MCP-сервер в `~/.claude.json` с env IRIS_HOST/PORT/USERNAME/PASSWORD/NAMESPACE. Инструменты: iris_compile, iris_execute, iris_query, iris_test, iris_symbols, iris_coverage, iris_debug и др.\n\n**Подвох.** Узкая ниша (нужен IRIS 2023.1+); на Windows требуется настроенное IIS `/api` (частая ошибка — 404 на /api/atelier); write-операции на проде гейтятся, пока не выставишь IRIS_ALLOW_PROD=1.",
+    "tags": [
+      "mcp",
+      "testing"
+    ],
+    "source_url": "https://github.com/intersystems-community/iris-agentic-dev",
+    "source_platform": "github",
+    "author": "intersystems-community",
+    "published_at": "2026-07-18",
+    "confidence": "med"
+  },
+  {
+    "id": "cbcd45422a3a",
+    "date_found": "2026-07-19",
+    "title": "Гайд: как отдать запасной Mac под управление Claude Code (SSH + computer use)",
+    "summary": "Пошаговый разбор, как превратить второй Mac в «руки» для Claude Code: чистый локальный аккаунт, SSH, passwordless sudo, запрет сна, установка Claude Code и опциональный computer use — чтобы гонять автономного агента не на рабочей машине и рулить им хоть с телефона.",
+    "details": "**Зачем.** Тем, кто боится пускать автономного агента на основной компьютер: изолировать его на отдельной машине.\n\n**Как.** Включить SSH (`sudo systemsetup -setremotelogin on`), настроить passwordless sudo, отключить сон (`sudo pmset -c sleep 0`), поставить Claude Code (`curl -fsSL https://claude.ai/install.sh | bash`); для управления экраном — `setup-computer-use.sh` через SSH.\n\n**Подвох.** macOS требует вручную выдать права Screen Recording и Accessibility (это не скриптуется); computer use нужен план Pro/Max; инструкция про Mac, не Windows/Linux.",
+    "tags": [
+      "automation",
+      "tips"
+    ],
+    "source_url": "https://ykdojo.github.io/claude-controls-mac/",
+    "source_platform": "hn",
+    "author": "ykdojo",
+    "published_at": "2026-07-18",
+    "confidence": "med"
+  }
+]

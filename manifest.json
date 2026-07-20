@@ -33,6 +33,10 @@
       ],
       "days": [
         {
+          "date": "2026-07-21",
+          "count": 5
+        },
+        {
           "date": "2026-07-20",
           "count": 7
         },
@@ -73,7 +77,7 @@
           "count": 9
         }
       ],
-      "total_finds": 91
+      "total_finds": 96
     },
     {
       "slug": "claude-code",

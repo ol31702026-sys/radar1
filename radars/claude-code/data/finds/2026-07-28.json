@@ -1,0 +1,246 @@
+[
+  {
+    "id": "6060db524d40",
+    "date_found": "2026-07-28",
+    "title": "Opus 5 в Claude Code по умолчанию урезан до 0.2M контекста — как вернуть 1M",
+    "summary": "Opus 5 поддерживает 1M токенов, но в Claude Code по умолчанию даёт лишь 0.2M — на 80% меньше, чем Opus 4.8. Полный контекст включается одним тумблером «Usage Credits» в настройках Claude (платить при этом не нужно).",
+    "details": "**Зачем.** Тем, кто гоняет Claude Code на Opus 5 по большим кодовым базам: дефолтные 0.2M легко превысить за одну задачу, и модель начинает сжимать/терять контекст.\n\n**Как.** В настройках Claude включить тумблер «Usage Credits» — этого достаточно для полного 1M. Не требуется ни пополнять баланс, ни включать авто-пополнение, ни ставить ненулевой лимит.\n\n**Подвох.** Официального объяснения урезки нет (автор предполагает ставку Anthropic на компакцию контекста у Opus 5). Наблюдение от 2026-07-25 — поведение может измениться; проверяйте реальный лимит через /context.",
+    "tags": [
+      "cost-tokens",
+      "tips"
+    ],
+    "source_url": "https://wadetregaskis.com/claude-opus-5-is-limited-to-a-0-2m-token-context-window-by-default/",
+    "source_platform": "blog",
+    "author": "Wade Tregaskis",
+    "published_at": "2026-07-25",
+    "confidence": "med"
+  },
+  {
+    "id": "4134949ced28",
+    "date_found": "2026-07-28",
+    "title": "Claude Code поставил лимиты на свои флоты сабагентов: глубина 3, 20 параллельно, 200/сессию",
+    "summary": "Разбор трёх независимых лимитов на сабагентов в Claude Code (июль 2026): глубина вложенности, число одновременных и всего за сессию — с именами env-переменных и предупреждением про неучтённый бюджет фоновых агентов до v2.1.217.",
+    "details": "**Зачем.** Тем, кто строит многоагентные workflow: понимать, почему «упёрлось», и осознанно поднимать/снижать лимиты, не сжигая бюджет.\n\n**Как.** Три env-переменные: `CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH` (по умолчанию 3; =1 отключает вложенность), `CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS` (20 одновременно), `CLAUDE_CODE_MAX_SUBAGENTS_PER_SESSION` (200 за сессию, /clear сбрасывает счётчик). Хронология: v2.1.217 (21 июля) отключил вложенность и ввёл потолок 20; v2.1.219 (24 июля) вернул вложенность на глубине 3.\n\n**Подвох.** Флаг `--max-budget-usd` НЕ учитывал фоновых агентов до v2.1.217 — если гоняли фоновые сабагенты с бюджетом раньше 21 июля, проверьте реальные траты. Лимит «200 за сессию» нельзя отключить, только поднять.",
+    "tags": [
+      "subagents",
+      "workflows",
+      "cost-tokens"
+    ],
+    "source_url": "https://www.digitalapplied.com/blog/claude-code-subagent-depth-limits-budget-caps-2026",
+    "source_platform": "blog",
+    "author": "Digital Applied",
+    "published_at": "2026-07-26",
+    "confidence": "high"
+  },
+  {
+    "id": "b7ae02d976c9",
+    "date_found": "2026-07-28",
+    "title": "/fork теперь копирует сессию в фоновую, а делегирование ушло в /subtask",
+    "summary": "В Claude Code v2.1.212 переработали /fork: он копирует разговор в новую фоновую сессию (своя строка в claude agents), пока вы продолжаете работать. In-session сабагентов заменил отдельный /subtask.",
+    "details": "**Зачем.** Тем, кто хочет «ответвить» эксперимент, не теряя основную сессию, и явно управлять делегированием.\n\n**Как.** `/fork` — копия текущего разговора уезжает в фон отдельной сессией, вы не блокируетесь. `/subtask` — новая команда запуска делегированной подзадачи (то, что раньше делал in-session сабагент). Также в релизе: длинные MCP-вызовы (>2 мин) авто-уходят в фон (`CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS`), и появились лимиты на сабагентов и WebSearch за сессию (по 200).\n\n**Подвох.** Это смена привычного /fork — старый сценарий «форк тут же в этой сессии» больше не работает; для быстрой делегации теперь /subtask. Ссылка ведёт на общий changelog (секция v2.1.212 от 17 июля).",
+    "tags": [
+      "workflows",
+      "subagents",
+      "tips"
+    ],
+    "source_url": "https://code.claude.com/docs/en/changelog#2-1-212",
+    "source_platform": "docs",
+    "author": "Anthropic",
+    "published_at": "2026-07-17",
+    "confidence": "high"
+  },
+  {
+    "id": "5cd4611e5899",
+    "date_found": "2026-07-28",
+    "title": "Guard: 60 строк PreToolUse-хука, чтобы Claude Code не трогал .env и ключи",
+    "summary": "Небольшой Python-хук PreToolUse перехватывает правки файлов и отказывает по защищённым путям (.env, *.key, *.pem, credentials.json). Список путей — в protected.txt, одна строка на паттерн; ставится в .claude/.",
+    "details": "**Зачем.** Чтобы агент случайно не переписал/не слил секреты и не лез в migrations/legacy. Полезно всем, кто гоняет Claude Code в acceptEdits/авто-режиме.\n\n**Как.** Скачать guard.py + protected.txt + settings.json в `.claude/`, прописать хук: PreToolUse matcher `Edit|Write|MultiEdit|NotebookEdit`, command `python3 .claude/guard.py`, перезапустить Claude Code. Проверка: `echo '{\"tool_name\":\"Edit\",\"tool_input\":{\"file_path\":\".env\"},\"cwd\":\"'\"$PWD\"'\"}' | python3 .claude/guard.py` → код выхода 2 = блок сработал.\n\n**Подвох.** Хук НЕ ловит Bash — `rm -rf` и `git reset --hard` проходят мимо (для этого отдельный bash_guard.py). Это не система прав: пользователь может сам отредактировать protected.txt. «Правила — рекомендация, хуки — принуждение».",
+    "tags": [
+      "hooks",
+      "automation"
+    ],
+    "source_url": "https://github.com/avenna01-ceo/claude-code-survival-kr/tree/main/guard",
+    "source_platform": "github",
+    "author": "avenna01-ceo",
+    "published_at": "2026-07-27",
+    "confidence": "med"
+  },
+  {
+    "id": "7aaee8d79307",
+    "date_found": "2026-07-28",
+    "title": "vanara: 30 бесплатных проверенных скиллов и агентов для Claude Code через npx",
+    "summary": "Каталог из 30 бесплатных компонентов (10 агентов, 17 скиллов, 2 пака) под Apache-2.0: ставятся одной командой `npx vanara install <name>`. Каждый — папка с доками, worked-examples и verify-скриптами.",
+    "details": "**Зачем.** Быстро подключить готовые скиллы (API-дизайн, кэш, миграции БД, OWASP/секреты, тесты, git-воркфлоу, рефакторинг) вместо написания с нуля.\n\n**Как.** `npx vanara install <name>` — например `npx vanara install code-reviewer` или `npx vanara install security-pack`. Это открытый tier (30 из каталога на 213 позиций), лицензия Apache-2.0; в каждом компоненте — reference-доки, примеры и verify-скрипты.\n\n**Подвох.** Точной даты обновления на странице нет (у репо ~14 коммитов) — проверяйте свежесть перед доверием. Большая часть каталога (183 позиции) вне бесплатного tier.",
+    "tags": [
+      "skills",
+      "subagents"
+    ],
+    "source_url": "https://github.com/vanara-agents/skills",
+    "source_platform": "github",
+    "author": "vanara-agents",
+    "published_at": "2026-07-27",
+    "confidence": "med"
+  },
+  {
+    "id": "d7d658736c45",
+    "date_found": "2026-07-28",
+    "title": "ContextSpy: профайлер контекстного окна — видеть, куда утекают токены в Claude Code",
+    "summary": "Локальный прокси перехватывает запросы Claude Code/Codex и раскладывает вход по 8 категориям (системный промпт, определения инструментов, результаты тулзов, файлы, история…). Помогает найти, что раздувает счёт по токенам.",
+    "details": "**Зачем.** Входные токены в агентных задачах в 20–50× больше выходных — именно они гонят стоимость; ContextSpy показывает, какая часть контекста жрёт больше всего.\n\n**Как.** macOS (Apple Silicon): `brew tap RimantasZ/contextspy && brew install contextspy`; `sudo contextspy install-cert` (один раз); в одном терминале `contextspy start`, в другом `contextspy run claude`; дашборд на http://127.0.0.1:5173 . Альтернатива — направить агента через прокси http://127.0.0.1:8888 .\n\n**Подвох.** Инструмент для разовых сессий оптимизации, не постоянный мониторинг; сырые тела запросов хранятся 7 дней по умолчанию; схема БД может меняться между версиями; ставит локальный CA-сертификат (install-cert).",
+    "tags": [
+      "cost-tokens",
+      "tips"
+    ],
+    "source_url": "https://github.com/RimantasZ/contextspy",
+    "source_platform": "github",
+    "author": "RimantasZ",
+    "published_at": "2026-07-27",
+    "confidence": "med"
+  },
+  {
+    "id": "3da703ece2b2",
+    "date_found": "2026-07-28",
+    "title": "fablever: перенести рабочий стиль Fable 5 на любую модель в Claude Code",
+    "summary": "Всегда включённый output-style + MCP-сервер + инъекция в сабагентов, чтобы Opus/Sonnet/Haiku работали дисциплинированнее (решительно, по делу, останавливаясь по факту). Автор честно пишет: это пересадка стиля, а не способностей.",
+    "details": "**Зачем.** Тем, кто хочет более сфокусированное поведение агента, не меняя модель. Ставится за пару команд.\n\n**Как.** `git clone https://github.com/elon-choo/fablever && cd fablever && node install.mjs`, затем перезапуск Claude Code. Три слоя: output-style (`~/.claude/output-styles/Fable.md`, включается на старте), MCP-сервер без npm-зависимостей (инструменты `fable_lint`/`fable_status`) и SubagentStart-хук, дотягивающий стиль до фоновых/Task/workflow-агентов.\n\n**Подвох.** Автор приводит измеренные минусы: качество вывода «ничья-до-проигрыша» против обычного Claude у внешних судей, +~14% к стоимости вызова без доказанной экономии на 11 задачах, прирост продуктивности не доказан (A/B намеренно не гоняли). Стиль, а не ум.",
+    "tags": [
+      "tips",
+      "subagents",
+      "prompting"
+    ],
+    "source_url": "https://github.com/elon-choo/fablever",
+    "source_platform": "github",
+    "author": "elon-choo",
+    "published_at": "2026-07-27",
+    "confidence": "med"
+  },
+  {
+    "id": "cf864c3775de",
+    "date_found": "2026-07-28",
+    "title": "DESIGN.md: держать дизайн-систему в файле, чтобы Claude Code не изобретал UI",
+    "summary": "Файл DESIGN.md в корне проекта задаёт агенту не только токены (цвета/шрифты), но и правила КОГДА их применять. Линкуется из CLAUDE.md через @, чтобы Claude реально подтягивал файл и следовал ему.",
+    "details": "**Зачем.** Тем, кто просит Claude верстать UI и устал от «каши»: одни токены не работают — модель не знает, когда какой цвет уместен.\n\n**Как.** Опишите 8 блоков: тема/атмосфера, палитра с ролями (hex + назначение), типографика, компоненты со всеми состояниями (hover/disabled), правила отступов, тени/высоты, do/don't простым языком, адаптив. Ключевое — явные правила решений («бренд-цвет только на CTA», «у карточек border, не тень»). Подключение: `@DESIGN.md` из CLAUDE.md.\n\n**Подвох.** Токены сами по себе не спасают — без правил «когда/когда НЕ» Claude всё равно ошибётся; файл нужно поддерживать. Статья от 2026-07-26 — разбор идеи, а не готовый шаблон под вашу систему.",
+    "tags": [
+      "prompting",
+      "ide-integration",
+      "tips"
+    ],
+    "source_url": "https://aifordevelopers.substack.com/p/designmd-for-design-in-claude-code",
+    "source_platform": "blog",
+    "author": "aifordevelopers",
+    "published_at": "2026-07-26",
+    "confidence": "med"
+  },
+  {
+    "id": "7a73bca4390f",
+    "date_found": "2026-07-28",
+    "title": "Boris Cherny: Building Claude Code — доклад на Y Combinator",
+    "summary": "Видео-доклад одного из создателей Claude Code (Boris Cherny) на канале Y Combinator о том, как устроен и как строился инструмент. Полезно, чтобы понять философию и решения, стоящие за продуктом.",
+    "details": "**Зачем.** Тем, кто хочет из первых рук услышать логику дизайна Claude Code (агентный цикл, роль контекста, продуктовые решения) — для более осознанного использования.\n\n**Как.** Смотреть на YouTube (канал Y Combinator). Это разговор/доклад, а не туториал — конкретных команд «скопировать» нет; ценность в подходе и мышлении.\n\n**Подвох.** Формат — видео-беседа, готовых рецептов не ждите. Дата публикации 2026-07-27; конкретные тезисы здесь не пересказываю дословно — смотрите оригинал.",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.youtube.com/watch?v=qyPCVqFUyDo",
+    "source_platform": "youtube",
+    "author": "Y Combinator",
+    "published_at": "2026-07-27",
+    "confidence": "low"
+  },
+  {
+    "id": "53a9597dfcbb",
+    "date_found": "2026-07-28",
+    "title": "Codeman: веб-дашборд для управления сессиями Claude Code в tmux с телефона",
+    "summary": "Self-hosted веб-панель управляет агентами (Claude Code/OpenCode/Codex/Gemini) в персистентных tmux-сессиях, стримит терминал в браузер и даёт доступ с телефона. До 20 параллельных сессий, авто-респаун для многочасовых прогонов. MIT.",
+    "details": "**Зачем.** Тем, кто гоняет несколько агентов сразу и хочет контролировать их из браузера/с телефона, включая долгие фоновые прогоны.\n\n**Как.** `curl -fsSL https://raw.githubusercontent.com/Ark0N/Codeman/master/install.sh | bash` (ставит Node.js и tmux при необходимости), затем `codeman web` и открыть http://localhost:3000 . Есть xterm.js-терминалы, вкладки, трекинг токенов/стоимости, Respawn Controller (авто-продолжение при простое, «24+ часа без присмотра»), мобильный UI с QR-входом.\n\n**Подвох.** Модель безопасности — «только для доверенных»: без пароля безопасно лишь на 127.0.0.1; НЕ изолирует пользователей друг от друга (агенты бегут под одним OS-аккаунтом). Сессии по умолчанию с `--dangerously-skip-permissions`; строже — опционально и требует Claude Code 2.1.207+. Windows — только через WSL.",
+    "tags": [
+      "ide-integration",
+      "automation",
+      "tips"
+    ],
+    "source_url": "https://github.com/Ark0N/Codeman",
+    "source_platform": "github",
+    "author": "Ark0N",
+    "published_at": "2026-07-27",
+    "confidence": "med"
+  },
+  {
+    "id": "74346cc12090",
+    "date_found": "2026-07-28",
+    "title": "Observal: локальный реестр и аналитика для скиллов, MCP и агентов Claude Code",
+    "summary": "Self-hosted control plane, который собирает ваши AI-компоненты (Skills/MCP/Agents) в единый поиск и показывает, как они реально используются: телеметрия сессий, токены, полный реплей разговоров. Подключается к Claude Code хуками.",
+    "details": "**Зачем.** Командам, у которых компоненты разбросаны по репозиториям: единый discovery-слой плюс видимость, что реально используется и приносит пользу.\n\n**Как.** Сервер: `curl -fsSL .../install-server.sh | bash` (Docker Compose: API, web UI, PostgreSQL, ClickHouse, Redis). CLI: `curl .../install.sh | bash` или `uv tool install observal-cli`; затем `observal auth login` и `observal doctor --patch` (ставит телеметрию-хуки). Трекает промпты, тулзы, токены, рейтинги/загрузки, turn-by-turn реплей.\n\n**Подвох.** Тяжёлая инфраструктура: Docker Engine ≥24.0 + Compose v2 для сервера, Python 3.11+ для CLI. Реплей работает только после установки хуков (`observal doctor --patch`). Поддержка ограничена набором харнессов (Claude Code, Cursor, Pi, Copilot, Kiro, Codex, OpenCode).",
+    "tags": [
+      "mcp",
+      "skills"
+    ],
+    "source_url": "https://github.com/Observal/Observal",
+    "source_platform": "github",
+    "author": "Observal",
+    "published_at": "2026-07-27",
+    "confidence": "med"
+  },
+  {
+    "id": "5cca625924c2",
+    "date_found": "2026-07-28",
+    "title": "claude-academic-workflow: 14 скиллов Claude Code для академической работы",
+    "summary": "Тулкит из 14 скиллов (чтение статей, лит-обзор, аудит библиографии, преррег, R&R-письма, репликейшн-пакеты, LaTeX/TikZ) плюс Quarto/reveal.js-слайды с проверкой качества на рендере. Заточено под эмпирические поля.",
+    "details": "**Зачем.** Исследователям/аналитикам, кто пишет статьи и делает доклады: готовые скиллы под рутину от лит-обзора до слайдов.\n\n**Как.** Клонировать репо, скопировать скиллы в `~/.claude/skills/` и агентов в `~/.claude/agents/` (пути и настройки — в SETUP.md: контакт для Crossref, путь к PDF-хелперу, папка Overleaf). Слайд-система рендерит колоду и скриншотит каждый слайд, проверяя переполнение, контраст, битые рисунки и ясность аргумента; поддерживает LaTeX, исполняемые R/Python-чанки, офлайн (MathJax/шрифты локально).\n\n**Подвох.** Заточено под количественный маркетинг/экономику (хоть и переносимо); требует настройки путей (Overleaf, PDF-хелпер). Набор для узкой ниши, не универсальный.",
+    "tags": [
+      "skills",
+      "workflows"
+    ],
+    "source_url": "https://github.com/ericluo04/claude-academic-workflow",
+    "source_platform": "github",
+    "author": "ericluo04",
+    "published_at": "2026-07-27",
+    "confidence": "med"
+  },
+  {
+    "id": "d2ac86615aa6",
+    "date_found": "2026-07-28",
+    "title": "MCP в проде: проектируй инструменты по бизнес-возможностям, а не по сырым API",
+    "summary": "Практический разбор для тех, кто пишет MCP-серверы под агентов: инструмент — это бизнес-действие (request_order_cancellation), а не execute_sql; каталог на сотни тулзов надо фильтровать поиском до 5–10; шлюзы делят по зонам доверия.",
+    "details": "**Зачем.** Разработчикам MCP-серверов для Claude Code и агентов: как не завалить модель сотнями сырых тулзов и не отдать ей опасные операции.\n\n**Как.** 1) Инструмент = бизнес-возможность, не инфраструктура: вместо `execute_sql()`/`call_http()` — `request_order_cancellation()`, а домен-сервис за ним держит состояние заказа, лимиты возвратов, владение, идемпотентность, аудит; существующие API оборачивайте тонким адаптером. 2) Каталог: при 50+ тулзах в запросе — проблема; стройте цепочку «цель → поиск возможностей → фильтр прав → ранжирование → модель получает 5–10», каждой записи метаданные (владелец домена, риск, классификация данных, сайд-эффекты, права). 3) Шлюзы делите по зонам доверия/домену (analytics-readonly, developer-tools, customer-service, production-operations) — модель не должна видеть тулзы удаления в проде ради запроса стоимости.\n\n**Подвох.** OAuth решает межпротокольную совместимость, но НЕ авторизацию на уровне тулза, объём согласия пользователя и хранение кредов: валидный токен не доказывает, что агенту можно вызвать этот инструмент и что сумма в рамках политики. Статья общая (AWS-builders), примеры не под конкретный Claude Code.",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://dev.to/aws-builders/mcp-in-production-tool-design-catalogs-and-the-gateway-problem-1p52",
+    "source_platform": "blog",
+    "author": "vidanov",
+    "published_at": "2026-07-27",
+    "confidence": "med"
+  },
+  {
+    "id": "3dddf46c55c8",
+    "date_found": "2026-07-28",
+    "title": "3 месяца Claude Code рулил блогом: 67 статей, реальные провалы и во что обошлась «автоматизация»",
+    "summary": "Соло-автор дал 8-агентному пайплайну на Claude Code вести блог: за апрель–июль вышло 67 статей (~109 кликов/28 дней). Честный разбор пяти провалов и вывод: правила надо зашивать в код, а не в README.",
+    "details": "**Зачем.** Соло-предпринимателям и контентщикам, кто мечтает «пусть ИИ ведёт блог сам»: реальная картина с цифрами и граблями, а не хайп.\n\n**Как.** Пайплайн из 8 агентов на расписании: ресёрч → редплан → SEO → написание в голосе автора → факт-чек → генерация картинок → анализ (GA4, Search Console) → публикация в WordPress. Роутинг моделей: Sonnet на оркестрацию/ресёрч/SEO/картинки/публикацию, Opus на письмо и факт-чек (факт-чекер подняли до уровня писателя, чтобы «врун не был умнее проверяющего»).\n\n**Подвох.** «Автоматизация» потребовала кода-обвязки (`check-signoffs.py`, идемпотентный `wp_publish.py`, `audit-schedule-divergence.py`, `check-ai-tells.py`) — вечера инженерии без контента. Провалы: дубли дат публикаций, утечка affiliate-тега неделями, сфабрикованные «я протестировал» прошли факт-чек. Урок: правила — в коде, внешние операции — идемпотентные, креды — с аудитом. Дата: 2026-07-25.",
+    "tags": [
+      "case-study",
+      "automation"
+    ],
+    "source_url": "https://bigguyonstuff.com/claude-code-3-month-retrospective/",
+    "source_platform": "blog",
+    "author": "bigguyonstuff",
+    "published_at": "2026-07-25",
+    "confidence": "high"
+  },
+  {
+    "id": "8e660e9c1b80",
+    "date_found": "2026-07-28",
+    "title": "instar: персистентный агент на Claude Code с памятью, расписанием и Telegram",
+    "summary": "Каркас «поставил и забыл»: агент на Claude Code хранит память (SQLite + полнотекст), держит личность между сессиями, гоняет задачи по cron и общается через Telegram/WhatsApp/iMessage. Ставится одной `npx instar`.",
+    "details": "**Зачем.** Фрилансеру или малой команде, кому нужен всегда-онлайн помощник: отвечает в мессенджере, помнит прошлые разговоры, крутит фоновые задачи по расписанию.\n\n**Как.** `npx instar` (мастер настройки), `instar server start` — и пишите агенту из Telegram/WhatsApp/iMessage. Нужны Node.js 20+, Claude Code CLI и Anthropic API-ключ. Возможности: cron-планировщик с приоритетами, файлы личности AGENT.md, LLM-надзор над внешними операциями.\n\n**Подвох.** Инфраструктура для power-user: работает с `--dangerously-skip-permissions`, безопасность — на поведенческих хуках, не на песочнице; нужен доступ к Claude Code/Codex. iMessage — только macOS (LaunchDaemon + Full Disk Access для фото). Это заготовка, а не готовый бизнес-продукт.",
+    "tags": [
+      "case-study",
+      "automation",
+      "tips"
+    ],
+    "source_url": "https://github.com/JKHeadley/instar",
+    "source_platform": "github",
+    "author": "JKHeadley",
+    "published_at": "2026-07-27",
+    "confidence": "med"
+  }
+]

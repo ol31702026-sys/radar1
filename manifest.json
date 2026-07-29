@@ -33,6 +33,10 @@
       ],
       "days": [
         {
+          "date": "2026-07-30",
+          "count": 5
+        },
+        {
           "date": "2026-07-29",
           "count": 6
         },
@@ -109,7 +113,7 @@
           "count": 9
         }
       ],
-      "total_finds": 145
+      "total_finds": 150
     },
     {
       "slug": "claude-code",
@@ -143,6 +147,10 @@
         "docs"
       ],
       "days": [
+        {
+          "date": "2026-07-30",
+          "count": 15
+        },
         {
           "date": "2026-07-29",
           "count": 15
@@ -324,7 +332,7 @@
           "count": 15
         }
       ],
-      "total_finds": 675
+      "total_finds": 690
     },
     {
       "slug": "claude-practice",

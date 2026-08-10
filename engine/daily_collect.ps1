@@ -45,13 +45,19 @@ if (-not (Test-Path $ProjectDir)) { Log "ERROR: project dir not reachable $Proje
 
 # Headless prompt. Self-contained: collect + git commit + push. Russian text is fine
 # inside the prompt string because it is piped to claude via stdin (UTF-8), not parsed by PowerShell.
-$prompt = "Vypolni ezhednevnyy sbor nakhodok dlya radara $Slug strogo po shagam, bez lishnikh voprosov: " +
-  "0) PRIMECHANIE: otkrytye istochniki (Hacker News, Lobsters, Dev.to, GitHub cherez fetch_sources.py) i YouTube Data API (fetch_youtube.py) UZHE sobrany skriptami i zapisany v data/finds/<today>.json DO etogo zapuska. NE zapuskay eti skripty povtorno - tolko uchti ikh kandidatov v dedupe (po source_url/id) i v itogovom otbore (mnogie iz nikh syrye, confidence=low - prover relevantnost teme, otsey ne-Claude shum). youtube_rss i WebSearch sobiray kak obychno. " +
-  "1) Zapusti skill collect-finds s argumentom $Slug. VAZHNO pro OKHVAT: sdelay SHIROKIY fan-out - 20+ raznykh WebSearch-zaprosov pod raznye temy taxonomy (subagents, hooks, mcp, skills, slash-commands, workflows, automation, ci-cd, testing, refactoring, prompting, cost-tokens, ide-integration, case-study) I pod svezhest (release notes, changelog, whats new, June 2026, this week). Soberi pul 40-60 kandidatov, prover daty cherez WebFetch, dedupliciruy protiv vsekh proshlykh data/finds/*.json po source_url, otberi do daily_target (15) svezhikh nedubliruyushchikh. Zaydi na agregatory: releasebot.io, code.claude.com/docs changelog i whats-new, claudelog. Esli kachestvennykh menshe 15 - voz'mi skolko est i otmet pochemu (NE dobivay musorom). Posledniye 2 pozicii - keysy (case-study). Zapishi data/finds/<today>.json i data/digests/<today>.md (Anons + Rasshifrovka). " +
+$prompt = "Vypolni ezhednevnyy sbor nakhodok dlya radara $Slug strogo po shagam, bez lishnikh voprosov. " +
+  "TEMA RADARA (smenena 14.07.2026): REALNYE KEYSY AVTOMATIZACII PROCESSOV v MALOM i SREDNEM BIZNESE. " +
+  "ZHESTKOE PRAVILO OTBORA: kazhdaya nakhodka obyazana soderzhat 4 veshchi - (1) chto za biznes (hot' bez nazvaniya, no konkretno: kofeynya na 2 tochki, optovik stroymaterialov, studiya iz 4 chelovek); (2) kakoy process avtomatizirovali; (3) BYLO/STALO s ciframi (chasy v nedelyu, srok, dengi, oshibki); (4) chem sdelano. Instrumenty: II (Claude, ChatGPT, agenty) v prioritete, no polnopravno berem botov, no-code (n8n, Make, Zapier), skripty, integracii, 1C - vazhen rezultat dlya biznesa. " +
+  "ZAPRESHCHENO brat: obzory i reytingi instrumentov, listikly 'N sposobov avtomatizirovat', reklamnye stranicy vendorov i integratorov, gaidy 'kak nastroit X' bez vnedreniya, repozitorii MCP-serverov i skillov, katalogi instrumentov, korporativnye enterprise-vnedreniya za milliony. Tolko istorii, gde konkretnyy biznes chto-to vnedril i poluchil izmerimyy rezultat. " +
+  "1) Zapusti skill collect-finds s argumentom $Slug. On prochitaet radars/$Slug/prompts/queries.md (poiskovye zaprosy), prompts/profile.md (PRAVILO OTBORA, vesa tegov, FORMAT KARTOCHKI) i radar.config.json (daily_target=8, freshness_days=90, taxonomy). Sdelay SHIROKIY fan-out po zaprosam iz queries.md - i russkoyazychnym (vc.ru, habr.com, dzen, pikabu), i angloyazychnym (reddit r/smallbusiness, indiehackers, HN). Prover daty i rabochie ssylki cherez WebFetch, dedupliciruy protiv VSEKH proshlykh data/finds/*.json po source_url. " +
+  "PRIORITET processam blizkim k chitatelyu: internet-magaziny i marketpleysy, obrabotka zayavok i klientskikh obrashcheniy, otchety i dokumenty, sklad i logistika - ikh stav vyshe v spiske. " +
+  "Otberi do daily_target (8) nastoyashchikh keysov. Esli kachestvennykh menshe 8 - voz'mi skolko est i otmet pochemu (NE dobivay obzorami i listiklami - eto glavnoe trebovanie polzovatelya). " +
+  "FORMAT kazhdoy nakhodki - strogo kak zadano v prompts/profile.md, sekciya 'Format nakhodki': title = '<Biznes>: <chto sdelali> - <rezultat>'; summary = 1-2 predlozheniya s glavnoy cifroy; details = strukturnaya kartochka s blokami **Biznes.** / **Process.** / **Bylo.** / **Sdelali.** / **Stalo.** / **Instrumenty.** / **Kak povtorit.** / **Podvokh.** (kazhdyy blok s novoy stroki, pustaya stroka mezhdu blokami). Esli dannykh dlya bloka net v istochnike - napishi 'v istochnike ne ukazano', NE vydumyvay. " +
+  "Zapishi data/finds/<today>.json i data/digests/<today>.md (telo kazhdoy nakhodki v daydzheste = ee details). " +
   "2) Peresoberi indeks: zapusti python engine/build_manifest.py (esli upadet - ne blokiruysya). " +
-  "3) Zakommit izmenennye fayly v radars/$Slug/data/ cherez git i zapush v origin master. Soobshchenie kommita: 'Nakhodki za <today> (avto, lokalnoe raspisanie)'. Esli za segodnya nakhodok net vovse - NE delay pustoy kommit. " +
-  "4) V kontse vyvedi odnu itogovuyu stroku: skolko nakhodok, razbivka po platformam, i byl li push. " +
-  "Ne vydumyvay nakhodki i ne podstavlyay nesushchestvuyushchie ssylki. Ne kommit sekrety."
+  "3) Zakommit izmenennye fayly v radars/$Slug/data/ i manifest.json cherez git i zapush v origin master. Soobshchenie kommita: 'Keysy avtomatizacii za <today> (avto, lokalnoe raspisanie)'. Esli za segodnya nakhodok net vovse - NE delay pustoy kommit. " +
+  "4) V kontse vyvedi odnu itogovuyu stroku: skolko keysov, kakie processy, i byl li push. " +
+  "Ne vydumyvay keysy i ne podstavlyay nesushchestvuyushchie ssylki. Ne kommit sekrety."
 
 # --- pre-collect: direct feed scripts (YouTube Data API, Reddit OAuth) ---
 # Run BEFORE claude so the day's finds file already holds these candidates; the
@@ -64,18 +70,12 @@ function RunFeed([string]$name, [string]$script) {
   Log "feed ${name}: python $script $Slug --write --today $today"
   & python $py $Slug --write --today $today 2>&1 | ForEach-Object { Log ("  ${name}> " + $_) }
 }
-Push-Location $ProjectDir
-try {
-  # Open sources without keys: Hacker News, Lobsters, Dev.to, GitHub (replaces Reddit).
-  RunFeed "sources" "engine/fetch_sources.py"
-  if ($env:YOUTUBE_API_KEY) { RunFeed "youtube" "engine/fetch_youtube.py" }
-  else { Log "feed youtube: YOUTUBE_API_KEY not set, skip" }
-  if ($env:REDDIT_CLIENT_ID -and $env:REDDIT_CLIENT_SECRET) { RunFeed "reddit" "engine/fetch_reddit.py" }
-  else { Log "feed reddit: REDDIT_CLIENT_ID/SECRET not set, skip" }
-}
-finally {
-  Pop-Location
-}
+# DISABLED 14.07.2026 with the theme switch (Claude Code news -> SMB automation cases).
+# fetch_sources.py / fetch_youtube.py pull dev-tool feeds (HN, GitHub, Dev.to) that are
+# noise for the new theme: they produced tool repos and reviews, never real business cases.
+# The collect-finds skill now works from prompts/queries.md (WebSearch) alone.
+# To re-enable for a dev-oriented radar, restore the RunFeed calls below.
+Log "pre-collect feeds: disabled for this theme (SMB automation cases) - WebSearch only"
 
 Log "Running claude -p (headless, acceptEdits + allow-list from .claude/settings.json)..."
 

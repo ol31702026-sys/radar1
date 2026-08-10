@@ -157,39 +157,38 @@
     },
     {
       "slug": "claude-code",
-      "title": "Claude Code Radar",
-      "description": "Ежедневный сбор интересных кейсов применения Claude Code: где / кто / как применил и каких результатов достиг.",
+      "title": "Радар: автоматизация в малом бизнесе",
+      "description": "Ежедневные реальные кейсы автоматизации процессов в малом и среднем бизнесе: что за бизнес, какой процесс, что было и что стало (с цифрами), чем сделано и как повторить. ИИ-инструменты в приоритете, но берём и боты / no-code / скрипты / 1С. Источники — РФ и мир.",
       "language": "ru",
       "taxonomy": [
-        "subagents",
-        "hooks",
-        "mcp",
-        "skills",
-        "slash-commands",
-        "workflows",
-        "automation",
-        "ci-cd",
-        "testing",
-        "refactoring",
-        "prompting",
-        "cost-tokens",
-        "ide-integration",
-        "case-study",
-        "tips"
+        "заявки-клиенты",
+        "отчёты-документы",
+        "склад-логистика",
+        "маркетинг-контент",
+        "финансы-учёт",
+        "поддержка",
+        "ecommerce",
+        "розница-услуги",
+        "производство-опт",
+        "ai",
+        "бот",
+        "no-code",
+        "скрипт-интеграция",
+        "1c",
+        "кейс-рф"
       ],
       "platforms": [
-        "x",
-        "reddit",
-        "hn",
         "blog",
+        "hn",
+        "reddit",
         "youtube",
-        "github",
-        "docs"
+        "docs",
+        "other"
       ],
       "days": [
         {
           "date": "2026-08-10",
-          "count": 15
+          "count": 8
         },
         {
           "date": "2026-08-09",
@@ -416,7 +415,7 @@
           "count": 15
         }
       ],
-      "total_finds": 855
+      "total_finds": 848
     },
     {
       "slug": "claude-practice",

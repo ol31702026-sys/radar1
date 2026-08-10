@@ -1,37 +1,62 @@
-# Поисковые запросы — Claude Code Radar
+# Поисковые запросы — Радар «Автоматизация в малом бизнесе»
 
 Список запросов для фазы fan-out (`WebSearch`). Скилл `collect-finds` проходит по ним,
-собирает кандидатов, затем фильтрует и дедуплицирует.
+собирает кандидатов, затем фильтрует по правилу отбора из [profile.md](profile.md) и дедуплицирует.
 
-Редактируй свободно: добавляй удачные запросы, убирай шумные. Скилл `learn-profile`
-может предлагать правки сюда на основе рейтингов (см. [profile.md](profile.md)).
+**Цель темы:** РЕАЛЬНЫЕ кейсы автоматизации процессов в малом и среднем бизнесе.
+Идеальная находка: **что за бизнес + какой процесс + что было и что стало (с цифрами) +
+чем сделано**. ИИ-инструменты в приоритете, но годятся боты, no-code, скрипты, 1С —
+важен результат для бизнеса, а не модность инструмента.
 
-## Базовые запросы (широкий охват)
-- `"Claude Code" tips`
-- `"Claude Code" workflow`
-- `"Claude Code" subagents`
-- `"Claude Code" hooks example`
-- `"Claude Code" MCP server`
-- `"Claude Code" skills`
-- `"Claude Code" slash command`
-- `"Claude Code" automation`
+> ЖЁСТКО ЗАПРЕЩЕНО брать: обзоры и рейтинги инструментов («10 лучших сервисов автоматизации»),
+> листиклы «N способов автоматизировать», рекламные страницы вендоров и интеграторов,
+> гайды «как настроить X» без реального внедрения, репозитории MCP-серверов и скиллов,
+> любые «инструменты ради инструментов». Только истории, где конкретный бизнес что-то
+> внедрил и получил измеримый результат.
 
-## По площадкам
-- `"Claude Code" site:reddit.com`
-- `"Claude Code" site:news.ycombinator.com`
-- `"Claude Code" site:github.com awesome`
-- `Claude Code tutorial site:youtube.com`
+## Русскоязычные — конкретные внедрения (главные запросы)
 
-## Кейсы и результаты
-- `"Claude Code" case study results`
-- `"Claude Code" how I built`
-- `"Claude Code" saved hours`
-- `"Claude Code" production workflow`
+- `кейс автоматизации site:vc.ru 2026`
+- `"как мы автоматизировали" site:habr.com`
+- `автоматизация процессов малый бизнес кейс 2026 результат`
+- `внедрили бота обработка заявок кейс сэкономили часов`
+- `автоматизировал рутину в компании кейс сколько времени экономит`
+- `автоматизация интернет-магазина кейс выгрузка остатки маркетплейс`
+- `автоматизация отчётов в компании кейс вместо ручной работы`
+- `нейросеть в бизнесе кейс внедрения результат 2026`
+- `автоматизация склада малый бизнес кейс внедрения`
+- `чат-бот для клиентов кейс малый бизнес результат`
 
-## Свежесть (новые возможности)
-- `Claude Code new feature 2026`
-- `Claude Code release notes tips`
+## Англоязычные — конкретные внедрения
 
----
-> Профиль обучения смещает приоритеты этих запросов и добавляет boost/mute. Не дублируй
-> логику весов здесь — держи её в [profile.md](profile.md).
+- `"how we automated" small business case study`
+- `automation case study SMB "hours per week" saved`
+- `AI automation small business case "we built" results`
+- `site:reddit.com/r/smallbusiness automated process saved time`
+- `ecommerce store automation case study inventory orders`
+- `small business automated customer inquiries case results`
+- `"I automated" my business process story numbers`
+- `agency automated reporting case study hours saved`
+
+## Площадки, где живут настоящие кейсы
+
+- `site:vc.ru автоматизация кейс`
+- `site:habr.com автоматизация бизнес-процессов кейс внедрения`
+- `site:pikabu.ru OR site:dzen.ru автоматизировал бизнес кейс`
+- `site:indiehackers.com automated business process`
+- `site:news.ycombinator.com "Show HN" automation business workflow`
+- `founder automated operations interview 2026`
+
+## Приоритетные процессы (искать в первую очередь)
+
+Эти темы ближе всего к задачам читателя — при прочих равных ставим их выше:
+
+- обработка заявок и клиентских обращений (почта, формы, мессенджеры, CRM)
+- интернет-магазины и маркетплейсы (карточки, остатки, цены, заказы, выгрузки)
+- отчёты и документы (сведение данных, счета, акты, регулярная отчётность)
+- склад и логистика (учёт, инвентаризация, отгрузки, доставка)
+
+## Свежесть
+
+Окно — `freshness_days` из `radar.config.json` (90 дней): кейсы живут дольше новостей,
+но берём то, что опубликовано недавно. Дата публикации обязательна.

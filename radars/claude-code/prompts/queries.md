@@ -14,6 +14,30 @@
 > любые «инструменты ради инструментов». Только истории, где конкретный бизнес что-то
 > внедрил и получил измеримый результат.
 
+**Лента состоит из двух частей** (см. «Состав ленты» в [profile.md](profile.md)):
+позиции **1–4 — новости Claude Code** (запросы в разделе ниже), позиции **5–10 — кейсы
+автоматизации** (все остальные разделы этого файла).
+
+## Новости Claude Code — позиции 1–4 (свежесть 14 дней)
+
+Сначала идём напрямую в первоисточники, поиском добираем только то, чего там нет:
+
+- `https://code.claude.com/docs/en/changelog` — официальный changelog, главный источник
+- `https://code.claude.com/docs/en/whats-new` — что нового в документации
+- `https://www.anthropic.com/news` и `https://claude.com/blog` — анонсы и разборы Anthropic
+
+Поисковые запросы для добора (издания и разборы):
+
+- `Claude Code новое обновление <текущий месяц> 2026`
+- `Claude Code release notes <версия> what's new`
+- `Anthropic Claude Code announcement <текущий месяц> 2026`
+- `Claude Code new feature site:infoq.com OR site:techcrunch.com OR site:theverge.com`
+- `Claude Code обновление обзор site:habr.com` (только разборы со ссылкой на первоисточник)
+- `"Claude Code" changelog discussion site:news.ycombinator.com`
+
+> В новости НЕ берём: чужие MCP-серверы, скиллы и плагины с GitHub, подборки «10 фишек»,
+> курсы, слухи и утечки, посты без факта изменения продукта.
+
 ## Русскоязычные — конкретные внедрения (главные запросы)
 
 - `кейс автоматизации site:vc.ru 2026`

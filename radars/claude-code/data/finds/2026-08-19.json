@@ -1,0 +1,83 @@
+[
+  {
+    "id": "2ba20c157de773c9",
+    "date_found": "2026-08-19",
+    "title": "Claude Code Week 32: межсессионные сообщения, self-hosted окружения в бете, auto mode по умолчанию",
+    "summary": "За неделю 3-7 августа: сессии Claude Code научились передавать сообщения друг другу (macOS/Linux), Team/Enterprise получили публичную бету self-hosted окружений, а с 14 августа auto mode стал режимом по умолчанию.",
+    "details": "**Что нового.** v2.1.220-v2.1.224 (3-7 авг): межсессионные сообщения (ListAgents/SendMessage, macOS/Linux), self-hosted окружения в бете (Team/Enterprise), auto mode — новый режим по умолчанию с 14 августа на Pro/Max/Team.\n\n**Зачем вам.** Параллельные сессии общаются без вашего участия; self-hosted даёт доступ к внутренним сервисам без туннелей; auto mode убирает рутинные согласования.\n\n**Как попробовать.** Обновитесь до v2.1.224+, /list-agents в сессии. Self-hosted: `claude self-hosted-runner setup` (Owner в Team/Enterprise). Auto mode активен с 14 августа; задать явно — defaultMode: auto в ~/.claude/settings.json.",
+    "tags": [
+      "новости-claude",
+      "релиз",
+      "возможности"
+    ],
+    "source_url": "https://code.claude.com/docs/en/whats-new/2026-w32",
+    "source_platform": "docs",
+    "published_at": "2026-08-07",
+    "confidence": "high"
+  },
+  {
+    "id": "afabf475417190c3",
+    "date_found": "2026-08-19",
+    "title": "Claude Code в Compliance API: логи CLI-сессий без отдельной инфраструктуры — бета для Enterprise",
+    "summary": "Anthropic расширила Compliance API на Claude Code и Claude Cowork: enterprise-команды получают промпты, ответы и вызовы инструментов из всех Claude-сессий через единый API для аудита и eDiscovery.",
+    "details": "**Что нового.** Compliance API теперь покрывает Claude Code (CLI и десктоп) и Claude Cowork: промпты, ответы, вызовы инструментов и метаданные сессий через единый эндпоинт. Бета для Claude Enterprise, Access Key тот же.\n\n**Зачем вам.** Один API для аудита всей Claude-активности в организации без отдельной инфраструктуры. Актуально при DLP/compliance-требованиях к логированию ИИ.\n\n**Как попробовать.** Claude Enterprise → настройки организации → Compliance API. Документация: platform.claude.com/docs/en/manage-claude/compliance-api",
+    "tags": [
+      "новости-claude",
+      "возможности"
+    ],
+    "source_url": "https://claude.com/blog/compliance-api-cowork-and-claude-code",
+    "source_platform": "blog",
+    "published_at": "2026-08-11",
+    "confidence": "high"
+  },
+  {
+    "id": "2bc34f2fc9cea88d",
+    "date_found": "2026-08-19",
+    "title": "Velocity Growth (Манчестер): отчётность для 20 клиентов — с 18 до 3 часов в неделю, 50 700 GBP/год",
+    "summary": "12-человечная маркетинговая агентство из Манчестера автоматизировала клиентскую отчётность через Supermetrics + Looker Studio + Make: 18 часов ручной работы в неделю превратились в 3 часа.",
+    "details": "**Бизнес.** Velocity Growth, 12 чел., 20 клиентов, Манчестер (Великобритания).\n\n**Процесс.** Еженедельные клиентские отчёты: ручная сборка из Google Ads, Meta, SEO-инструментов.\n\n**Было.** 18 часов в неделю у двух аккаунт-менеджеров.\n\n**Сделали.** Supermetrics агрегирует данные → Looker Studio строит шаблонные дашборды → Make рассылает по расписанию.\n\n**Стало.** 3 ч/нед. Годовая экономия ~50 700 GBP (15 ч x 65 GBP x 52 нед).\n\n**Инструменты.** Supermetrics + Looker Studio + Make.\n\n**Как повторить.** 1) Supermetrics → Google Sheets. 2) Looker Studio шаблон с client_id. 3) Make: триггер → PDF → email.\n\n**Подвох.** Supermetrics платный (от $199/мес). Шаблоны требуют донастройки под нестандартные KPI.",
+    "tags": [
+      "маркетинг-контент",
+      "отчёты-документы",
+      "no-code"
+    ],
+    "source_url": "https://www.brightbots.io/blog/automated-client-reporting-for-marketing-agencies-impress-clients-and-save-time-2026-07-22",
+    "source_platform": "blog",
+    "published_at": "2026-07-22",
+    "confidence": "high",
+    "author": "BrightBots"
+  },
+  {
+    "id": "312562bd6d320347",
+    "date_found": "2026-08-19",
+    "title": "Performance-агентство (15 чел., 22 клиента): бюджет-пейсинг — с 8 дней до 1 дня, 12 ч/нед",
+    "summary": "15-человечное performance-агентство с 22 клиентами автоматизировало ежедневный аудит рекламных бюджетов через Supermetrics + Google Ads API: 8,3 дня ручной работы сократились до 1 дня.",
+    "details": "**Бизнес.** Performance-агентство, 15 чел., 22 клиента (США).\n\n**Процесс.** Ежедневный аудит бюджетного пейсинга и ручная корректировка ставок по всем клиентам.\n\n**Было.** 8,3 дня на полный цикл аудита; риск перерасхода в выходные.\n\n**Сделали.** Supermetrics выгружает spend → Google Ads API корректирует бюджеты → Slack-алерт при отклонении более 15 процентов.\n\n**Стало.** 1 день вместо 8,3; 12 ч/нед высвободилось; мониторинг 24/7.\n\n**Инструменты.** Supermetrics + Google Ads API + Slack.\n\n**Как повторить.** 1) Supermetrics → Google Sheets daily spend. 2) Google Ads Scripts для автокорректировки (бесплатно). 3) Webhook в Slack.\n\n**Подвох.** Google Ads Developer Token (одобрение 1-2 нед). Конфликт с Smart Bidding при агрессивной автокорректировке.",
+    "tags": [
+      "маркетинг-контент",
+      "отчёты-документы",
+      "скрипт-интеграция"
+    ],
+    "source_url": "https://ustechautomations.com/resources/blog/automate-digital-agencies-save-12-hours-per-week-2026",
+    "source_platform": "blog",
+    "published_at": "2026-06-14",
+    "confidence": "high",
+    "author": "US Tech Automations"
+  },
+  {
+    "id": "f3e1ddd515ae053c",
+    "date_found": "2026-08-19",
+    "title": "ZenPulsar (финтех): три AI-агента вместо команды 5-6 аналитиков — 3 недели вместо 6 месяцев",
+    "summary": "Российский финтех-стартап ZenPulsar запустил мультиагентную систему из трёх агентов на FinBERT: задача команды 5-6 аналитиков за 6 месяцев теперь выполняется 1 человеком за 3 недели.",
+    "details": "**Бизнес.** ZenPulsar — финтех-стартап, анализ сырьевых рынков (нефть, зерно, металлы, сахар). Основатель — сооснователь Group-IB.\n\n**Процесс.** Анализ рыночных сигналов: новостные потоки, регуляторные данные, ценовые движения по нескольким классам активов.\n\n**Было.** Команда 5-6 аналитиков за 6 месяцев.\n\n**Сделали.** Три специализированных агента (сбор сигналов, синтез выводов, аудит для регулятора) на базе FinBERT.\n\n**Стало.** 1 человек + агенты за 3 недели. Воспроизводимость и объяснимость выводов для регулятора.\n\n**Инструменты.** FinBERT + мультиагентная архитектура из 3 агентов. Оркестратор в источнике не раскрывается.\n\n**Как повторить.** 1) Три роли агентов: сбор → анализ → аудит. 2) Специализированная модель (FinBERT, LegalBERT) в узком домене. 3) Объясняющий агент для регуляторной отчётности.\n\n**Подвох.** FinBERT требует настройки под специфику рынка. Регуляторный контекст РФ нишевый.",
+    "tags": [
+      "финансы-учёт",
+      "ai",
+      "кейс-рф"
+    ],
+    "source_url": "https://habr.com/ru/companies/alpinadigital/articles/1066708/",
+    "source_platform": "blog",
+    "published_at": "2026-08-04",
+    "confidence": "high"
+  }
+]

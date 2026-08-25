@@ -190,6 +190,10 @@
       ],
       "days": [
         {
+          "date": "2026-08-26",
+          "count": 10
+        },
+        {
           "date": "2026-08-25",
           "count": 9
         },
@@ -458,7 +462,7 @@
           "count": 15
         }
       ],
-      "total_finds": 922
+      "total_finds": 932
     },
     {
       "slug": "claude-practice",

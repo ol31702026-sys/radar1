@@ -32,3 +32,17 @@ radars/*/data/_raw/
 # python bytecode
 __pycache__/
 *.pyc
+
+# Служебные файлы и локальные материалы; резервируются отдельно (27.10.2026)
+/.claude/settings.json
+/_*.py
+/_*.txt
+/_*.ps1
+engine/_gen_*.py
+radars/*/_*.py
+radars/*/_*.txt
+radars/*/data/_*.py
+radars/*/data/_*.json
+radars/*/data/_*.txt
+/fuckup/
+/Скриншот-*.jpg

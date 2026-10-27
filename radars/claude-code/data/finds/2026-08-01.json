@@ -1,0 +1,230 @@
+[
+  {
+    "id": "80e5d468b8ea",
+    "date_found": "2026-08-01",
+    "title": "zzet/gortex — High-performance code-intelligence engine for AI agents and IDE, supports 257 languages, multi repositories, based on graph, w",
+    "summary": "GitHub: репозиторий zzet/gortex (★1001). High-performance code-intelligence engine for AI agents and IDE, supports 257 languages, multi repositories, based on graph, with access via CLI, MCP Server, and API. AI coding agents teammate - expose only needed information, cutting token usage up to 50x. 100% local. Discord: https://discord.gg/ysC2prTGD",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/zzet/gortex",
+    "source_platform": "github",
+    "author": "zzet",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "deedd35499fa",
+    "date_found": "2026-08-01",
+    "title": "Show HN: What should the GUI for AI agents look like?",
+    "summary": "Hacker News: «Show HN: What should the GUI for AI agents look like?» — 99 баллов, 60 комментариев.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://marbleos.com/demo",
+    "source_platform": "hn",
+    "author": "akbabu",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "27507faf66c1",
+    "date_found": "2026-08-01",
+    "title": "AI Agents Ship Bugs When They're Blind. So We Stopped Building Blind.",
+    "summary": "Dev.to: «AI Agents Ship Bugs When They're Blind. So We Stopped Building Blind.» — 2 реакций. Теги: ai, aiagents, mcp, devops.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://dev.to/mickyarun/ai-agents-ship-bugs-when-theyre-blind-so-we-stopped-building-blind-42ba",
+    "source_platform": "blog",
+    "author": "mickyarun",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "d4379e38fd49",
+    "date_found": "2026-08-01",
+    "title": "jgravelle/jdocmunch-mcp — The leading, most token-efficient MCP server for documentation exploration and retrieval via structured section in",
+    "summary": "GitHub: репозиторий jgravelle/jdocmunch-mcp (★201). The leading, most token-efficient MCP server for documentation exploration and retrieval via structured section indexing",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/jgravelle/jdocmunch-mcp",
+    "source_platform": "github",
+    "author": "jgravelle",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "7595dc63667f",
+    "date_found": "2026-08-01",
+    "title": "Anthropic says Claude hacked three companies during tests",
+    "summary": "Hacker News: «Anthropic says Claude hacked three companies during tests» — 17 баллов, 4 комментариев.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.reuters.com/legal/litigation/anthropic-says-claude-ai-models-accessed-three-companies-during-tests-2026-07-30/",
+    "source_platform": "hn",
+    "author": "nerder92",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "996750a6f880",
+    "date_found": "2026-08-01",
+    "title": "ventex-vives/claude-autonomous-deployment — Claude 2026: The Developer’s Smartest AI for Long-Context Code & Writing",
+    "summary": "GitHub: репозиторий ventex-vives/claude-autonomous-deployment (★151). Claude 2026: The Developer’s Smartest AI for Long-Context Code & Writing",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/ventex-vives/claude-autonomous-deployment",
+    "source_platform": "github",
+    "author": "ventex-vives",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "c7dff9449472",
+    "date_found": "2026-08-01",
+    "title": "Now Anthropic Is Saying Claude Escaped and Hacked Several Companies",
+    "summary": "Hacker News: «Now Anthropic Is Saying Claude Escaped and Hacked Several Companies» — 15 баллов, 4 комментариев.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://www.cnn.com/2026/07/30/tech/anthropic-ai-models-break-out-hack",
+    "source_platform": "hn",
+    "author": "hackmack10",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "03de71933dca",
+    "date_found": "2026-08-01",
+    "title": "getaero-io/gtm-eng-skills — 10 AI agent skills for Claude Code — waterfall email enrichment, TAM building, signal discovery, job change dete",
+    "summary": "GitHub: репозиторий getaero-io/gtm-eng-skills (★48). 10 AI agent skills for Claude Code — waterfall email enrichment, TAM building, signal discovery, job change detection, and outbound automation. Powered by Deepline CLI with 28+ GTM data providers.",
+    "details": "",
+    "tags": [
+      "mcp",
+      "skills",
+      "automation"
+    ],
+    "source_url": "https://github.com/getaero-io/gtm-eng-skills",
+    "source_platform": "github",
+    "author": "getaero-io",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "22277ffdc8d0",
+    "date_found": "2026-08-01",
+    "title": "Show HN: The Goal is simple, there should be an actual free editor",
+    "summary": "Hacker News: «Show HN: The Goal is simple, there should be an actual free editor» — 9 баллов, 4 комментариев.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://sylixide.com",
+    "source_platform": "hn",
+    "author": "Sai-09",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "9f219b2d1132",
+    "date_found": "2026-08-01",
+    "title": "griffinwork40/agent-afk — Start a run in your terminal and walk away. Get pinged when it finishes, or needs you. Every step is a readable tr",
+    "summary": "GitHub: репозиторий griffinwork40/agent-afk (★46). Start a run in your terminal and walk away. Get pinged when it finishes, or needs you. Every step is a readable trace you check before anything ships.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/griffinwork40/agent-afk",
+    "source_platform": "github",
+    "author": "griffinwork40",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "c4f90200bdd4",
+    "date_found": "2026-08-01",
+    "title": "Show HN :Tandem – one session across Claude Code and Codex, no double spend",
+    "summary": "Hacker News: «Show HN :Tandem – one session across Claude Code and Codex, no double spend» — 3 баллов, 0 комментариев.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/Bhavya6187/tandem",
+    "source_platform": "hn",
+    "author": "bhavya6187",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "766394a1579f",
+    "date_found": "2026-08-01",
+    "title": "Flagrare/agent-skills — Claude Code skills that wrap your full dev cycle — ticket intake, ATDD planning, code review, doc-drift audits, PR w",
+    "summary": "GitHub: репозиторий Flagrare/agent-skills (★10). Claude Code skills that wrap your full dev cycle — ticket intake, ATDD planning, code review, doc-drift audits, PR writing, and changelogs.",
+    "details": "",
+    "tags": [
+      "mcp",
+      "skills"
+    ],
+    "source_url": "https://github.com/Flagrare/agent-skills",
+    "source_platform": "github",
+    "author": "Flagrare",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "d9b7d6fa79b7",
+    "date_found": "2026-08-01",
+    "title": "Show HN: Shellphone, an MCP Extension to Link Claude Chat and Claude Code",
+    "summary": "Hacker News: «Show HN: Shellphone, an MCP Extension to Link Claude Chat and Claude Code» — 2 баллов, 0 комментариев.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://www.npmjs.com/package/shellphone",
+    "source_platform": "hn",
+    "author": "geoffitect",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "879b8db895dd",
+    "date_found": "2026-08-01",
+    "title": "popmechanic/Julian — Julian — easy-to-install, secure personal agent for Claude Code.",
+    "summary": "GitHub: репозиторий popmechanic/Julian (★8). Julian — easy-to-install, secure personal agent for Claude Code.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/popmechanic/Julian",
+    "source_platform": "github",
+    "author": "popmechanic",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  },
+  {
+    "id": "df839781b74a",
+    "date_found": "2026-08-01",
+    "title": "Anthropic's Claude AI models hack into 3 outside groups during testing",
+    "summary": "Hacker News: «Anthropic's Claude AI models hack into 3 outside groups during testing» — 2 баллов, 2 комментариев.",
+    "details": "",
+    "tags": [
+      "testing"
+    ],
+    "source_url": "https://www.ft.com/content/1a841f08-8e59-49d9-9561-0ed20e9190df",
+    "source_platform": "hn",
+    "author": "macleginn",
+    "published_at": "2026-07-31",
+    "confidence": "low"
+  }
+]

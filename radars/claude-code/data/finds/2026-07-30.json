@@ -1,0 +1,228 @@
+[
+  {
+    "id": "97627f488dbe",
+    "date_found": "2026-07-30",
+    "title": "Frisher1/ClaudeCode-Workflow-Lab — Complete Guide 2026: Claude Code Manual – Workflow Pipelines & Adversarial Budget Loops",
+    "summary": "GitHub: репозиторий Frisher1/ClaudeCode-Workflow-Lab (★153). Complete Guide 2026: Claude Code Manual – Workflow Pipelines & Adversarial Budget Loops",
+    "details": "",
+    "tags": [
+      "subagents"
+    ],
+    "source_url": "https://github.com/Frisher1/ClaudeCode-Workflow-Lab",
+    "source_platform": "github",
+    "author": "Frisher1",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "92bed63b0a3c",
+    "date_found": "2026-07-30",
+    "title": "GPT-5.6 vs. Claude Fable 5 for Physical AI, which performs best?",
+    "summary": "Hacker News: «GPT-5.6 vs. Claude Fable 5 for Physical AI, which performs best?» — 68 баллов, 14 комментариев.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://juliahub.com/blog/frontier-models-physical-ai-evaluation",
+    "source_platform": "hn",
+    "author": "mbauman",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "50d2dcb9277a",
+    "date_found": "2026-07-30",
+    "title": "Anthropic Says Claude Mythos Preview Found Cryptography Implementation Weaknesses",
+    "summary": "Dev.to: «Anthropic Says Claude Mythos Preview Found Cryptography Implementation Weaknesses» — 5 реакций. Теги: ai, automation, tools, claude.",
+    "details": "",
+    "tags": [
+      "automation",
+      "testing"
+    ],
+    "source_url": "https://dev.to/alifar/anthropic-says-claude-mythos-preview-found-cryptography-implementation-weaknesses-2dhk",
+    "source_platform": "blog",
+    "author": "alifar",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "a9b885102b19",
+    "date_found": "2026-07-30",
+    "title": "minetechnic2012-lang/claude-ops-inspector — Subagent Verification for Claude AI Code Networks 2026",
+    "summary": "GitHub: репозиторий minetechnic2012-lang/claude-ops-inspector (★152). Subagent Verification for Claude AI Code Networks 2026",
+    "details": "",
+    "tags": [
+      "subagents"
+    ],
+    "source_url": "https://github.com/minetechnic2012-lang/claude-ops-inspector",
+    "source_platform": "github",
+    "author": "minetechnic2012-lang",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "42009bab04d5",
+    "date_found": "2026-07-30",
+    "title": "Launch HN: Tokenless (YC S26) – Automatic model switching to save money",
+    "summary": "Hacker News: «Launch HN: Tokenless (YC S26) – Automatic model switching to save money» — 43 баллов, 38 комментариев.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://usetokenless.com/",
+    "source_platform": "hn",
+    "author": "rohaga",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "17593e7a968b",
+    "date_found": "2026-07-30",
+    "title": "Not all MCP servers are equal: BaaS MCP vs application MCP",
+    "summary": "Dev.to: «Not all MCP servers are equal: BaaS MCP vs application MCP» — 4 реакций. Теги: mcp, ai, webdev, backend.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://dev.to/goodbarber/not-all-mcp-servers-are-equal-baas-mcp-vs-application-mcp-11bj",
+    "source_platform": "blog",
+    "author": "pierrelaurentmedori",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "c854a3e1aa65",
+    "date_found": "2026-07-30",
+    "title": "ccf/agentcairn — Long-term, cross-project memory for AI coding agents. Your own Obsidian vault as the source of truth. Daemonless and withou",
+    "summary": "GitHub: репозиторий ccf/agentcairn (★25). Long-term, cross-project memory for AI coding agents. Your own Obsidian vault as the source of truth. Daemonless and without opaque databases, your memory belongs to you.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/ccf/agentcairn",
+    "source_platform": "github",
+    "author": "ccf",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "2e9d0a511cfd",
+    "date_found": "2026-07-30",
+    "title": "Show HN: Cadence Money – a budgeting app with no AI features, just an MCP server",
+    "summary": "Hacker News: «Show HN: Cadence Money – a budgeting app with no AI features, just an MCP server» — 6 баллов, 2 комментариев.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://www.cadencemoney.com",
+    "source_platform": "hn",
+    "author": "travhogan",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "82fa30d29341",
+    "date_found": "2026-07-30",
+    "title": "How Claude's Context Window Actually Works: A Deep Dive",
+    "summary": "Dev.to: «How Claude's Context Window Actually Works: A Deep Dive» — 2 реакций. Теги: claude, aiagents, awslambda.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://dev.to/dineshgowtham/how-claudes-context-window-actually-works-a-deep-dive-1530",
+    "source_platform": "blog",
+    "author": "dineshgowtham",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "7f6a545ae245",
+    "date_found": "2026-07-30",
+    "title": "Fail-Safe/Noema — The intentional memory layer for your AI agents.",
+    "summary": "GitHub: репозиторий Fail-Safe/Noema (★16). The intentional memory layer for your AI agents.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/Fail-Safe/Noema",
+    "source_platform": "github",
+    "author": "Fail-Safe",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "8b5ef80f86c0",
+    "date_found": "2026-07-30",
+    "title": "Anyone else think Claude Code and Codex are too slow? We hate it",
+    "summary": "Hacker News: «Anyone else think Claude Code and Codex are too slow? We hate it» — 3 баллов, 0 комментариев.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://bullet.davidhf.com",
+    "source_platform": "hn",
+    "author": "alsima",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "747ebfdfa97d",
+    "date_found": "2026-07-30",
+    "title": "Claude Code Cut 80% of Its Prompt. Yours Should Too.",
+    "summary": "Dev.to: «Claude Code Cut 80% of Its Prompt. Yours Should Too.» — 2 реакций. Теги: aiagents, claudecode, contextengineering, systemprompt.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://dev.to/max_quimby/claude-code-cut-80-of-its-prompt-yours-should-too-13ci",
+    "source_platform": "blog",
+    "author": "max_quimby",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "3a35c1641382",
+    "date_found": "2026-07-30",
+    "title": "DimitriGeelen/agentic-engineering-framework — Governance framework for AI coding agents — enforces task traceability, structural gates, sess",
+    "summary": "GitHub: репозиторий DimitriGeelen/agentic-engineering-framework (★12). Governance framework for AI coding agents — enforces task traceability, structural gates, session continuity, and audit trails for Claude Code, Cursor, and Copilot.",
+    "details": "",
+    "tags": [
+      "mcp"
+    ],
+    "source_url": "https://github.com/DimitriGeelen/agentic-engineering-framework",
+    "source_platform": "github",
+    "author": "DimitriGeelen",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "60b24921b7af",
+    "date_found": "2026-07-30",
+    "title": "Show HN: Tokimeter – open-source usage meter for Claude, Codex, Cursor and more",
+    "summary": "Hacker News: «Show HN: Tokimeter – open-source usage meter for Claude, Codex, Cursor and more» — 3 баллов, 0 комментариев.",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/toshipepe/tokimeter",
+    "source_platform": "hn",
+    "author": "toshipepe",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  },
+  {
+    "id": "ec219de49dab",
+    "date_found": "2026-07-30",
+    "title": "cipher982/longhouse — Drive your *actual* coding agents, not another agent wrapper!  Like codex/claude remote control but fully open source ",
+    "summary": "GitHub: репозиторий cipher982/longhouse (★6). Drive your *actual* coding agents, not another agent wrapper!  Like codex/claude remote control but fully open source and compatible across ALL the good agents",
+    "details": "",
+    "tags": [
+      "tips"
+    ],
+    "source_url": "https://github.com/cipher982/longhouse",
+    "source_platform": "github",
+    "author": "cipher982",
+    "published_at": "2026-07-29",
+    "confidence": "low"
+  }
+]
